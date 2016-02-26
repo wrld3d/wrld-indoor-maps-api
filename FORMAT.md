@@ -139,5 +139,5 @@ This is an early version of the data format and API for eeGeo indoor map submiss
 ---
 
 #### Contact us
-If you have any problems or queries please [raise an issue](https://github.com/eegeo/venue-edit-service/issues/new) or alternatively get in touch with us at support@eegeo.com.
+If you have any problems or queries please [raise an issue](https://github.com/eegeo/indoor-map-submission/issues/new) or alternatively get in touch with us at support@eegeo.com.
 
