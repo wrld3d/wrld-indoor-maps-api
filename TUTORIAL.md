@@ -95,7 +95,7 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   
   This allows you to see through to the floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons will are shaded darker).
 
-- The first feature we’re going to create is an outline of this particular indoor map level.
+- The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane. 
 - Click the “Toggle Editing” button.
   
   ![Toggle editing button](/images/tutorial/toggle_editing.png)
@@ -110,11 +110,22 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - You should now have a building outline polygon in your QGIS layer. 
 
   ![Traced floor plan outline](/images/tutorial/level_outline.png)
-- Add more rooms by tracing them (TODO: decent guide on this, what consitutes a room/unit etc.?)
+- We've now got our building outline; the next thing to do is create some rooms. 
+
+  Identify a room on the floor plan image and create a polygon, matching the floor plan as closely as possible. When prompted for details, set its type to "room" and give it a name, if applicable.
+  
+  Repeat this step multiple times to give your indoor map more detail. 
+  
+  Depending on the layout of the building that's being traced, it may be better to leave space between rooms. The building outline we added in the first step will still show up here. This is a useful technique for features like corridors. 
+  
+  We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised.
+  
+  ![Multiple rooms added](/images/tutorial/multiple_rooms.png)
 - Finally, let’s fix up the feature ids. Each feature needs an id that is unique **for all levels of the indoor map**, but we’ve been leaving them as NULL (feel free to skip these steps if you’ve been manually entering ids, though). To auto-generate ids for a level, use the Field Calculator feature of QGIS.
 - Open the layer’s attribute table via Layer > Attribute Table
 - Click the Field Calculator button.
-- (TODO : Field calculator button)
+  
+  ![Field Calculator](/images/tutorial/field_calculator_button.png)
 - Change the checkbox to “Update existing field”
 - In the combobox, select the “id” field
 - In the left hand expression box, enter 
