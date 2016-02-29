@@ -47,23 +47,25 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 - Open QGIS and add a layer of your choice via OpenLayers (e.g. to add an Open Street Map layer, choose Web > OpenLayers plugin > and then choose a layer -- experiment with each to see which one best suits your location of interest).
 - Browse to your building’s location via left-click dragging & zooming with the mouse wheel.
 - Open the Georeferencer (Raster > Georeferencer > Georeferencer).
-- ( TODO: Pic of georef plugin window )
+  
+  ![Georeferencer toolbar](/images/tutorial/georeferencing_toolbar.png)
 - Click “Add Raster”.
 - Add your floor plan image. If you’re using OpenLayers, set the CRS (coordinate reference system) as WGS84 / Pseudo Mercator ([EPSG: 3857](http://spatialreference.org/ref/sr-org/6864/)).
 - The image should be displayed in the Georeferencer window.
-- ( TODO: Image of floor plan image in the georef)
+
+  [<img src="/images/tutorial/georeference_plan_thumb.png">](/images/tutorial/georeference_plan.png) 
 - The next step involves selecting a point on the indoor map image and then assigning it a location.
 - In the Georeferencer window, ensure the “Add Point” tool selected and left click the first point to be referenced (a corner is a good choice).
 - Click the “From map canvas” button.
 - Left click the location on the map matching the point you’ve just selected.
-- ( TODO: Image of georeferenced point )
+  ![Point in Georeferencer](images/tutorial/georeference_side_by_side.png)
 - Repeat this process for a handful of points on the building perimeter; try to pick the points that are clearly visible on the map (e.g. building corners). Inaccurately georeferenced points cause distortion, so if in doubt, don't add it (in this example, only 4 points were georeferenced).
 - Open the settings dialog.Choose a filename for “Output raster”.  Target SRS should be set to [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/) if you’re using OpenLayers (or whatever your QGIS project is using — to find out, choose Project > Project Properties > CRS). The rest of the options should roughly match the following:
-- ( TODO : Image of transform settings ) 
+  ![Transform settings](/images/tutorial/transform_settings.png)
 - Click the “OK” button.
 - Click the “Start Georeferencing” button.
 - The transformed image should open in the QGIS main scene view.
-- ( TODO : Image of georeferenced floor plan ) 
+  ![Georeferenced image](images/tutorial/georeferenced_image.jpg)
 - If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced TIF into QGIS, or simply re-export with the box checked.
 - In the Layers panel, locate the layer that’s just been added. Double click it, adjust with style and transparency so you can see the underlying map imagery.
 - If the result is sub-par and heavily distorted, try the process again and choose different points to georeference. Again, fewer is often better.
