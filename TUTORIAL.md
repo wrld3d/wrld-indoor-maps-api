@@ -83,14 +83,17 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - Create a new QGIS layer via Layer > Create Layer > New Shapefile Layer.
 - When prompted, choose the Type: Polygon radio button option, then choose the appropriate CRS (again, this is typically [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/) unless your QGIS project is using something else).
 - Finally, add “type” and “name” to the attribute list (under “New attribute”, fill in the attribute name and click the “Add to attributes list” button). The default data types are fine (String, 80 width).
-- ( TODO : Image of new vector layer )
+  
+  ![New level layer](/images/tutorial/new_level_layer.png)
 - Click “OK”.
 - Ensure that your new feature layer is selected in the Layers panel.
 - The first feature we’re going to create is an outline of this particular indoor map level.
 - Click the “Toggle Editing” button.
-- ( TODO : Toggle editing button )
+  
+  ![Toggle editing button](/images/tutorial/toggle_editing.png)
 - Click the “Add Features” button.
-- ( TODO : Add Features button )
+  
+  ![Add features button](/images/tutorial/add_features.png)
 - Trace the boundary of the floor plan image by drawing a polygon, one point at a time.
 - When you’re happy with the polygon, right click to accept it.
 - In the confirmation dialog, select the ‘type’ field and change its value to “building_outline”, like so (you can manually enter ids if you want, but I prefer to leave them as NULL and fix them with a few clicks later on):
