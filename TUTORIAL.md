@@ -98,13 +98,18 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - Click the “Add Features” button.
   
   ![Add features button](/images/tutorial/add_features.png)
-- Trace the boundary of the floor plan image by drawing a polygon, one point at a time.
+- Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
 - When you’re happy with the polygon, right click to accept it.
 - In the confirmation dialog, select the ‘type’ field and change its value to “building_outline”, like so (you can manually enter ids if you want, but I prefer to leave them as NULL and fix them with a few clicks later on):
-- (TODO confirmation dialog)
+
+  ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
 - You should now have a building outline polygon in your QGIS layer. I’d recommend playing around with the transparency / blending effects in the layer properties panel (Layer > Properties > Style). This allows you to see through to the floor plan image layer, which makes tracing easier.
-- ( TODO : traced floor plate )
-- Add more rooms by tracing them (TODO: I don’t know how to control the draw order of overlapping polygons in QGIS, HLAP!).
+
+  ![Traced floor plan outline](/images/tutorial/level_outline.png)
+- Change the layer transparency to 50% via Layer > Properties... > Style > Move the "Transparency" slider to halfway. 
+  
+  The building outline covers the entire level, so it's expected thatother polygons will overlap it; setting the transparency helps us make sense of overlaps.
+- Add more rooms by tracing them (TODO: decent guide on this, what consitutes a room/unit etc.?)
 - Finally, let’s fix up the feature ids. Each feature needs an id that is unique **for all levels of the indoor map**, but we’ve been leaving them as NULL (feel free to skip these steps if you’ve been manually entering ids, though). To auto-generate ids for a level, use the Field Calculator feature of QGIS.
 - Open the layer’s attribute table via Layer > Attribute Table
 - Click the Field Calculator button.
