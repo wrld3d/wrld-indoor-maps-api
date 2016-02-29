@@ -4,7 +4,7 @@ eeGeo’s 3D Indoor Maps offering is available and we are now accepting submissi
 
 This post covers creating and submitting an indoor map by georeferencing floor plan imagery. You can follow along on Mac OS X, Linux or Windows.
 
-We will be using Westport House in Dundee as an example, with the owners’ permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will be rejected.
+eeGeo's office building, Westport House, will be used as the example for this post. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will be rejected.
 
 ( TODO : image showing floor plan )
 ( TODO : image showing corresponding indoor map in eeGeo tech )
@@ -91,6 +91,10 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   ![New level layer confirmation](/images/tutorial/new_level_layer_confirmation.png)
 - Ensure that your new feature layer is selected in the Layers panel
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
+- Open the Layer Style menu (Layer > Properties > Style) and move the transparency slider to 50%. 
+  
+  This allows you to see through to the floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons will are shaded darker).
+
 - The first feature we’re going to create is an outline of this particular indoor map level.
 - Click the “Toggle Editing” button.
   
@@ -103,12 +107,9 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - In the confirmation dialog, select the ‘type’ field and change its value to “building_outline”, like so (you can manually enter ids if you want, but I prefer to leave them as NULL and fix them with a few clicks later on):
 
   ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
-- You should now have a building outline polygon in your QGIS layer. I’d recommend playing around with the transparency / blending effects in the layer properties panel (Layer > Properties > Style). This allows you to see through to the floor plan image layer, which makes tracing easier.
+- You should now have a building outline polygon in your QGIS layer. 
 
   ![Traced floor plan outline](/images/tutorial/level_outline.png)
-- Change the layer transparency to 50% via Layer > Properties... > Style > Move the "Transparency" slider to halfway. 
-  
-  The building outline covers the entire level, so it's expected thatother polygons will overlap it; setting the transparency helps us make sense of overlaps.
 - Add more rooms by tracing them (TODO: decent guide on this, what consitutes a room/unit etc.?)
 - Finally, let’s fix up the feature ids. Each feature needs an id that is unique **for all levels of the indoor map**, but we’ve been leaving them as NULL (feel free to skip these steps if you’ve been manually entering ids, though). To auto-generate ids for a level, use the Field Calculator feature of QGIS.
 - Open the layer’s attribute table via Layer > Attribute Table
