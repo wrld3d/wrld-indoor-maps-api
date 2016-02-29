@@ -77,7 +77,7 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 
 #### <a name="create-indoor-map-level"/>Create an indoor map level
 
-We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a building level.
+We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a single building level. For the purposes of this tutorial, we're tracing the westport house floor that houses the eeGeo offices -- this is the second level.
 
 - Set the opacity on your floor plan image layer fully opaque once more.
 - Create a new QGIS layer via Layer > Create Layer > New Shapefile Layer.
@@ -86,7 +86,11 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   
   ![New level layer](/images/tutorial/new_level_layer.png)
 - Click “OK”.
-- Ensure that your new feature layer is selected in the Layers panel.
+- Give your new layer a suitable name. Something like my-indoor-map-name-level-x is good (where level-x corresponds to whatever floor of the building you're about to create).
+
+  ![New level layer confirmation](/images/tutorial/new_level_layer_confirmation.png)
+- Ensure that your new feature layer is selected in the Layers panel
+- In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
 - The first feature we’re going to create is an outline of this particular indoor map level.
 - Click the “Toggle Editing” button.
   
