@@ -2,14 +2,14 @@ Submitting your indoor map to eeGeo
 ===================
 eeGeo’s 3D Indoor Maps offering is available and we are now accepting submissions. If you’re interested in seeing your building’s indoor space in our immersive 3D maps, read on!
 
-This post covers creating and submitting an indoor map by georeferencing floor plan imagery. You can follow along on Mac OS X, Linux or Windows.
+This post covers creating an indoor map by georeferencing floor plan imagery and then submitting it to the eegeo indoor maps submission service. You can follow along on Mac OS X, Linux or Windows.
 
 eeGeo's office building, Westport House, will be used as the example for this post. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will be rejected.
 
 ( TODO : image showing floor plan )
 ( TODO : image showing corresponding indoor map in eeGeo tech )
 
-For detailed information on the eeGeo Indoor Map format, please refer to the [format](FORMAT.md) documentation. 
+For detailed information on the eeGeo Indoor Map format, please refer to the [format documentation](FORMAT.md). 
 
 A rough outline of the process:
 
@@ -114,9 +114,9 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 
   Identify a room on the floor plan image and create a polygon, matching the floor plan as closely as possible. When prompted for details, set its type to "room" and give it a name, if applicable.
   
-  Repeat this step multiple times to give your indoor map more detail. 
+  Repeat this step multiple times to give your indoor map more detail. There are multiple feature types to choose from, please refer to the [format documentation](FORMAT.md#feature-types). 
   
-  Depending on the layout of the building that's being traced, it may be better to leave space between rooms. The building outline we added in the first step will still show up here. This is a useful technique for features like corridors. 
+  Depending on the layout of the building that's being traced, it may be better to leave space between rooms. The building outline we added in the first step will still show up here. This is a useful technique for corridors and other such spaces.
   
   We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised.
   
@@ -146,7 +146,7 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   ![Field calculator](/images/tutorial/field_calculator.png)
 - Click “OK”. 
   
-  This will generate unique features ids, starting with the interior level id (e.g., level 2 features will have ids 201, 202, 203..., level 3 features will have ids 301, 302, 303...)
+  This will generate unique features ids. Each feature id starts with the interior level id (e.g., level 2 features will have ids 21, 22, 23..., level 3 features will have ids 31, 32, 33...)
 
 - Verify the ids have been generated correctly by opening the layer's Attribute Table
 
@@ -167,7 +167,7 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - Enter a filename/location
 - Click “OK”
 
-You now have a single level of your building digitised. If you have more floor plans for your building, simply repeat the above steps for each floor.
+You now have a single level of your building digitised. If you have more floor plans for your building, simply repeat the above steps for each level. 
 
 ---
 
