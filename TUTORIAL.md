@@ -121,20 +121,40 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised.
   
   ![Multiple rooms added](/images/tutorial/multiple_rooms.png)
-- Finally, let’s fix up the feature ids. Each feature needs an id that is unique **for all levels of the indoor map**, but we’ve been leaving them as NULL (feel free to skip these steps if you’ve been manually entering ids, though). To auto-generate ids for a level, use the Field Calculator feature of QGIS.
+- Finally, let’s fix up the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
+  
+  Each feature needs an id, and the id must be unique **across all levels of your indoor map** (e.g. if level 1 has a room with an id of 1 and level 2 also has a room with the same id of 1, it is illegal).
+
+  Thankfully, we can use QGIS's Field Calculator feature to generate ids for a level.
+  
 - Open the layer’s attribute table via Layer > Attribute Table
 - Click the Field Calculator button.
   
   ![Field Calculator](/images/tutorial/field_calculator_button.png)
 - Change the checkbox to “Update existing field”
 - In the combobox, select the “id” field
-- In the left hand expression box, enter 
--  `toint(concat('x', tostring(@row_number)))` ... where `x` is the floor/level number. 
--  E.g. for the second floor, we'd enter `toint(concat('2', tostring(@row_number)))`
-- The dialog should look like the following image
-- ( TODO : Field Calculator image )
+- In the left hand expression box, paste & modify: 
+  
+  `toint(concat('n', tostring(@row_number)))` 
+  ... where `n` is the floor/level number. 
+  
+  E.g. for the second level of our indoor map, we'd modify the above to:
+  
+  `toint(concat('2', tostring(@row_number)))`
+- If you were generating ids for level 2 of your indoor map, the dialog would look something like:
+
+  ![Field calculator](/images/tutorial/field_calculator.png)
 - Click “OK”. 
-- This will generate unique features ids, starting with the interior level id (e.g., level 2 will have ids 201, 202, 203..., level 3 will have ids 301, 302, 303...)
+  
+  This will generate unique features ids, starting with the interior level id (e.g., level 2 features will have ids 201, 202, 203..., level 3 features will have ids 301, 302, 303...)
+
+- Verify the ids have been generated correctly by opening the layer's Attribute Table
+
+  Layer > Open Attribute Table
+  
+  Here's Westport House level 2 with auto-generated ids:
+  
+  ![Attribute table with auto-generated ids](/images/tutorial/attribute_table_with_generated_ids.png)
 
 ---
 
