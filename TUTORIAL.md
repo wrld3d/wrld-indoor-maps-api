@@ -2,12 +2,17 @@ Submitting your indoor map to eeGeo
 ===================
 eeGeo’s 3D Indoor Maps offering is available and we are now accepting submissions. If you’re interested in seeing your building’s indoor space in our immersive 3D maps, read on!
 
-This post covers creating an indoor map by georeferencing floor plan imagery and then submitting it to the eegeo indoor maps submission service. You can follow along on Mac OS X, Linux or Windows.
+This post covers creating an indoor map by georeferencing floor plan imagery and then submitting it to the eegeo indoor maps submission service. After we've processed your indoor map submission, you'll receive an email containing details of how to view it using the eeGeo SDK.
+
+eeGeo will not share your map data; this means that any submitted indoor maps will remain private to your organisation.
+
+You can follow along on Mac OS X, Linux or Windows.
+
+| Source data | eeGeo indoor maps |
+|:-----------:|:------------:|
+|![Indoor map source data](/images/tutorial/overview_coloured.png)|![Indoor map in app](/images/tutorial/overview_eegeo.png)|
 
 eeGeo's office building, Westport House, will be used as the example for this post. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will be rejected.
-
-( TODO : image showing floor plan )
-( TODO : image showing corresponding indoor map in eeGeo tech )
 
 For detailed information on the eeGeo Indoor Map format, please refer to the [format documentation](FORMAT.md). 
 
