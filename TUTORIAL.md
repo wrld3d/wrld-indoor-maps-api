@@ -118,7 +118,7 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   
   Depending on the layout of the building that's being traced, it may be better to leave space between rooms. The building outline we added in the first step will still show up here. This is a useful technique for corridors and other such spaces.
   
-  We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised.
+  We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with a handful of rooms (each room is shaded a slightly different color of red).
   
   ![Multiple rooms added](/images/tutorial/multiple_rooms.png)
 - Finally, let’s fix up the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
@@ -133,11 +133,13 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   ![Field Calculator](/images/tutorial/field_calculator_button.png)
 - Change the checkbox to “Update existing field”
 - In the combobox, select the “id” field
-- In the left hand expression box, paste & modify: 
+- In the left hand expression box enter the following: 
   
   `toint(concat('n', tostring(@row_number)))` 
-  ... where `n` is the floor/level number. 
+  ... where `n` is the floor/level number
   
+  Replace 'n' for your level's number (but, keep the single quotes).  
+
   E.g. for the second level of our indoor map, we'd modify the above to:
   
   `toint(concat('2', tostring(@row_number)))`
