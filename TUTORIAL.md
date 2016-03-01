@@ -104,7 +104,9 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   ![Add features button](/images/tutorial/add_features.png)
 - Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
 - When you’re happy with the polygon, right click to accept it.
-- In the confirmation dialog, select the ‘type’ field and change its value to “building_outline”, like so (you can manually enter ids if you want, but I prefer to leave them as NULL and fix them with a few clicks later on):
+- In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`. 
+ 
+  Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, I prefer to leave them as NULL and fix them later. I would recommend this, as it's less error-prone.
 
   ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
 - You should now have a building outline polygon in your QGIS layer. 
@@ -113,6 +115,8 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - We've now got our building outline; the next thing to do is create some rooms. 
 
   Identify a room on the floor plan image and create a polygon, matching the floor plan as closely as possible. When prompted for details, set its type to "room" and give it a name, if applicable.
+  
+  ![Adding a single room](/images/tutorial/add_room.png)
   
   Repeat this step multiple times to give your indoor map more detail. There are multiple feature types to choose from, please refer to the [format documentation](FORMAT.md#feature-types). 
   
