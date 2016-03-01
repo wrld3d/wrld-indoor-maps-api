@@ -175,6 +175,14 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 
 You now have a single level of your building digitised. If you have more floor plans for your building, simply repeat the above steps for each level. 
 
+**Note**: It's often useful to examine the exported json, but QGIS exports unformatted json which makes it tough to read due to the lack of indenting. 
+
+This is entirely optional, but if you wish to re-format your GeoJSON files, you can paste them into [jsonlint](http://jsonlint.com) or run a single command from a terminal (this assumes python is installed and in your path):
+
+```sh
+$ cat my-unformatted-file.geojson | python -m json.tool > my-formatted-file.geojson
+```
+
 ---
 
 #### <a name="create-main-json-file"/>Create the main JSON file
@@ -189,8 +197,8 @@ Now that you have one or more levels of your building traced and exported in an 
 - Zip the directory
 - On OS X / Linux, you can do this via opening a terminal and entering the following commands:
 ```
-cd ~/my-indoor-map
-zip -r my-indoor-map.zip .
+$ cd ~/my-indoor-map
+$ zip -r my-indoor-map.zip .
 ```
 - On Windows, navigate to the directory containing your indoor map files
   - Right click > New > Compressed (zipped) Folder and choose an appropriate name
