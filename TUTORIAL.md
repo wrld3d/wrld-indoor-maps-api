@@ -180,7 +180,7 @@ You now have a single level of your building digitised. If you have more floor p
 This is entirely optional, but if you wish to re-format your GeoJSON files, you can paste them into [jsonlint](http://jsonlint.com) or run a single command from a terminal (this assumes python is installed and in your path):
 
 ```sh
-$ cat my-unformatted-file.geojson | python -m json.tool > my-formatted-file.geojson
+$ cat unformatted.geojson | python -m json.tool > formatted.geojson
 ```
 
 ---
