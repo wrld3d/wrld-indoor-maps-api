@@ -1,4 +1,4 @@
-![eeGeo](images/tutorial/overview_eegeo.png)
+![eeGeo](images/format/indoor_map.png)
 
 eeGeo Indoor Map Format v0.0.1
 ===================
