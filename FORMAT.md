@@ -1,9 +1,9 @@
-![eeGeo](http://cdn2.eegeo.com/wp-content/uploads/2015/12/california-sciences-interior.jpg)
+![eeGeo](images/tutorial/overview_eegeo.png)
 
 eeGeo Indoor Map Format v0.0.1
 ===================
 
-This document describes version 0.0.1 of the eeGeo data format for indoor map submission.
+This document describes version 0.0.1 of the eeGeo data format for indoor maps.
 
 ---
 
@@ -134,10 +134,10 @@ All feature types listed are expected to be specified as GeoJSON Polygons.
 ---
 
 #### Disclaimer
-This is an early version of the data format and API for eeGeo indoor map submission.  eeGeo Ltd reserves the right to make changes to the API and its documentation at any time.  
+This is an early version of the data format and API for eeGeo indoor maps.  eeGeo Ltd reserves the right to make changes to the API and its documentation at any time.  
 
 ---
 
 #### Contact us
-If you have any problems or queries please [raise an issue](https://github.com/eegeo/indoor-map-submission/issues/new) or alternatively get in touch with us at support@eegeo.com.
+If you have any problems or queries please [raise an issue](https://github.com/eegeo/indoor-maps-api/issues/new) or alternatively get in touch with us at support@eegeo.com.
 
