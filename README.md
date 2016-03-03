@@ -1,4 +1,8 @@
 # indoor-maps-api
+| Source data |   | eeGeo indoor maps |
+|:-----------:|:-:|:------------:|
+|![Indoor map source data](/images/tutorial/overview_coloured.png)|![Right arrow](/images/readme/arrow_right.png)|![Indoor map in app](/images/tutorial/overview_eegeo.png)|
+
 This repository contains details of eeGeo's Indoor Map data format &amp; API + a tutorial to help you get started.
 
 * [TUTORIAL.md](TUTORIAL.md) - a worked example showing how to go from a floor plan to a fully submitted map
