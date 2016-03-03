@@ -2,7 +2,7 @@ Submitting your indoor map to eeGeo
 ===================
 eeGeo’s 3D Indoor Maps offering is available and we are now accepting submissions. If you’re interested in seeing your building’s indoor space in our immersive 3D maps, read on!
 
-This post covers creating an indoor map by georeferencing floor plan imagery and then submitting it to the eegeo indoor maps api. After we've processed your indoor map, you'll receive an email containing details of how to view it using the eeGeo SDK.
+This post covers creating an indoor map by georeferencing floor plan imagery and then submitting it to the eegeo indoor maps API. After we've processed your indoor map, you'll receive an email containing details of how to view it using the eeGeo SDK.
 
 eeGeo will not share your map data; this means that any submitted indoor maps will remain private to your organisation.
 
@@ -258,7 +258,7 @@ $ zip -r my-indoor-map.zip .
 
 #### <a name="submit-package"/>Submit to the eeGeo Indoor Maps API
 
-Now that you have your archive in eeGeo’s format, you can submit it to our Indoor Map API to make it part of our 3D world.  Note that for all of these commands, you’ll need to include your developer authentication token, which you can find on the [api keys](https://www.eegeo.com/developers/apikeys/) page.  If you haven’t signed up yet, please take a moment to do so now.
+Now that you have your archive in eeGeo’s format, you can submit it to our Indoor Map API to make it part of our 3D world.  Note that for all of these commands, you’ll need to include your developer authentication token, which you can find on the [API keys](https://www.eegeo.com/developers/apikeys/) page.  If you haven’t signed up yet, please take a moment to do so now.
 
 The first step is to make a post request to our submission service, which is accessible via a simple [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer).  [CURL](https://curl.haxx.se/) commands are shown here as examples.  Required parameters include contact details for the rights holders of the building you’re submitting, to allow eeGeo to confirm that correct approval has been given for the map submission.  We also request that you submit a version of your map archive which contains at least the outline of the area you will be editing, so that this can be verified against existing map records.
 ```sh
