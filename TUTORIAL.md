@@ -98,7 +98,7 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
 - Open the Layer Style menu (Layer > Properties > Style) and move the transparency slider to 50%. 
   
-  This allows you to see through to the floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons will are shaded darker).
+  This allows you to see through to the floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons have a darker shade).
 
 - The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane. 
 - Click the “Toggle Editing” button.
