@@ -9,11 +9,11 @@ This document describes version 0.0.1 of the eeGeo data format for indoor maps.
 
 #### Archive structure
 
-Indoor maps are submitted to the REST API as a specially structured .ZIP archive.  This should contain a main JSON file describing the building and referencing each of the building’s levels.  Each level’s geometry is then described in a separate GeoJSON file.
+Indoor maps are submitted to the REST API as a specially structured .ZIP archive.  This should contain a file named `main.json`. The main JSON file describes the building and references each of the building’s levels.  Each level’s geometry is then described in a separate GeoJSON file.
 
 ```
 westport-house.zip/
-├── westport-house.json
+├── main.json
 ├── westport-house-floor-gf.geojson
 ├── westport-house-floor-1.geojson
 ├── westport-house-floor-2.geojson
@@ -25,7 +25,7 @@ westport-house.zip/
 
 ##### Main JSON file
 
-The main JSON file is conventionally named after the building and sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below.
+The main JSON file is named `main.json` sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below.
 
 ###### Building
 |Field|Type|Description|
