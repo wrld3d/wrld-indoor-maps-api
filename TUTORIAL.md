@@ -196,17 +196,17 @@ $ cat unformatted.geojson | python -m json.tool > formatted.geojson
 
 Now that you have one or more levels of your building traced and exported in an eeGeo-friendly format, the next step is to create the main JSON file. 
 
-Navigate to the directory to which you exported the indoor map level(s), create an empty text document named after the building and give it a .json extension (in the example case, westport-house.json). 
+Navigate to the directory to which you exported the indoor map level(s), create an empty text document named `main.json`.
 
-The main .json file specifies general information about the indoor map and also references the level GeoJSON file(s) that were previously exported from QGIS. For this part of the guide, it may be more instructive to use example files as a reference. 
+The `main.json` file specifies general information about the indoor map and also references the level GeoJSON file(s) that were previously exported from QGIS. For this part of the guide, it may be more instructive to use example files as a reference. 
 
 For more detail, please see the [format documentation](FORMAT.md).
 
-After creating the main .json file, the directory structure should look something like this (with your own indoor map name substituted for westport-house):
+After creating the `main.json` file, the directory structure should look something like this:
 
 ```
 directory: westport-house
-├── westport-house.json
+├── main.json
 ├── westport-house-level-2.geojson
 ```
 
@@ -214,11 +214,11 @@ Choose an `id`, `name`, `owner` and `location`, as well as referencing the `leve
 
 The indoor map `id` is arbitrary; choose something that is recognisable to you, such as the name of the building. `name` is a human-readable indoor map name. `owner` should be the name of your company or organisation. `location` should have a `type` of `Point`, and the `coordinates` is a list containing two elements: the latitutde & longitude of the indoor map in degrees.
 
-`levels` is an array of [level](FORMAT.md#level) objects. Ensure that each exported indoor map level has a corresponding entry in this array. If a floor plan was traced and a level exported, but the main GeoJSON file does not reference it, the level in question will not be included in the processed indoor map. 
+`levels` is an array of [level](FORMAT.md#level) objects. Ensure that each exported indoor map level has a corresponding entry in this array. If a floor plan was traced and a level exported, but the `main.json` file does not reference it, the level in question will not be included in the processed indoor map. 
 
 For the example of westport-house, there is only a single level with an id of `westport-house-level-2` and a GeoJSON file of `westport-house-level-2.geojson`. 
 
-For westport-house, the main JSON file contains:
+For westport-house, the `main.json` file contains:
 ```
 {
 	"id": "westport_house",
@@ -244,7 +244,7 @@ This concludes the editing phase.
 
 #### <a name="create-map-package"/>Package your map for submission
 
-- Place all of the indoor map files (the main GeoJSON file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`)
+- Place all of the indoor map files (the `main.json` file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`)
 - Zip the directory
 - On OS X / Linux, you can do this via opening a terminal and entering the following commands:
 ```
