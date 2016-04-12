@@ -43,7 +43,7 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 |`name`|string| the abbreviated version of the level’s name (e.g. ‘G’, ‘1’, etc.)
 |`readable_name`|string| the level’s full name, e.g. “Ground Floor”, “First Floor”, etc.
 |`z_order`|integer| should be 0 for the lowest level and increment by one for each level above that
-|`filename`|string| path to the GeoJSON file containing the features of the level, relative to the root of the archive
+|`filename`|string| filename of the GeoJSON file containing the features of the level. Must not begin with a period or underscore
 
 ###### Example
 
