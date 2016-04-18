@@ -264,7 +264,7 @@ Now that you have your archive in eeGeo’s format, you can submit it to our Ind
 
 The first step is to make a post request to our submission service, which is accessible via a simple [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer).  [CURL](https://curl.haxx.se/) commands are shown here as examples.  Required parameters include contact details for the rights holders of the building you’re submitting, to allow eeGeo to confirm that correct approval has been given for the map submission.  We also request that you submit a version of your map archive which contains at least the outline of the area you will be editing, so that this can be verified against existing map records.
 ```sh
-$ curl -v -XPOST https://indoor-maps-api.eegeo.com/v1/edits/?token=dev_auth_token -F venue_street_address="<address>" -F venue_phone_number="<phone no.>" -F venue_email="<email address>" -F submission_contact_email="<email address for notifications>" -F venue_outline="@/path/to/my/file"
+$ curl -v -XPOST https://indoor-maps-api.eegeo.com/v1/edits/?token=dev_auth_token -F name="my venue name" -F venue_street_address="<address>" -F venue_phone_number="<phone no.>" -F venue_email="<email address>" -F submission_contact_email="<email address for notifications>" -F venue_outline="@/path/to/my/file"
 ```
 On successful completion of this request, you should receive a JSON packet containing a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).  Please make note of this UUID, as subsequent API calls will need to refer to it. 
 ```json
@@ -280,7 +280,7 @@ Once your edit has been approved, you should see this response from a status que
 ```
 You will no be able to upload your indoor map for compilation using the following PUT request.  Again, you’ll need to replace the UUID with the one you got in response to your original POST request.
 ```sh
-$ curl -v -XPUT https://indoor-maps-api.eegeo.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token -F name="my venue name" -F comment="my venue comment" -F file="@/path/to/my/file"
+$ curl -v -XPUT https://indoor-maps-api.eegeo.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
 ```
 When your submission has been processed we will send you the details required to view it using the eeGeo SDK.  
 If at any time you decide you’d rather delete your edit, you can do so with the following command:
