@@ -1,0 +1,61 @@
+{
+	"id": "westport_house",
+	"name": "Westport House",
+	"owner": "eeGeo",
+	"landmark-name": "landmark_gb_sco_eegeooffice",
+	"location": {
+		"type": "Point",
+		"coordinates": [56.459920, -2.977999]
+	},
+	"levels": [{
+		"id": "westport-house-floor-gf",
+		"name": "G",
+		"readable_name": "Ground Floor",
+		"z_order": 0,
+        "filename": "westport-house-floor-gf.geojson"
+	},
+	{
+		"id": "westport-house-floor-1",
+		"name": "1",
+		"readable_name": "First Floor",
+		"z_order": 1,
+        "filename": "westport-house-floor-1.geojson"	
+	},
+	{
+		"id": "westport-house-floor-2",
+		"name": "2",
+		"readable_name": "Second Floor",
+		"z_order": 2,
+        "filename": "westport-house-floor-2.geojson"	
+	},
+	{
+		"id": "westport-house-floor-3",
+		"name": "3",
+		"readable_name": "Third Floor",
+		"z_order": 3,
+        "filename": "westport-house-floor-3.geojson"	
+	},
+	{
+		"id": "westport-house-floor-4",
+		"name": "4",
+		"readable_name": "Fourth Floor",
+		"z_order": 4,
+        "filename": "westport-house-floor-4.geojson"	
+	},
+	{
+		"id": "westport-house-floor-5",
+		"name": "5",
+		"readable_name": "Fifth Floor",
+		"z_order": 5,
+        "filename": "westport-house-floor-5.geojson"	
+	},
+	{
+		"id": "westport-house-floor-6",
+		"name": "6",
+		"readable_name": "Sixth Floor",
+		"z_order": 6,
+        "filename": "westport-house-floor-6.geojson"	
+	}
+	]
+    
+}   
