@@ -134,7 +134,7 @@ For now, start by creating the walls and windows around the outside of the floor
   
   ![Room feature type](images/tutorial/room_type.png)
   
-  We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](westport-house.zip) and can give you an idea of how to build your indoor map.
+  We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](/examples/) and can give you an idea of how to build your indoor map.
   
   ![Multiple rooms added](/images/tutorial/wph.PNG)
   
