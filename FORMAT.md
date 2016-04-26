@@ -23,6 +23,8 @@ westport-house.zip/
 └── westport-house-floor-6.geojson
 ```
 
+An example of this file structure can be found in the [examples directory.](/examples/)
+
 ##### Main JSON file
 
 The main JSON file is named `main.json` sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below.
