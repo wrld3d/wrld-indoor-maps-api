@@ -119,19 +119,25 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - You should now have a building outline polygon in your QGIS layer. 
 
   ![Traced floor plan outline](/images/tutorial/level_outline.png)
-- We've now got our building outline; the next thing to do is create some rooms. 
+- We've now got our building outline; the next thing to do is add the contents of the floor.
 
-  Identify a room on the floor plan image and create a polygon, matching the floor plan as closely as possible. When prompted for details, set its type to "room" and give it a descriptive name, if applicable (if you do not have useful naming information, the name may be left as *NULL*)
+eeGeo’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
+
+For now, start by creating the walls and windows around the outside of the floor, using the feature types “wall” and “window”. Take care not to overlap any features (except for your building outline). See the images below for an idea of how your features will appear in your 3D map.
+
   
-  ![Adding a single room](/images/tutorial/add_room.png)
+  ![Adding a wall](/images/tutorial/add_wall.PNG)
   
-  Repeat this step multiple times to give your indoor map more detail. There are multiple feature types to choose from, please refer to the [format documentation](FORMAT.md#feature-types). 
+  ![Wall in 3D map](/images/tutorial/wall_in_app.png)
   
-  Depending on the layout of the building that's being traced, it may be better to leave space between rooms. The building outline we added in the first step will still show up here. This is a useful technique for corridors and other such spaces.
+  In some circumstances, it may be better to use the “room” feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the name field of your room, it will appear in your map as a text label hovering over the room.
   
-  We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with a handful of rooms (each room is shaded a slightly different color of red).
+  ![Room feature type](images/tutorial/room_type.png)
   
-  ![Multiple rooms added](/images/tutorial/multiple_rooms.png)
+  We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](westport-house.zip) and can give you an idea of how to build your indoor map.
+  
+  ![Multiple rooms added](/images/tutorial/wph.PNG)
+  
 - Finally, let’s fix up the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
   
   Each feature needs an id, and the id must be unique **across all levels of your indoor map** (e.g. if level 1 has a room with an id of 1 and level 2 also has a room with the same id of 1, it is illegal).
