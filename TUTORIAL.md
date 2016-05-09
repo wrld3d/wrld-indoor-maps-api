@@ -123,7 +123,33 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 
 eeGeo’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
 
-For now, start by creating the walls and windows around the outside of the floor, using the feature types “wall” and “window”. Take care not to overlap any features (except for your building outline). See the images below for an idea of how your features will appear in your 3D map.
+For now, start by creating the walls and windows around the outside of the floor, using the feature types “wall” and “window”. Drawing perfectly straight lines can be tricky in QGIS; fortunately there are some tools that make it possible to trace polygons with precision.
+
+First, enable snapping. The snapping settings can be found under Settings > Snapping Options. Ensure that snapping mode is set to "All layers", and that you are snapping "To vertex and segment". If you are editing in EPSG:3857 then setting your Tolerance to around 0.1 should be suitable. If not, experiment with raising or lowering it.
+
+With snapping enabled, you will see a small pink cross when your mouse cursor moves close to a polygon edge or vertex.
+
+![Snapping Options](/images/tutorial/snapping.PNG)
+
+Next, enable the Advanced Digitizing Toolbar and the Advanced Digitizing Panel. These can be enabled by right clicking on the gray space by the toolbars at the top of the screen, or in the Views > Panels/Toolbars menus.
+
+![Advanced Digitizing](/images/tutorial/digitizing.png)
+
+With these panels visible, click the "Add Features" button.
+
+![Add features button](/images/tutorial/add_features.png)
+
+With "Add features" selected, the "Enable Advanced Digitizing Tools" button will become active. Click on it.
+
+![Enable Advanced Digitizing Tools](/images/tutorial/advdig.PNG)
+
+Now, place the first point of your wall. Since you have snapping enabled, your cursor will snap to the edge of any other polygon. Use this to place your first polygon in the corner of the building outline. When the first point has been placed, two more buttons will become active on the Advanced Digitizing Panel. These two buttons will allow you to trace lines that are parallel and perpendicular to existing geometry. To use them, click either the "parallel" or "perpendicular" button.
+
+![Perpendicular](/images/tutorial/perpendicular.PNG) ![Parallel](/images/tutorial/parallel.PNG)
+
+With the button selected, click on the vertex or segment that you would like to draw perpendicular or parallel to. Your next point will now snap to the blue dotted line. Once your have placed your next point, use the perpendicular or parallel tool again to continue tracing straight lines. 
+
+Take care not to overlap any features (except for your building outline). See the images below for an idea of how your features will appear in your 3D map.
 
   
   ![Adding a wall](/images/tutorial/add_wall.PNG)
