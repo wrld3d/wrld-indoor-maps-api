@@ -152,24 +152,24 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - With the button selected, move the mouse over the vertex or segment that you would like to draw perpendicular to. Observe the blue dotted line that appears: this shows you the line that your next point will be snapped to. If the position of the line looks good, click on the vertex or segment, and observe that as you move your mouse your next point is locked to the blue dotted line. When you are ready to place your next point, click again.
 To draw the other side of the wall, use the same method with the parallel button.
 
- ![Parallel](/images/tutorial/parallel.PNG)
+![Parallel](/images/tutorial/parallel.PNG)
  
 - Click the parallel button, then click the vertex or segment that you would like to draw parallel to. Then, move your mouse to the desired position and left click to place the point. Note that while in this mode, you can still snap to vertices and segments by moving your mouse close to them. By doing this, you can create a wall with perfectly parallel edges and 90 degree angles.
  
 - Take care not to overlap any features (except for your building outline). See the images below for an idea of how your features will appear in your 3D map.
 
   
-  ![Adding a wall](/images/tutorial/add_wall.PNG)
+![Adding a wall](/images/tutorial/add_wall.PNG)
   
-  ![Wall in 3D map](/images/tutorial/wall_in_app.png)
+![Wall in 3D map](/images/tutorial/wall_in_app.png)
   
 - In some circumstances, it may be better to use the “room” feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the name field of your room, it will appear in your map as a text label hovering over the room.
   
-  ![Room feature type](images/tutorial/room_type.png)
+![Room feature type](images/tutorial/room_type.png)
   
 - We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](/examples/) and can give you an idea of how to build your indoor map.
   
-  ![Multiple rooms added](/images/tutorial/wph.PNG)
+![Multiple rooms added](/images/tutorial/wph.PNG)
   
 - Finally, let’s fix up the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
   
