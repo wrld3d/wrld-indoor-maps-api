@@ -94,22 +94,22 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`type`|string|the type of the feature - this should match one of the strings in, “Feature Types,” below.
  
 ###### Feature Types
-|Type|Description|
- --- | --- 
-|`building_outline`| denotes the area covered by the exterior of the building
-|`wall`| interior walls
-|`window`| windows
-|`door`| doors
-|`inaccessible space`| any space inside the building which is not mapped or accessible
-|`floor opening`| openings in the floor which should be cut away from the area described by the building_outline
-|`unit`| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
-|`room`| marks out interior rooms e.g. meeting rooms in an office
-|`hallway`| specifies hall areas or corridors
-|`stairs`| stairs between levels
-|`escalator`| escalators
-|`elevator`| specifies the area taken up by elevator shafts
-|`bathroom`| marks out bathrooms in the current level
-|`no_geometry`| a feature for which no 3d geometry should be generated
+|Type|Shows Label|Description|
+ --- | --- | --- 
+|`building_outline`|No| denotes the area covered by the exterior of the building
+|`wall`|No| interior walls
+|`window`|No| windows
+|`door`|No| doors
+|`inaccessible space`|No| any space inside the building which is not mapped or accessible
+|`floor opening`|No| openings in the floor which should be cut away from the area described by the building_outline
+|`unit`|No| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
+|`room`|Yes| marks out interior rooms e.g. meeting rooms in an office
+|`hallway`|No| specifies hall areas or corridors
+|`stairs`|Yes| stairs between levels
+|`escalator`|No| escalators
+|`elevator`|Yes| specifies the area taken up by elevator shafts
+|`bathroom`|Yes| marks out bathrooms in the current level
+|`no_geometry`|Yes| a feature for which no 3d geometry should be generated
 
 All feature types listed are expected to be specified as GeoJSON Polygons. 
 
