@@ -90,7 +90,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |Attribute|Type|Description|
  --- | --- | ---
 |`id`|string|an identifier for the feature
-|`name`|string|the feature's name (optional, can be null)
+|`name`|string|the feature's name. Will be displayed as a label over certain "Feature Types". Optional, can be null.
 |`type`|string|the type of the feature - this should match one of the strings in, “Feature Types,” below.
  
 ###### Feature Types
