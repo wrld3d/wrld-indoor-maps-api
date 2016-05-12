@@ -96,17 +96,17 @@ In addition to the default GeoJSON members, each feature may specify some additi
 ###### Feature Types
 |Type|Shows Label|Description|
  --- | --- | --- 
-|`building_outline`|No| denotes the area covered by the exterior of the building
-|`wall`|No| interior walls
-|`window`|No| windows
-|`door`|No| doors
+|`building_outline`|Yes| denotes the area covered by the exterior of the building
+|`wall`|Yes| interior walls
+|`window`|Yes| windows
+|`door`|Yes| doors
 |`inaccessible space`|No| any space inside the building which is not mapped or accessible
 |`floor opening`|No| openings in the floor which should be cut away from the area described by the building_outline
-|`unit`|No| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
+|`unit`|Yes| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
 |`room`|Yes| marks out interior rooms e.g. meeting rooms in an office
-|`hallway`|No| specifies hall areas or corridors
+|`hallway`|Yes| specifies hall areas or corridors
 |`stairs`|Yes| stairs between levels
-|`escalator`|No| escalators
+|`escalator`|Yes| escalators
 |`elevator`|Yes| specifies the area taken up by elevator shafts
 |`bathroom`|Yes| marks out bathrooms in the current level
 |`no_geometry`|Yes| a feature for which no 3d geometry should be generated
