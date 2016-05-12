@@ -113,6 +113,19 @@ In addition to the default GeoJSON members, each feature may specify some additi
 
 All feature types listed are expected to be specified as GeoJSON Polygons. 
 
+##### Label Icons
+
+If a feature is given a label which matches one of the following strings, the text will be replaced with a POI icon.
+
+|Label|
+----
+|`Restroom`|
+|`Men's Bathroom`|
+|`Women's Bathroom`|
+|`Bathroom`|
+|`Elevator`|
+|`Escalator`|
+
 ###### Example
 
 ```json
