@@ -166,6 +166,10 @@ To draw the other side of the wall, use the same method with the parallel button
 - In some circumstances, it may be better to use the “room” feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the name field of your room, it will appear in your map as a text label hovering over the room.
   
 ![Room feature type](images/tutorial/room_type.png)
+
+- It is possible to show certain icons over features in place of text labels. This is done by entering a specific string into the name field. For example, in the image below, the bathrooms have been given a bathroom icon by using the name "Bathroom". A full list of these strings can be found in the [format documentation.](FORMAT.md)
+
+![Bathroom icon](/images/tutorial/poilabel.png)
   
 - We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](/examples/) and can give you an idea of how to build your indoor map.
   
