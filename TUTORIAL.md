@@ -121,22 +121,59 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   ![Traced floor plan outline](/images/tutorial/level_outline.png)
 - We've now got our building outline; the next thing to do is add the contents of the floor.
 
-eeGeo’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
+- eeGeo’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
 
-For now, start by creating the walls and windows around the outside of the floor, using the feature types “wall” and “window”. Take care not to overlap any features (except for your building outline). See the images below for an idea of how your features will appear in your 3D map.
+- A good first step is to create the walls and windows around the outside of the floor, using the feature types “wall” and “window”. Drawing perfectly straight lines can be tricky in QGIS; fortunately, there are some tools that make it possible to trace polygons with precision.
+
+- First, enable snapping. The snapping settings can be found under Settings > Snapping Options. Ensure that snapping mode is set to "All layers", and that you are snapping "To vertex and segment". If you are editing in EPSG:3857 then setting your Tolerance to around 0.1 should be suitable. If not, experiment with raising or lowering it.
+
+![Snapping Options](/images/tutorial/snapping.PNG)
+
+- Once snapping is enabled, when you are adding Features a small pink cross will appear whenever you move your mouse cursor close to a polygon edge or vertex.
+
+- Next, enable the Advanced Digitizing Toolbar and the Advanced Digitizing Panel. These can be enabled by right clicking on the gray space by the toolbars at the top of the screen, or in the Views > Panels/Toolbars menus.
+
+![Advanced Digitizing](/images/tutorial/digitizing.png)
+
+- With these panels visible, click the "Add Features" button.
+
+![Add features button](/images/tutorial/add_features.png)
+
+- With "Add features" selected, the "Enable Advanced Digitizing Tools" button will become active. Click on it.
+
+![Enable Advanced Digitizing Tools](/images/tutorial/advdig.PNG)
+
+- Now you can place the first point of your external wall. With snapping enabled, your cursor will snap to the edge of any other polygon, in this case the building outline. Since you currently  have no other polygons, the easiest place to start is in a corner of the building outline. Once you have placed a point there, you can place the second point farther along the edge of the building outline. 
+
+- When you are actively placing points to create a polygon, two more buttons will become active on the Advanced Digitizing Panel. These two buttons will allow you to trace lines that are parallel and perpendicular to existing geometry. In this case we want the next segment of our wall to be perpendicular to the building outline so our polygon can be perfectly rectangular, so click on the perpendicular button
+
+![Perpendicular](/images/tutorial/perpendicular.PNG)
+
+- With the button selected, move the mouse over the vertex or segment that you would like to draw perpendicular to. Observe the blue dotted line that appears: this shows you the line that your next point will be snapped to. If the position of the line looks good, click on the vertex or segment, and observe that as you move your mouse your next point is locked to the blue dotted line. When you are ready to place your next point, click again.
+To draw the other side of the wall, use the same method with the parallel button.
+
+![Parallel](/images/tutorial/parallel.PNG)
+ 
+- Click the parallel button, then click the vertex or segment that you would like to draw parallel to. Then, move your mouse to the desired position and left click to place the point. Note that while in this mode, you can still snap to vertices and segments by moving your mouse close to them. By doing this, you can create a wall with perfectly parallel edges and 90 degree angles.
+ 
+- Take care not to overlap any features (except for your building outline). See the images below for an idea of how your features will appear in your 3D map.
 
   
-  ![Adding a wall](/images/tutorial/add_wall.PNG)
+![Adding a wall](/images/tutorial/add_wall.PNG)
   
-  ![Wall in 3D map](/images/tutorial/wall_in_app.png)
+![Wall in 3D map](/images/tutorial/wall_in_app.png)
   
-  In some circumstances, it may be better to use the “room” feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the name field of your room, it will appear in your map as a text label hovering over the room.
+- In some circumstances, it may be better to use the “room” feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the name field of your room, it will appear in your map as a text label hovering over the room.
   
-  ![Room feature type](images/tutorial/room_type.png)
+![Room feature type](images/tutorial/room_type.png)
+
+- It is possible to show certain icons over features in place of text labels. This is done by entering a specific string into the name field. For example, in the image below, the bathrooms have been given a bathroom icon by using the name "Bathroom". A full list of these strings can be found in the [format documentation.](FORMAT.md)
+
+![Bathroom icon](/images/tutorial/poilabel.png)
   
-  We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](/examples/) and can give you an idea of how to build your indoor map.
+- We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](/examples/) and can give you an idea of how to build your indoor map.
   
-  ![Multiple rooms added](/images/tutorial/wph.PNG)
+![Multiple rooms added](/images/tutorial/wph.PNG)
   
 - Finally, let’s fix up the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
   

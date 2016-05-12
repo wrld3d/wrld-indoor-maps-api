@@ -90,28 +90,42 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |Attribute|Type|Description|
  --- | --- | ---
 |`id`|string|an identifier for the feature
-|`name`|string|the feature's name (optional, can be null)
+|`name`|string|the feature's name. Will be displayed as a label over certain "Feature Types". Optional, can be null.
 |`type`|string|the type of the feature - this should match one of the strings in, “Feature Types,” below.
  
 ###### Feature Types
-|Type|Description|
- --- | --- 
-|`building_outline`| denotes the area covered by the exterior of the building
-|`wall`| interior walls
-|`window`| windows
-|`door`| doors
-|`inaccessible space`| any space inside the building which is not mapped or accessible
-|`floor opening`| openings in the floor which should be cut away from the area described by the building_outline
-|`unit`| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
-|`room`| marks out interior rooms e.g. meeting rooms in an office
-|`hallway`| specifies hall areas or corridors
-|`stairs`| stairs between levels
-|`escalator`| escalators
-|`elevator`| specifies the area taken up by elevator shafts
-|`bathroom`| marks out bathrooms in the current level
-|`no_geometry`| a feature for which no 3d geometry should be generated
+|Type|Shows Label|Description|
+ --- | --- | --- 
+|`building_outline`|Yes| denotes the area covered by the exterior of the building
+|`wall`|Yes| interior walls
+|`window`|Yes| windows
+|`door`|Yes| doors
+|`inaccessible space`|No| any space inside the building which is not mapped or accessible
+|`floor opening`|No| openings in the floor which should be cut away from the area described by the building_outline
+|`unit`|Yes| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
+|`room`|Yes| marks out interior rooms e.g. meeting rooms in an office
+|`hallway`|Yes| specifies hall areas or corridors
+|`stairs`|Yes| stairs between levels
+|`escalator`|Yes| escalators
+|`elevator`|Yes| specifies the area taken up by elevator shafts
+|`bathroom`|Yes| marks out bathrooms in the current level
+|`no_geometry`|Yes| a feature for which no 3d geometry should be generated
 
 All feature types listed are expected to be specified as GeoJSON Polygons. 
+
+##### Label Icons
+
+If a feature is given a label which matches one of the following strings, the text will be replaced with a POI icon. This setting is controlled by the app, and can be modified by [InteriorsEntitiesPinsController.cpp.](https://github.com/eegeo/eegeo-example-app/blob/master/src/InteriorsEntitiesPins/SdkModel/InteriorsEntitiesPinsController.cpp)
+
+|Label|
+----
+|`Restroom`|
+|`Men's Bathroom`|
+|`Women's Bathroom`|
+|`Bathroom`|
+|`Elevator`|
+|`Escalator`|
+
 
 ###### Example
 
