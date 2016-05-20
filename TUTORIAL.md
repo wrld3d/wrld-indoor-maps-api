@@ -170,6 +170,12 @@ To draw the other side of the wall, use the same method with the parallel button
 - It is possible to show certain icons over features in place of text labels. This is done by entering a specific string into the name field. For example, in the image below, the bathrooms have been given a bathroom icon by using the name "Bathroom". A full list of these strings can be found in the [format documentation.](FORMAT.md)
 
 ![Bathroom icon](/images/tutorial/poilabel.png)
+
+- Door features should be used to cover doorways. This feature appears in the app slightly larger than the polygon created in QGIS, so it is important to keep the door parallel with the connecting walls otherwise it will appear incorrect. See the images below for an example.
+
+![Adding a door](images/tutorial/doors_geojson.PNG)
+
+![Doors in 3D map](images/tutorial/doors_in_app.png)
   
 - We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](/examples/) and can give you an idea of how to build your indoor map.
   
