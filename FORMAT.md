@@ -125,6 +125,7 @@ If a feature is given a label which matches one of the following strings, the te
 |`Bathroom`|
 |`Elevator`|
 |`Escalator`|
+|`Stairs`|
 
 
 ###### Example
