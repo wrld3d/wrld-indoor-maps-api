@@ -171,7 +171,7 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ![Bathroom icon](/images/tutorial/poilabel.png)
 
-- Door features should be used to cover doorways. This feature appears in the app slightly larger than the polygon created in QGIS, so it is important to keep the door parallel with the connecting walls otherwise it will appear incorrect. See the images below for an example.
+- Door features should be used to cover doorways. This feature appears in the app slightly larger than the polygon created in QGIS, so it is important to keep the door parallel with the connecting walls otherwise it will appear incorrect. In addition, double doors or sliding doors should be represented by a single door polygon. See the images below for an example.
 
 ![Adding a door](images/tutorial/doors_geojson.PNG)
 
