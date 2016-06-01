@@ -30,13 +30,14 @@ An example of this file structure can be found in the [examples directory.](/exa
 The main JSON file is named `main.json` sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below.
 
 ###### Building
-|Field|Type|Description|
- --- | --- | ---
-|`id`|string| an identifier for the building
-|`name`|string| the building's name
-|`owner`|string| the owner of the building
-|`location`|GeoJSON point| a coordinate roughly in the center of the building
-|`levels`|Level[]| an array of the levels that make up the building (explained below)
+|Field|Type|Required|Description|
+ --- | --- | --- | ---
+|`id`|string|Yes| an identifier for the building
+|`name`|string|Yes| the building's name
+|`owner`|string|Yes| the owner of the building
+|`location`|GeoJSON point|Yes| a coordinate roughly in the center of the building
+|`levels`|Level[]|Yes| an array of the levels that make up the building (explained below)
+|`source-vendor`|string|No, default:"eegeo"| a string identifying the vendor of the building map
  
 ###### Level
 |Field|Type|Description|
