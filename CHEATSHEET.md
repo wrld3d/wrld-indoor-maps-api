@@ -20,7 +20,7 @@ $ curl -v https://indoor-maps-api.eegeo.com/v1/edits/UUID/status?token=dev_auth_
 ### Upload a file against a new indoor map edit (will only work once the edit's status has been set to ApprovedForSubmission):
 
 ```sh
-$ curl -v -XPUT https://indoor-maps-api.eegeo.com/v1/UUID?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
+$ curl -v -XPUT https://indoor-maps-api.eegeo.com/v1/edits/UUID?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
 ```
 
 This submits the map for processing, so the referenced file should contain the full detail that the user wants to see in the client.
