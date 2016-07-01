@@ -225,6 +225,7 @@ To draw the other side of the wall, use the same method with the parallel button
 - Highlight the layer you created in the Layers panel
 - Right click and choose “Save As…”
 - Under format, choose GeoJSON
+- Under encoding, select “UTF-8”
 - Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/))
 - Enter a filename/location
 - Click “OK”
