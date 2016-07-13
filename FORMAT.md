@@ -57,7 +57,7 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 	"owner": "eeGeo",
 	"location": {
 		"type": "Point",
-		"coordinates": [56.459920, -2.977999]
+		"coordinates": [-2.977999, 56.459920]
 	},
 	"levels": [{
 		"id": "westport-house-floor-gf",
