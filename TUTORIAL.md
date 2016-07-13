@@ -262,7 +262,7 @@ directory: westport-house
 
 Choose an `id`, `name`, `owner` and `location`, as well as referencing the `levels` that were exported previously. 
 
-The indoor map `id` is arbitrary; choose something that is recognisable to you, such as the name of the building. `name` is a human-readable indoor map name. `owner` should be the name of your company or organisation. `location` should have a `type` of `Point`, and the `coordinates` is a list containing two elements: the latitutde & longitude of the indoor map in degrees.
+The indoor map `id` is arbitrary; choose something that is recognisable to you, such as the name of the building. `name` is a human-readable indoor map name. `owner` should be the name of your company or organisation. `location` should have a `type` of `Point`, and the `coordinates` is a list containing two elements: the longitude & latitude of the indoor map in degrees.
 
 `levels` is an array of [level](FORMAT.md#level) objects. Ensure that each exported indoor map level has a corresponding entry in this array. If a floor plan was traced and a level exported, but the `main.json` file does not reference it, the level in question will not be included in the processed indoor map. 
 
@@ -276,7 +276,7 @@ For westport-house, the `main.json` file contains:
 	"owner": "eeGeo",
 	"location": {
 		"type": "Point",
-		"coordinates": [56.459920, -2.977999]
+		"coordinates": [-2.977999, 56.459920]
 	},
 	"levels": [{
 		"id": "westport-house-level-2",
