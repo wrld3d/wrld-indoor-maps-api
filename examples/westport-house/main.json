@@ -5,7 +5,7 @@
 	"landmark-name": "landmark_gb_sco_eegeooffice",
 	"location": {
 		"type": "Point",
-		"coordinates": [56.459920, -2.977999]
+		"coordinates": [-2.977999, 56.459920]
 	},
 	"levels": [{
 		"id": "westport-house-floor-gf",
