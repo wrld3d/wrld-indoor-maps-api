@@ -164,7 +164,7 @@ If a feature is given a label which matches one of the following strings, the te
 ##### Paths
 Path information is optional and does not affect the appearance of the map. If paths are present, they will be processed for use by the eeGeo routing service.  
 
-A path represents a portion of a route by which people can move from place to place within a building. Paths are defined in FeatureCollection object Paths defined in a particular level's path JSON are considered to lie on that level; paths between levels, such as elevators and stairs, must be defined in the main path JSON file.  
+A path represents a portion of a route by which people can move from place to place within a building. Paths defined in a particular level's path JSON are considered to lie on that level; paths between levels, such as elevators and stairs, must be defined in the main path JSON file.  
 
 Each path GeoJSON file is expected to contain a FeatureCollection in the WGS84 (EPSG: 4326) Coordinate Reference System. Paths are represented as GeoJSON features with LineString geometry. Coordinates on the LineString are points along the path. Paths intersect if they have a point in common on the same level.
 
@@ -182,6 +182,7 @@ LineString feature types are used to define pathways by which people can travel 
 All feature types listed above are expected to be specified as GeoJSON LineStrings.
 
 A LineString feature representing a path may have some additional properties:
+
 |Attribute|Type|Description|
  --- | --- | ---
 |`id`|integer|an identifier for the feature
@@ -195,7 +196,7 @@ The main-paths.json file consists of a FeatureCollection specifying paths which 
 
 |Attribute|Type|Description|
  --- | --- | --- 
-|`level-filenames`|string[]| array of filenames of GeoJSON files containing the paths for each level. Filenames must not begin with a period or underscore
+|`level-filenames`|string[]| array of filenames of GeoJSON files containing the paths for each level. Filenames must not begin with a period or underscore. This attribute must be present but may be an empty array.
 
 In addition to the default GeoJSON members, paths spanning multiple levels must specify the level for each coordinate in the LineString:
 
