@@ -23,11 +23,23 @@ westport-house.zip/
 └── westport-house-floor-6.geojson
 ```
 
+Optionally, information on pathways within the building can be supplied in additional files alongside these, for example:
+```
+westport-house.zip/
+├── main.json
+├── main-paths.json
+├── westport-house-floor-gf.geojson
+├── westport-house-floor-gf-paths.geojson
+├── westport-house-floor-1.geojson
+├── westport-house-floor-1-paths.geojson
+...
+```
+
 An example of this file structure can be found in the [examples directory.](/examples/)
 
 ##### Main JSON file
 
-The main JSON file is named `main.json` sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below. It may also contain information about pathways between levels. 
+The main JSON file is named `main.json` sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below. 
 
 ###### Building
 |Field|Type|Required|Description|
@@ -38,7 +50,6 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 |`location`|GeoJSON point|Yes| a [long, lat] coordinate roughly in the center of the building
 |`levels`|Level[]|Yes| an array of the levels that make up the building (explained below)
 |`source-vendor`|string|No, default:"eegeo"| a string identifying the vendor of the building map
-|`paths`|GeoJSON LineString[]|No| an array of paths (described below)
  
 ###### Level
 |Field|Type|Description|
@@ -93,12 +104,9 @@ In addition to the default GeoJSON members, each feature may specify some additi
  --- | --- | ---
 |`id`|string|an identifier for the feature
 |`name`|string|the feature's name. Will be displayed as a label over certain "Feature Types". Optional, can be null.
-|`type`|string|the type of the feature - this should match one of the strings in, “Feature Types,” below.
+|`type`|string|the type of the feature - this should match one of the strings in “Feature Types,” below.
  
-###### Polygon Feature Types
-
-Polygon feature types are used to define geometry which affects the appearance of the resulting map.
-
+###### Feature Types
 |Type|Shows Label|Description|
  --- | --- | --- 
 |`building_outline`|Yes| denotes the area covered by the exterior of the building
@@ -116,20 +124,7 @@ Polygon feature types are used to define geometry which affects the appearance o
 |`bathroom`|Yes| marks out bathrooms in the current level
 |`no_geometry`|Yes| a feature for which no 3d geometry should be generated
 
-All feature types listed above are expected to be specified as GeoJSON Polygons. 
-
-###### LineString Feature Types
-
-LineString feature types are used to define pathways by which people can travel within the building. These will not be visible in the map.
-
-|Type|Description|
- --- | --- 
-|`hallway`|a pathway, usually on a single level
-|`stairs`|a pathway between levels via stairs
-|`escalator`|a pathway between levels via an escalator
-|`elevator`|a pathway between levels via an elevator
-
-All feature types listed above are expected to be specified as GeoJSON LineStrings.
+All feature types listed are expected to be specified as GeoJSON Polygons. 
 
 ##### Label Icons
 
@@ -169,9 +164,38 @@ If a feature is given a label which matches one of the following strings, the te
 ##### Paths
 Path information is optional and does not affect the appearance of the map. If paths are present, they will be processed for use by the eeGeo routing service.  
 
-A path represents a portion of a route by which people can move from place to place within a building.  Paths defined in a level's JSON are considered to lie on that level; paths between levels, such as elevators and stairs, must be defined in the main JSON file.  
+A path represents a portion of a route by which people can move from place to place within a building. Paths are defined in FeatureCollection object Paths defined in a particular level's path JSON are considered to lie on that level; paths between levels, such as elevators and stairs, must be defined in the main path JSON file.  
 
-GeoJSON features with LineString geometry will be interpreted as paths.   Coordinates on the LineString are points along the path.   Paths intersect if they have a point in common on the same level. 
+Each path GeoJSON file is expected to contain a FeatureCollection in the WGS84 (EPSG: 4326) Coordinate Reference System. Paths are represented as GeoJSON features with LineString geometry. Coordinates on the LineString are points along the path. Paths intersect if they have a point in common on the same level.
+
+###### LineString Feature Types
+
+LineString feature types are used to define pathways by which people can travel within the building. These will not be visible in the map.
+
+|Type|Description|
+ --- | --- 
+|`pathway`|a pathway, usually on a single level
+|`stairs`|a pathway between levels via stairs
+|`escalator`|a pathway between levels via an escalator
+|`elevator`|a pathway between levels via an elevator
+
+All feature types listed above are expected to be specified as GeoJSON LineStrings.
+
+A LineString feature representing a path may have some additional properties:
+|Attribute|Type|Description|
+ --- | --- | ---
+|`id`|integer|an identifier for the feature
+|`name`|string|the feature's name. Optional, can be null.
+|`type`|string|the type of the feature. This should match one of the strings in “LineString Feature Types” above.
+
+
+###### Main path JSON file 
+
+The main-paths.json file consists of a FeatureCollection specifying paths which span multiple levels. It also specifies which files contain single-level path definitions in an extra top-level attribute. 
+
+|Attribute|Type|Description|
+ --- | --- | --- 
+|`level-filenames`|string[]| array of filenames of GeoJSON files containing the paths for each level. Filenames must not begin with a period or underscore
 
 In addition to the default GeoJSON members, paths spanning multiple levels must specify the level for each coordinate in the LineString:
 
@@ -179,34 +203,16 @@ In addition to the default GeoJSON members, paths spanning multiple levels must 
 
 |Attribute|Type|Description|
  --- | --- | ---
-|`levels`| integer[] | Location of each coordinate, specified using the level's z_order value. The length of this array must match the `coordinates` array in the LineString geometry.
+|`levels`| integer[] | Location of each coordinate, specified using the level's z_order value from main.json. The length of this array must match the `coordinates` array in the LineString geometry.
 
-Within a level, paths are included in the main `features` array.  Multilevel paths are included in the `paths` field in the top level building object.
+###### Example -- main-path.json
 
-###### Example -- single level path
-
-```json
-{
-    "type": "Feature", 
-    "properties": { 
-        "id": 10,
-        "type" : "hallway"
-    }, 
-    "geometry": { 
-        "type": "LineString",     
-        "coordinates": [ [ -2.977893780725116, 56.459973605758755 ], [ -2.977893780725116, 56.459923432195168 ], [ -2.977952157716961, 56.459887593898202 ] ] 
-    } 
-}
-```
-
-###### Example -- multi level path
-
-This example shows how to define a path between the same [long, lat] point on different levels.
+As well as describing the overall format, this example shows how to define a path between the same [long, lat] point on different levels.
 
 ```json
 {
-    ...
-    "paths" : [ {
+    "type": "FeatureCollection",
+    "features" : [ {
         "type": "Feature", 
         "properties": { 
             "id": 10,
@@ -217,9 +223,43 @@ This example shows how to define a path between the same [long, lat] point on di
             "coordinates": [ [ -2.977893780725116, 56.459973605758755 ], [ -2.977893780725116, 56.459973605758755 ], [ -2.977893780725116, 56.459973605758755 ] ] 
         },
         "levels" : [ 0, 1, 2 ]
-    } ]
+    } ],
+    "level-filenames" : [ 
+      "westport-house-floor-gf-paths.geojson",
+      "westport-house-floor-1-paths.geojson"
+    ]
 }
 ```
+
+###### Level path JSON file
+
+Each level path JSON file consists of a FeatureCollection specifying paths contained on a single level. The z_order value for the level is specified in an extra top level attribute.
+
+|Attribute|Type|Description|
+ --- | --- | --- 
+|`z_order`|integer| z_order of corresponding level as specified in main.json
+
+###### Example -- level-paths.json
+
+```json
+{
+    "type": "FeatureCollection",
+    "features" : [ {
+        "type": "Feature", 
+        "properties": { 
+            "id": 10,
+            "type" : "pathway"
+        }, 
+        "geometry": { 
+            "type": "LineString",     
+            "coordinates": [ [ -2.977893780725116, 56.459973605758755 ], [ -2.977893780725116, 56.459923432195168 ], [ -2.977952157716961, 56.459887593898202 ] ] 
+        } 
+    } ],
+    "z_order" : 0
+}
+```
+
+
 
 
 ---
