@@ -1,0 +1,73 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1001,
+        "type": "stairs"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -2.978678398102964,
+            56.46027165890105
+          ],
+          [
+            -2.978678817233738,
+            56.460272668998016
+          ]
+        ]
+      },
+      "levels" : [ 0, 1 ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1002,
+        "type": "stairs"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [ -2.978677883006827, 56.460274537451838 ],
+          [ -2.978678817233738, 56.460272668998016 ]
+        ]
+      },
+      "levels" : [ 1, 2 ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1003,
+        "type": "elevator"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -2.978658099378138,
+            56.460213410386331
+          ],
+          [
+            -2.978658099378138,
+            56.460213410386331
+          ]
+        ]
+      },
+      "levels" : [ 0, 2 ]
+    }
+  ],
+  "level-filenames" : [
+    "westport-house-floor-gf-paths.geojson",
+    "westport-house-floor-1-paths.geojson",
+    "westport-house-floor-2-paths.geojson"
+  ]
+}

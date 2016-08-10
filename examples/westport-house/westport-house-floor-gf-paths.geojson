@@ -1,0 +1,43 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 11,
+                "type": "pathway"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [ -2.978638683206566, 56.460268128688035 ],
+                    [ -2.978629857674033, 56.46024076953718 ],
+                    [ -2.978666042357418, 56.460237239324172 ],
+                    [ -2.978678398102964, 56.46027165890105 ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 12,
+                "type": "pathway"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [ -2.978629857674033, 56.46024076953718 ],
+                    [ -2.9786210321415, 56.460216940599345 ],
+                    [ -2.978658099378138, 56.460213410386331 ]
+                ]
+            }
+        }
+    ],
+    "z_order": 0
+}
