@@ -53,27 +53,27 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 - Browse to your building’s location via left-click dragging & zooming with the mouse wheel.
 - Open the Georeferencer (Raster > Georeferencer > Georeferencer).
   
-  ![Georeferencer toolbar](/images/tutorial/georeferencing_toolbar.png)
+![Georeferencer toolbar](/images/tutorial/georeferencing_toolbar.png)
 - Click “Add Raster”.
 - Add your floor plan image. If you’re using OpenLayers, set the CRS (coordinate reference system) as WGS84 / Pseudo Mercator ([EPSG: 3857](http://spatialreference.org/ref/sr-org/6864/)).
 - The image should be displayed in the Georeferencer window.
 
-  [<img src="/images/tutorial/georeference_plan_thumb.png">](/images/tutorial/georeference_plan.png) 
+[<img src="/images/tutorial/georeference_plan_thumb.png">](/images/tutorial/georeference_plan.png) 
 - The next step involves selecting a point on the indoor map image and then assigning it a location.
 - In the Georeferencer window, ensure the “Add Point” tool selected and left click the first point to be referenced (a corner is a good choice).
 - Click the “From map canvas” button.
 - Left click the location on the map matching the point you’ve just selected.
   
-  ![Point in Georeferencer](images/tutorial/georeference_side_by_side.png)
+![Point in Georeferencer](images/tutorial/georeference_side_by_side.png)
 - Repeat this process for a handful of points on the building perimeter; try to pick the points that are clearly visible on the map (e.g. building corners). Inaccurately georeferenced points cause distortion, so if in doubt, don't add it (in this example, only 4 points were georeferenced).
 - Open the Transformation Settings dialog and choose a filename for “Output raster”. If you're using OpenLayers, the Target SRS should be set to [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/). Otherwise, set it the QGIS project's CRS; to check this, choose Project > Project Properties > CRS. The rest of the options should roughly match the following:
   
-  ![Transform settings](/images/tutorial/transform_settings.png)
+![Transform settings](/images/tutorial/transform_settings.png)
 - Click the “OK” button.
 - Click the “Start Georeferencing” button.
 - The transformed image should open in the QGIS main scene view.
   
-  ![Georeferenced image](images/tutorial/georeferenced_image.jpg)
+![Georeferenced image](images/tutorial/georeferenced_image.jpg)
 - If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced TIF into QGIS, or simply re-export with the box checked.
 - In the Layers panel, locate the layer that’s just been added. Double click it, adjust with style and transparency so you can see the underlying map imagery.
 - If the result is sub-par and heavily distorted, try the process again and choose different points to georeference. Again, fewer is often better.
@@ -89,11 +89,11 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - When prompted, choose the Type: Polygon radio button option, then choose the appropriate CRS (again, this is typically [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/) unless your QGIS project is using something else).
 - Finally, add “type” and “name” to the attribute list (under “New attribute”, fill in the attribute name and click the “Add to attributes list” button). The default data types are fine (String, 80 width).
   
-  ![New level layer](/images/tutorial/new_level_layer.png)
+![New level layer](/images/tutorial/new_level_layer.png)
 - Click “OK”.
 - Give your new layer a suitable name. Something like my-indoor-map-name-level-x is good (where level-x corresponds to whatever floor of the building you're about to create).
 
-  ![New level layer confirmation](/images/tutorial/new_level_layer_confirmation.png)
+![New level layer confirmation](/images/tutorial/new_level_layer_confirmation.png)
 - Ensure that your new feature layer is selected in the Layers panel
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
 - Open the Layer Style menu (Layer > Properties > Style) and move the transparency slider to 50%. 
@@ -103,10 +103,10 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane. 
 - Click the “Toggle Editing” button.
   
-  ![Toggle editing button](/images/tutorial/toggle_editing.png)
+![Toggle editing button](/images/tutorial/toggle_editing.png)
 - Click the “Add Features” button.
   
-  ![Add features button](/images/tutorial/add_features.png)
+![Add features button](/images/tutorial/add_features.png)
 - Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
 - When you’re happy with the polygon, right click to accept it.
 - In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`. 
@@ -115,10 +115,10 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 
   Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, I prefer to leave them as NULL and fix them later. I would recommend this, as it's less error-prone.
 
-  ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
+![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
 - You should now have a building outline polygon in your QGIS layer. 
 
-  ![Traced floor plan outline](/images/tutorial/level_outline.png)
+![Traced floor plan outline](/images/tutorial/level_outline.png)
 - We've now got our building outline; the next thing to do is add the contents of the floor.
 
 - eeGeo’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
@@ -190,7 +190,7 @@ To draw the other side of the wall, use the same method with the parallel button
 - Open the layer’s attribute table via Layer > Attribute Table
 - Click the Field Calculator button.
   
-  ![Field Calculator](/images/tutorial/field_calculator_button.png)
+![Field Calculator](/images/tutorial/field_calculator_button.png)
 - Change the checkbox to “Update existing field”
 - In the combobox, select the “id” field
 - In the left hand expression box enter the following: 
@@ -205,7 +205,7 @@ To draw the other side of the wall, use the same method with the parallel button
   `toint(concat('2', tostring(@row_number)))`
 - If you were generating ids for level 2 of your indoor map, the dialog would look something like:
 
-  ![Field calculator](/images/tutorial/field_calculator.png)
+![Field calculator](/images/tutorial/field_calculator.png)
 - Click “OK”. 
   
   This will generate unique features ids. Each feature id starts with the interior level id (e.g., level 2 features will have ids 21, 22, 23..., level 3 features will have ids 31, 32, 33...)
@@ -216,7 +216,7 @@ To draw the other side of the wall, use the same method with the parallel button
   
   Here's Westport House level 2 with auto-generated ids:
   
-  ![Attribute table with auto-generated ids](/images/tutorial/attribute_table_with_generated_ids.png)
+![Attribute table with auto-generated ids](/images/tutorial/attribute_table_with_generated_ids.png)
 
 ---
 
