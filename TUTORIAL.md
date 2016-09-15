@@ -181,6 +181,7 @@ To draw the other side of the wall, use the same method with the parallel button
   
 ![Multiple rooms added](/images/tutorial/wph.PNG)
   
+<a name="generate-feature-ids"/>   
 - Finally, let’s fix up the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
   
   Each feature needs an id, and the id must be unique **across all levels of your indoor map** (e.g. if level 1 has a room with an id of 1 and level 2 also has a room with the same id of 1, it is illegal).
