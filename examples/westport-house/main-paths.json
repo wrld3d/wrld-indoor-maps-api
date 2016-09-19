@@ -65,7 +65,7 @@
       "levels" : [ 0, 2 ]
     }
   ],
-  "level-filenames" : [
+  "level_filenames" : [
     "westport-house-floor-gf-paths.geojson",
     "westport-house-floor-1-paths.geojson",
     "westport-house-floor-2-paths.geojson"

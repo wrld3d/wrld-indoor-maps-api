@@ -49,7 +49,7 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 |`owner`|string|Yes| the owner of the building
 |`location`|GeoJSON point|Yes| a [long, lat] coordinate roughly in the center of the building
 |`levels`|Level[]|Yes| an array of the levels that make up the building (explained below)
-|`source-vendor`|string|No, default:"eegeo"| a string identifying the vendor of the building map
+|`source_vendor`|string|No, default:"eegeo"| a string identifying the vendor of the building map
  
 ###### Level
 |Field|Type|Description|
@@ -113,8 +113,8 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`wall`|Yes| interior walls
 |`window`|Yes| windows
 |`door`|Yes| doors
-|`inaccessible space`|No| any space inside the building which is not mapped or accessible
-|`floor opening`|No| openings in the floor which should be cut away from the area described by the building_outline
+|`inaccessible_space`|No| any space inside the building which is not mapped or accessible
+|`floor_opening`|No| openings in the floor which should be cut away from the area described by the building_outline
 |`unit`|Yes| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
 |`room`|Yes| marks out interior rooms e.g. meeting rooms in an office
 |`hallway`|Yes| specifies hall areas or corridors
@@ -227,7 +227,7 @@ The main-paths.json file consists of a FeatureCollection specifying paths which 
 
 |Attribute|Type|Description|
  --- | --- | --- 
-|`level-filenames`|string[]| Array of filenames of GeoJSON files containing the paths for each level. Filenames must not begin with a period or underscore. This attribute must be present but may be an empty array.
+|`level_filenames`|string[]| Array of filenames of GeoJSON files containing the paths for each level. Filenames must not begin with a period or underscore. This attribute must be present but may be an empty array.
 
 In addition to the default GeoJSON members, paths spanning multiple levels must specify the level for each coordinate in the LineString:
 
@@ -259,7 +259,7 @@ This is represented by a path between the same [long, lat] point on different le
         },
         "levels" : [ 0, 1, 2 ]
     } ],
-    "level-filenames" : [ 
+    "level_filenames" : [ 
       "westport-house-floor-gf-paths.geojson",
       "westport-house-floor-1-paths.geojson",
       "westport-house-floor-2-paths.geojson"

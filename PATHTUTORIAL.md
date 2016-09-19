@@ -150,7 +150,7 @@ Finally, the `main-paths.json` file must be extended with an attribute which inc
 {
   "type": "FeatureCollection",
   ...
- "level-filenames" : [
+ "level_filenames" : [
     "westport-house-floor-gf-paths.geojson",
     "westport-house-floor-1-paths.geojson",
     "westport-house-floor-2-paths.geojson"
@@ -158,7 +158,7 @@ Finally, the `main-paths.json` file must be extended with an attribute which inc
 }
 ```
 
-A level may be omitted if there are no relevant paths on it.  If your building has only one level, you will only need a main.json containing an empty FeatureCollection and a level-filenames attribute.
+A level may be omitted if there are no relevant paths on it.  If your building has only one level, you will only need a main.json containing an empty FeatureCollection and a level_filenames attribute.
 
 When you have completed all levels plus `main.json`, add them to the folder containing the indoor map trace, zip the folder, and submit it as normal through the indoor maps API.   Once your submission has been approved, it can then be promoted so that your routing information is available through routing.eegeo.com.
 

@@ -2,7 +2,7 @@
 	"id": "westport_house",
 	"name": "Westport House",
 	"owner": "eeGeo",
-	"landmark-name": "landmark_gb_sco_eegeooffice",
+	"landmark_name": "landmark_gb_sco_eegeooffice",
 	"location": {
 		"type": "Point",
 		"coordinates": [-2.977999, 56.459920]
