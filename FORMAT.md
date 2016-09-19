@@ -123,6 +123,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`elevator`|Yes| specifies the area taken up by elevator shafts
 |`bathroom`|Yes| marks out bathrooms in the current level
 |`no_geometry`|Yes| a feature for which no 3d geometry should be generated
+|`garden`|Yes| gardens
 
 All feature types listed are expected to be specified as GeoJSON Polygons. 
 
