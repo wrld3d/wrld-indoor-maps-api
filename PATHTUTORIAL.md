@@ -38,7 +38,7 @@ You should now see the new layer in the layers panel.
 
 There are a few settings which will make editing easier.   Check that the color selected for the lines in the layer contrasts with the color selected for the floor plan -- these can be changed by right clicking the layer in the layers panel and selecting Properties. 
 
-Turn on snapping for line drawing by selecting Settings > Snapping Options… from the main menu bar.  Select "All visible layers", "To vertex and segment" and set a snapping tolerance of your choice (you can always adjust it later).  Check "Enable snapping on intersection" and click OK. 
+Turn on snapping for line drawing by selecting Settings > Snapping Options… from the main menu bar.  Select "All visible layers", "To vertex" and set a snapping tolerance of your choice (you can always adjust it later).  Check "Enable snapping on intersection" and click OK. 
 
 
 It can be helpful to highlight the doors you identified when tracing the floor plan., so you can ensure that paths don’t go through walls. Right-click the floor plan layer and select "Open Attribute Table".  Click the "Filter" button and enter "door" in the type field, then click "Select Features".
@@ -63,7 +63,7 @@ We now have our first path.
 
 ![First path](/images/pathtutorial/FirstPath.png)
 
-From this point, we can add more paths connecting to the main path. The snapping editor setting will help us to ensure that paths join up by sharing a point -- the cursor will change color when it is over an existing point or line segment. After adding more paths, we’ll have a map like this: 
+From this point, we can add more paths connecting to the main path. The snapping editor setting will help us to ensure that paths join up by sharing a point -- the cursor will change color when it is over an existing vertex. You can add a vertex to a path by switching to the node tool and double-clicking where you want the new vertex. Note that paths won't intersect unless they share a vertex, so take care to join paths at a vertex. After adding more paths, we’ll have a map like this: 
 
 ![Many paths](/images/pathtutorial/ManyPaths.png)
 
