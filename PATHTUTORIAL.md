@@ -99,7 +99,7 @@ There is one further change which must be made to the new GeoJSON file directly.
 ```
 {
 "type": "FeatureCollection",
-"z_order": 2
+"z_order": 2,
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "id": 21, "name": "main corridor", "type": "pathway" }, 
