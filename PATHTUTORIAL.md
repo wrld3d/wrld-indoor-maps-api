@@ -28,6 +28,9 @@ We’ll start by defining paths on floor 2 of Westport House, where the eeGeo of
 
 Open QGIS and start a new project.  Add the `westport-house-floor-2.geojson` file to the project, either by selecting Layer > Add Layer > Add Vector Layer… or by dragging and dropping the file into the main QGIS window area.
 
+In order to draw our paths, we *must* set the Coordinate Reference System to WGS84 (EPSG:4326). In the bottom left corner of the QGIS window you will see the currently active CRS. If this is not already set to EPSG:4326, open the CRS window by clicking that button. To switch your active CRS, you will need to enable "On the fly" CRS transformation. Do this by ticking the box at the top of the CRS window. Then, select WGS84 EPSG:4326 from the window.
+
+
 Create a new layer to hold the path information by selecting Layer > Create Layer > Create New Shapefile Layer.  Select the Line type, and add Text data fields called name and type.
 Save the shapefile layer with a name like `westport-house-floor-2-paths.shp`.  
 
@@ -77,7 +80,7 @@ Now we’ll draw a similar pathway into the stairwell.  In this case, we’ll ad
 
 Escalators can be treated in a similar way.
 
-We can check the information for the paths we’ve defined in the attribute table (Layer > Open Attribute Table, or the toolbar button). Every path must have a type, which must be one of `"pathway"`, `"elevator"`, `"escalator"`, or `"stairs"`.  At this point, we can generate ids for the features, following the instructions in the [other tutorial](TUTORIAL.md#generate-feature-ids).
+We can check the information for the paths we’ve defined in the attribute table (Layer > Open Attribute Table, or the toolbar button). Every path must have a type, which must be one of `"pathway"`, `entrance`, `"elevator"`, `"escalator"`, or `"stairs"`. (Entrances are used to identify paths leading into the building from outside -- see [later in this tutorial](#defining-entrance-paths) for details.)  At this point, we can generate ids for the features, following the instructions in the [other tutorial](TUTORIAL.md#user-content-generate-feature-ids).  No two paths in the building can have the same feature id, but ids used for paths can duplicate ids in building geojson files as they are processed separately.
 
 ![Path attribute table](/images/pathtutorial/PathAttributeTable.png)
 
@@ -108,6 +111,14 @@ There is one further change which must be made to the new GeoJSON file directly.
 
 The `z_order` value should match that defined for the level in the building’s `main.json` file.
 
+### <a name="defining-entrance-paths"/>Defining entrance paths
+
+If you wish to support routing between buildings, you will need to identify the entrance points for each building. You can do this by drawing a two-point path through each entrance and giving it the type "entrance":
+
+![Entrance path](/images/pathtutorial/EntrancePath.png)
+
+The entrance path type should only be used for the portion of the path which directly leads outside the building; it should not be used for the continuation of the path inside the building.  See the [ground floor paths for Westport House](/examples/westport-house/westport-house-floor-gf-paths.geojson) as an example.
+
 ### Defining paths which connect levels
 
 Paths which connect different levels, such as elevators and stairs, require a bit more work in QGIS.  Let’s look at Westport House again.  
@@ -118,7 +129,7 @@ This picture shows paths for level 1 and level 2, and a new layer called main-pa
 
 ![Path down stairs](/images/pathtutorial/PathDownStairs.png)
 
-We recommend that it have a name which explicitly describes the levels and the order in which the points were placed, as this will make the next step easier.
+We recommend that it have a name which explicitly describes the levels and the order in which the points were placed, as this will make the next step easier.  However, the name is otherwise unused.
 
 By toggling display of pairs of levels, you should be able to add paths between the levels.  This may be tricky for elevators, but if you have used the same point on all levels within the elevator, you can create the elevator path in a text editor following the pattern in [main-paths.json](examples/westport-house/main-paths.json).  Or, if you have identified the paths into the elevator on each floor using their names, you can extract the point from each level by examining the saved GeoJSON. 
 
@@ -149,8 +160,14 @@ Finally, the `main-paths.json` file must be extended with an attribute which inc
 ``` 
 {
   "type": "FeatureCollection",
-  ...
- "level_filenames" : [
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    ...
+  ],
+  "level_filenames" : [
     "westport-house-floor-gf-paths.geojson",
     "westport-house-floor-1-paths.geojson",
     "westport-house-floor-2-paths.geojson"
