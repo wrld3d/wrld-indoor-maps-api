@@ -11,12 +11,25 @@
             "type": "Feature",
             "properties": {
                 "id": 11,
-                "type": "pathway"
+                "type": "entrance"
             },
             "geometry": {
                 "type": "LineString",
                 "coordinates": [
                     [ -2.978638683206566, 56.460268128688035 ],
+                    [ -2.978629857674033, 56.46024076953718 ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 12,
+                "type": "pathway"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
                     [ -2.978629857674033, 56.46024076953718 ],
                     [ -2.978666042357418, 56.460237239324172 ],
                     [ -2.978678398102964, 56.46027165890105 ]
@@ -26,7 +39,7 @@
         {
             "type": "Feature",
             "properties": {
-                "id": 12,
+                "id": 13,
                 "type": "pathway"
             },
             "geometry": {
