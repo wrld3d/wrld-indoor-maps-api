@@ -12,3 +12,6 @@ This repository contains details of eeGeo's Indoor Map data format &amp; API + a
 
 If you have any problems or queries please [raise an issue](https://github.com/eegeo/indoor-maps-api/issues/new) or alternatively get in touch with us at support@eegeo.com.
 
+## License
+
+The eeGeo's Indoor Map data format is an open format released under Creative Commons Attribution 4.0 International. See the [LICENSE.md](https://github.com/eegeo/eegeo-indoor-maps-api/blob/master/LICENSE.md) file for details.
