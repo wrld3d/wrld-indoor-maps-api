@@ -8,7 +8,7 @@ eeGeo will not share your map data; this means that any submitted indoor maps wi
 
 You can follow along on Mac OS X, Linux or Windows.
 
-| Source data | eeGeo indoor maps |
+| eeGeo Indoor Map Format | eeGeo 3D Indoor Map |
 |:-----------:|:------------:|
 |![Indoor map source data](/images/tutorial/overview_coloured.png)|![Indoor map in app](/images/tutorial/overview_eegeo.png)|
 
