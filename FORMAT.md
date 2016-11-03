@@ -105,25 +105,27 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`id`|string|an identifier for the feature
 |`name`|string|the feature's name. Will be displayed as a label over certain "Feature Types". Optional, can be null.
 |`type`|string|the type of the feature - this should match one of the strings in “Feature Types,” below.
+|`highlight`|boolean|whether to generate a highlight for the feature. Optional. Defaults to false.
  
 ###### Feature Types
 |Type|Shows Label|Description|
  --- | --- | --- 
+|`bathroom`|Yes| marks out bathrooms in the current level
 |`building_outline`|Yes| denotes the area covered by the exterior of the building
+|`door`|Yes| doors
+|`elevator`|Yes| specifies the area taken up by elevator shafts
+|`escalator`|Yes| escalators
+|`floor_opening`|No| openings in the floor which should be cut away from the area described by the building_outline
+|`garden`|Yes| gardens
+|`hallway`|Yes| specifies hall areas or corridors
+|`highlight`|No| specifies an area of interest
+|`inaccessible_space`|No| any space inside the building which is not mapped or accessible
+|`no_geometry`|Yes| a feature for which no 3d geometry should be generated
+|`room`|Yes| marks out interior rooms e.g. meeting rooms in an office
+|`stairs`|Yes| stairs between levels
+|`unit`|Yes| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
 |`wall`|Yes| interior walls
 |`window`|Yes| windows
-|`door`|Yes| doors
-|`inaccessible_space`|No| any space inside the building which is not mapped or accessible
-|`floor_opening`|No| openings in the floor which should be cut away from the area described by the building_outline
-|`unit`|Yes| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
-|`room`|Yes| marks out interior rooms e.g. meeting rooms in an office
-|`hallway`|Yes| specifies hall areas or corridors
-|`stairs`|Yes| stairs between levels
-|`escalator`|Yes| escalators
-|`elevator`|Yes| specifies the area taken up by elevator shafts
-|`bathroom`|Yes| marks out bathrooms in the current level
-|`no_geometry`|Yes| a feature for which no 3d geometry should be generated
-|`garden`|Yes| gardens
 
 All feature types listed are expected to be specified as GeoJSON Polygons. 
 
