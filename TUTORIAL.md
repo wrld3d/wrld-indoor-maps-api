@@ -332,7 +332,7 @@ Once your edit has been approved, you should see this response from a status que
 ```json
 {"status":"ApprovedForSubmission"}
 ```
-You will no be able to upload your indoor map for compilation using the following PUT request.  Again, you’ll need to replace the UUID with the one you got in response to your original POST request.
+You will now be able to upload your indoor map for compilation using the following PUT request.  Again, you’ll need to replace the UUID with the one you got in response to your original POST request.
 ```sh
 $ curl -v -XPUT https://indoor-maps-api.eegeo.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
 ```
