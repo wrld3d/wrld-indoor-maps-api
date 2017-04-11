@@ -1,20 +1,20 @@
-Submitting your indoor map to eeGeo
+Submitting your indoor map to WRLD
 ===================
-eeGeo’s 3D Indoor Maps offering is available and we are now accepting submissions. If you’re interested in seeing your building’s indoor space in our immersive 3D maps, read on!
+If you’re interested in seeing your building’s indoor space in our immersive 3D maps, read on!
 
-This post covers creating an indoor map by georeferencing floor plan imagery and then submitting it to the eegeo indoor maps API. After we've processed your indoor map, you'll receive an email containing details of how to view it using the eeGeo SDK.
+This post covers creating an indoor map by georeferencing floor plan imagery and then submitting it to the WRLD indoor maps API. After we've processed your indoor map, you'll receive an email containing details of how to view it using the WRLD SDK.
 
-eeGeo will not share your map data; this means that any submitted indoor maps will remain private to your organisation.
+WRLD will not share your map data; this means that any submitted indoor maps will remain private to your organisation.
 
 You can follow along on Mac OS X, Linux or Windows.
 
-| eeGeo Indoor Map Format | eeGeo 3D Indoor Map |
+| WRLD Indoor Map Format | WRLD 3D Indoor Map |
 |:-----------:|:------------:|
-|![Indoor map source data](/images/tutorial/overview_coloured.png)|![Indoor map in app](/images/tutorial/overview_eegeo.png)|
+|![Indoor map source data](/images/tutorial/overview_coloured.png)|![Indoor map in app](/images/tutorial/overview.png)|
 
-eeGeo's office building, Westport House, will be used as the example for this post. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will be rejected.
+WRLD's office building, Westport House, will be used as the example for this post. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will be rejected.
 
-For detailed information on the eeGeo Indoor Map format, please refer to the [format documentation](FORMAT.md).
+For detailed information on the WRLD Indoor Map format, please refer to the [format documentation](FORMAT.md).
 
 A rough outline of the process:
 
@@ -24,7 +24,7 @@ A rough outline of the process:
 1. [Export the level to GeoJSON](#export-level-to-geojson)
 1. [Create the main JSON file](#create-main-json-file)
 1. [Package your map for submission](#create-map-package)
-1. [Submit to the eeGeo Indoor Maps API](#submit-package)
+1. [Submit to the WRLD Indoor Maps API](#submit-package)
 
 ---
 
@@ -82,7 +82,7 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 
 #### <a name="create-indoor-map-level"/>Create an indoor map level
 
-We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a single building level. For the purposes of this tutorial, we're tracing the westport house floor that houses the eeGeo offices -- this is the second level.
+We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a single building level. For the purposes of this tutorial, we're tracing the westport house floor that houses the WRLD offices -- this is the second level.
 
 - Set the opacity on your floor plan image layer fully opaque once more.
 - Create a new QGIS layer via Layer > Create Layer > New Shapefile Layer.
@@ -121,7 +121,7 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 ![Traced floor plan outline](/images/tutorial/level_outline.png)
 - We've now got our building outline; the next thing to do is add the contents of the floor.
 
-- eeGeo’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
+- WRLD’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
 
 - A good first step is to create the walls and windows around the outside of the floor, using the feature types “wall” and “window”. Drawing perfectly straight lines can be tricky in QGIS; fortunately, there are some tools that make it possible to trace polygons with precision.
 
@@ -245,7 +245,7 @@ $ cat unformatted.geojson | python -m json.tool > formatted.geojson
 
 #### <a name="create-main-json-file"/>Create the main JSON file
 
-Now that you have one or more levels of your building traced and exported in an eeGeo-friendly format, the next step is to create the main JSON file.
+Now that you have one or more levels of your building traced and exported in an WRLD-friendly format, the next step is to create the main JSON file.
 
 Navigate to the directory to which you exported the indoor map level(s), create an empty text document named `main.json`.
 
@@ -274,7 +274,7 @@ For westport-house, the `main.json` file contains:
 {
 	"id": "westport_house",
 	"name": "Westport House",
-	"owner": "eeGeo",
+	"owner": "WRLD",
 	"location": {
 		"type": "Point",
 		"coordinates": [-2.977999, 56.459920]
@@ -309,24 +309,24 @@ $ zip -r my-indoor-map.zip .
 
 ---
 
-#### <a name="submit-package"/>Submit to the eeGeo Indoor Maps API
+#### <a name="submit-package"/>Submit to the WRLD Indoor Maps API
 
-Now that you have your archive in eeGeo’s format, you can submit it to our Indoor Map API to make it part of our 3D world.  Note that for all of these commands, you’ll need to include your developer authentication token, which you can find on the [API keys](https://www.eegeo.com/developers/apikeys/) page.  If you haven’t signed up yet, please take a moment to do so now.
+Now that you have your archive in WRLD’s format, you can submit it to our Indoor Map API to make it part of our 3D world.  Note that for all of these commands, you’ll need to include your developer authentication token, which you can find on the [API keys](https://www.wrld3d.com/developers/apikeys/) page.  If you haven’t signed up yet, please take a moment to do so now.
 
-The first step is to make a post request to our submission service, which is accessible via a simple [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer).  [CURL](https://curl.haxx.se/) commands are shown here as examples.  Required parameters include contact details for the rights holders of the building you’re submitting.  These allow eeGeo to confirm that correct approval has been given for the map submission.  We also request that you submit a [GeoJSON](http://geojson.org/) outline file showing the regions in which your indoor map edits will take place.
+The first step is to make a post request to our submission service, which is accessible via a simple [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer).  [CURL](https://curl.haxx.se/) commands are shown here as examples.  Required parameters include contact details for the rights holders of the building you’re submitting.  These allow WRLD to confirm that correct approval has been given for the map submission.  We also request that you submit a [GeoJSON](http://geojson.org/) outline file showing the regions in which your indoor map edits will take place.
 
 The supplied outline file should contain one or more Polygon features in the default [Coordinate Reference System](http://geojson.org/geojson-spec.html#coordinate-reference-system-objects).  It can be created via QGIS (as above), using online editors such as [GeoJSON.io](http://geojson.io) or with any other GIS software capable of exporting to GeoJSON.  Later edits will be checked against the polygons described in this file, so please make sure they fully cover the regions you want to edit but only intersect those buildings which form part of the indoor map you are submitting.
 
 ```sh
-$ curl -v -XPOST https://indoor-maps-api.eegeo.com/v1/edits/?token=dev_auth_token -F name="my venue name" -F venue_street_address="<address>" -F venue_phone_number="<phone no.>" -F venue_email="<email address>" -F submission_contact_email="<email address for notifications>" -F venue_outline="@/path/to/my/file"
+$ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/edits/?token=dev_auth_token -F name="my venue name" -F venue_street_address="<address>" -F venue_phone_number="<phone no.>" -F venue_email="<email address>" -F submission_contact_email="<email address for notifications>" -F venue_outline="@/path/to/my/file"
 ```
 On successful completion of this request, you should receive a JSON packet containing a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).  Please make note of this UUID, as subsequent API calls will need to refer to it.
 ```json
 {"uuid":"ad578b1f-d3d6-46ed-8945-787527d1efe0"}
 ```
-At this point your edit will be in the *AwaitingApproval* state and will need to be moved into the *ApprovedForSubmission* state by eeGeo before it can be added to the world.  You can periodically query the status of the edit with the following command (note that you’ll need to replace the UUID shown with the one that was returned by your initial POST request):
+At this point your edit will be in the *AwaitingApproval* state and will need to be moved into the *ApprovedForSubmission* state by WRLD before it can be added to the world.  You can periodically query the status of the edit with the following command (note that you’ll need to replace the UUID shown with the one that was returned by your initial POST request):
 ```sh
-$ curl -v https://indoor-maps-api.eegeo.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0/status?token=dev_auth_token
+$ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0/status?token=dev_auth_token
 ```
 Once your edit has been approved, you should see this response from a status query:
 ```json
@@ -334,14 +334,14 @@ Once your edit has been approved, you should see this response from a status que
 ```
 You will now be able to upload your indoor map for compilation using the following PUT request.  Again, you’ll need to replace the UUID with the one you got in response to your original POST request.
 ```sh
-$ curl -v -XPUT https://indoor-maps-api.eegeo.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
+$ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
 ```
-When your submission has been processed we will send you the details required to view it using the eeGeo SDK.  
+When your submission has been processed we will send you the details required to view it using the WRLD SDK.  
 If at any time you decide you’d rather delete your edit, you can do so with the following command:
 ```sh
-$ curl -v -XDELETE https://indoor-maps-api.eegeo.com/v1/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token
+$ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token
 ```
-If you have any problems, the [cheatsheet](CHEATSHEET.md) might be able to help, or feel free to [raise an issue](https://github.com/eegeo/indoor-maps-api/issues/new) or get in touch with us at support@eegeo.com.
+If you have any problems, the [cheatsheet](CHEATSHEET.md) might be able to help, or feel free to [raise an issue](https://github.com/wrld3d/indoor-maps-api/issues/new) or get in touch with us at support@wrld3d.com.
 
 ---
 
