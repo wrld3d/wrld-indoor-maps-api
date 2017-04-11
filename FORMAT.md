@@ -1,9 +1,9 @@
-![eeGeo](images/format/indoor_map.jpg)
+![WRLD](images/format/indoor_map.jpg)
 
-eeGeo Indoor Map Format v0.0.1
+WRLD Indoor Map Format v1.0.0
 ===================
 
-This document describes version 0.0.1 of the eeGeo data format for indoor maps.
+This document describes version 1.0.0 of the WRLD Indoor Map Format.
 
 ---
 
@@ -66,7 +66,7 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 {
 	"id": "westport_house",
 	"name": "Westport House",
-	"owner": "eeGeo",
+	"owner": "WRLD",
 	"location": {
 		"type": "Point",
 		"coordinates": [-2.977999, 56.459920]
@@ -131,7 +131,7 @@ All feature types listed are expected to be specified as GeoJSON Polygons.
 
 ##### Label Icons
 
-If a feature is given a label which matches one of the following strings, the text will be replaced with a POI icon. This setting is controlled by the app, and can be modified by [InteriorsEntitiesPinsController.cpp.](https://github.com/eegeo/eegeo-example-app/blob/master/src/InteriorsEntitiesPins/SdkModel/InteriorsEntitiesPinsController.cpp)
+If a feature is given a label which matches one of the following strings, the text will be replaced with a POI icon. This setting is controlled by the app, and can be modified by [InteriorsEntitiesPinsController.cpp.](https://github.com/wrld3d/wrld-example-app/blob/master/src/InteriorsEntitiesPins/SdkModel/InteriorsEntitiesPinsController.cpp)
 
 |Label|
 ----
@@ -166,7 +166,7 @@ If a feature is given a label which matches one of the following strings, the te
 
 #### Paths
 
-Path information is optional and does not affect the appearance of the map. If paths are present, they will be processed for use by the [eeGeo routing service](https://github.com/eegeo/eegeo-routing-api/).  
+Path information is optional and does not affect the appearance of the map. If paths are present, they will be processed for use by the [WRLD routing service](https://github.com/wrld3d/wrld-routing-api/).  
 
 A path represents a portion of a route by which people can move from place to place within a building. Paths defined in a particular level's path JSON are considered to lie on that level; paths between levels, such as elevators and stairs, must be defined in the main path JSON file.  
 
@@ -269,16 +269,15 @@ This is represented by a path between the same [long, lat] point on different le
     ]
 }
 ```
-
-
-
 ---
 
 #### Disclaimer
-This is an early version of the data format and API for eeGeo indoor maps.  eeGeo Ltd reserves the right to make changes to the API and its documentation at any time.  
+This is a stable, semantically versioned Format.
+
+WRLD may make changes to the Format from time to time but will adhere to [Semantic Versioning](http://semver.org/) and provide backward compatible end points for as long as possible.
 
 ---
 
 #### Contact us
-If you have any problems or queries please [raise an issue](https://github.com/eegeo/indoor-maps-api/issues/new) or alternatively get in touch with us at support@eegeo.com.
+If you have any problems or queries please [raise an issue](https://github.com/wrld3d/wrld-indoor-maps-api/issues/new) or alternatively get in touch with us at support@wrld3d.com.
 
