@@ -49,7 +49,7 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 |`owner`|string|Yes| the owner of the building
 |`location`|GeoJSON point|Yes| a [long, lat] coordinate roughly in the center of the building
 |`levels`|Level[]|Yes| an array of the levels that make up the building (explained below)
-|`source_vendor`|string|No, default:"eegeo"| a string identifying the vendor of the building map
+|`source_vendor`|string|No, default:"WRLD"| a string identifying the vendor of the building map
  
 ###### Level
 |Field|Type|Description|
