@@ -67,6 +67,30 @@ $ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/?token=dev_auth_token
 $ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/edits/UUID?token=dev_auth_token
 ```
 
+### Update indoor data privacy setting
+
+```sh
+curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1/indoor-data/UUID?token=dev_auth_token -d '{"private":true}'
+```
+
+
+### Give an API key access to a private indoors
+
+```sh
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1/api-keys/UUID?token=dev_auth_token -d '{"apikey":"<api_key>"}'
+```
+
+### Remove an API key access to a private indoors
+```sh
+curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1/api-keys/UUID/<api_key>?token=dev_auth_token
+```
+
+### Add custom user data
+
+```sh
+curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1/indoor-data/UUID?token=dev_auth_token -d '{"user_data":{"key":"value"}}'
+```
+
 ---
 
 ## License
