@@ -111,7 +111,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |Type|Shows Label|Description|
  --- | --- | --- 
 |`bathroom`|Yes| marks out bathrooms in the current level
-|`building_outline`|Yes| denotes the area covered by the exterior of the building
+|`building_outline`|Yes| denotes the area covered by the floor of the building
 |`door`|Yes| doors
 |`elevator`|Yes| specifies the area taken up by elevator shafts
 |`escalator`|Yes| escalators
