@@ -12,7 +12,7 @@ You can follow along on Mac OS X, Linux or Windows.
 |:-----------:|:------------:|
 |![Indoor map source data](/images/tutorial/overview_coloured.png)|![Indoor map in app](/images/tutorial/overview.png)|
 
-WRLD's office building, Westport House, will be used as the example for this post. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will be rejected.
+WRLD's office building, Westport House, will be used as the example for this post. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will not be elligible for inclusion in the public map.
 
 For detailed information on the WRLD Indoor Map format, please refer to the [format documentation](FORMAT.md).
 
@@ -313,7 +313,7 @@ $ zip -r my-indoor-map.zip .
 
 Now that you have your archive in WRLD’s format, you can submit it to our Indoor Map API to make it part of our 3D world.  Note that for all of these commands, you’ll need to include your developer authentication token, which you can find on the [API keys](https://www.wrld3d.com/developers/apikeys/) page.  If you haven’t signed up yet, please take a moment to do so now.
 
-The first step is to make a post request to our submission service, which is accessible via a simple [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer).  [CURL](https://curl.haxx.se/) commands are shown here as examples.  Required parameters include contact details for the rights holders of the building you’re submitting.  These allow WRLD to confirm that correct approval has been given for the map submission.  We also request that you submit a [GeoJSON](http://geojson.org/) outline file showing the regions in which your indoor map edits will take place.
+The first step is to make a post request to our submission service, which is accessible via a simple [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer).  [CURL](https://curl.haxx.se/) commands are shown here as examples.  Required parameters include contact details for the rights holders of the building you’re submitting.  We also request that you submit a [GeoJSON](http://geojson.org/) outline file showing the regions in which your indoor map edits will take place.
 
 The supplied outline file should contain one or more Polygon features in the default [Coordinate Reference System](http://geojson.org/geojson-spec.html#coordinate-reference-system-objects).  It can be created via QGIS (as above), using online editors such as [GeoJSON.io](http://geojson.io) or with any other GIS software capable of exporting to GeoJSON.  Later edits will be checked against the polygons described in this file, so please make sure they fully cover the regions you want to edit but only intersect those buildings which form part of the indoor map you are submitting.
 
@@ -322,24 +322,25 @@ $ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/edits/?token=dev_auth_tok
 ```
 On successful completion of this request, you should receive a JSON packet containing a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).  Please make note of this UUID, as subsequent API calls will need to refer to it.
 ```json
-{"uuid":"ad578b1f-d3d6-46ed-8945-787527d1efe0"}
+{"uuid":"EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0"}
 ```
-At this point your edit will be in the *AwaitingApproval* state and will need to be moved into the *ApprovedForSubmission* state by WRLD before it can be added to the world.  You can periodically query the status of the edit with the following command (note that you’ll need to replace the UUID shown with the one that was returned by your initial POST request):
+
+The indoor maps API will now validate your outline and move your edit from the *AwaitingApproval* state to the *ApprovedForSubmission* state.  This should happen within a few minutes.  You will be e-mailed if any problems arise during this process.  Alternatively, you can also query the status of the edit with the following command (you’ll need to replace the UUID shown here with the one that was returned by your initial POST request):
 ```sh
-$ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0/status?token=dev_auth_token
+$ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0/status?token=dev_auth_token
 ```
-Once your edit has been approved, you should see this response from a status query:
+Once the approval process has run, you should see this response from a status query:
 ```json
 {"status":"ApprovedForSubmission"}
 ```
 You will now be able to upload your indoor map for compilation using the following PUT request.  Again, you’ll need to replace the UUID with the one you got in response to your original POST request.
 ```sh
-$ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1/edits/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
+$ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1/edits/EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
 ```
 When your submission has been processed we will send you the details required to view it using the WRLD SDK.  
 If at any time you decide you’d rather delete your edit, you can do so with the following command:
 ```sh
-$ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token
+$ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token
 ```
 If you have any problems, the [cheatsheet](CHEATSHEET.md) might be able to help, or feel free to [raise an issue](https://github.com/wrld3d/indoor-maps-api/issues/new) or get in touch with us at support@wrld3d.com.
 
