@@ -177,6 +177,6 @@ Finally, the `main-paths.json` file must be extended with an attribute which inc
 
 A level may be omitted if there are no relevant paths on it.  If your building has only one level, you will only need a main.json containing an empty FeatureCollection and a level_filenames attribute.
 
-When you have completed all levels plus `main.json`, add them to the folder containing the indoor map trace, zip the folder, and submit it as normal through the indoor maps API.   Once your submission has been approved, it can then be promoted so that your routing information is available through routing.eegeo.com.
+When you have completed all levels plus `main.json`, add them to the folder containing the indoor map trace, zip the folder, and submit it as normal through the indoor maps API.   Once your indoor map has been built, your routing information can then be promoted so that it becomes available through routing.wrld3d.com.
 
-Questions or problems?  [Log an issue](https://github.com/eegeo/eegeo-indoor-maps-api/issues) and we’ll get back to you as soon as we can.  
+Questions or problems?  [Log an issue](https://github.com/wrld3d/wrld-indoor-maps-api/issues) and we’ll get back to you as soon as we can.  
