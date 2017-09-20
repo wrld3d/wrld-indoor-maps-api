@@ -47,9 +47,10 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 |`id`|string|Yes| an identifier for the building
 |`name`|string|Yes| the building's name
 |`owner`|string|Yes| the owner of the building
+|`source_vendor`|string|No, default:"WRLD"| a string identifying the vendor of the building map
 |`location`|GeoJSON point|Yes| a [long, lat] coordinate roughly in the center of the building
 |`levels`|Level[]|Yes| an array of the levels that make up the building (explained below)
-|`source_vendor`|string|No, default:"WRLD"| a string identifying the vendor of the building map
+|`entrance_level`|integer|No, default:0| a zero-based index into levels[] stating which floor the interior will open on
  
 ###### Level
 |Field|Type|Description|
