@@ -304,6 +304,7 @@ $ zip -r my-indoor-map.zip .
   - Right click > New > Compressed (zipped) Folder and choose an appropriate name
   - Drag the .json & .geojson files onto the .zip file
 - Verify that the .zip structure matches the one given in the [format documentation](FORMAT.md#archive-structure)
+- Return to the Indoor Map Tool and upload your indoor map package using stage 4 on the right hand side menu
 
 ---
 
