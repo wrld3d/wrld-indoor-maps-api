@@ -64,6 +64,12 @@ $ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/UUID?token=dev_auth_token
 $ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/?token=dev_auth_token
 ```
 
+### Download the claim outline for an indoor map
+
+```sh
+$ curl https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/UUID/claim?token=dev_auth_token > claim.geojson
+```
+
 ### Delete an indoor map edit:
 
 ```sh
