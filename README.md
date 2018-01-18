@@ -105,6 +105,33 @@ curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1/indoor-data/UUID?token=dev_
 ```sh
 curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_token -F feature_to_poi_key="@/path/to/my/file"
 ```
+
+###### Details for feature-to-poi key:
+* **defaults:** Which interior feature types should have POIs generated, and what tag should be used to represent them.
+* **special:** Which interior IDs should have POIs generated, and what tag should be used to represent them.
+* **highlight_color:** What colour and opacity should be used for area highlights, where features have highlight set.
+
+```json
+{
+  "defaults": {
+    "interior feature type": "point of interest tag",
+    "interior feature type": "point of interest tag",
+    "interior feature type": "point of interest tag"
+  },
+  "special": {
+    "point of interest tag": ["feature ID", "feature ID", "feature ID"],
+    "point of interest tag": ["feature ID", "feature ID", "feature ID"],
+    "point of interest tag": ["feature ID", "feature ID", "feature ID"]
+  },
+  "highlight_color": {
+    "red": "0-255 red value",
+    "green": "0-255 green value",
+    "blue": "0-255 blue value",
+    "opacity": "0-255 opacity value"
+  }
+}
+```
+
 ###### Sample feature-to-poi key:
 ```json
 {
