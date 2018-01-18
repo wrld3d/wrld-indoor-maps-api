@@ -100,6 +100,31 @@ curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1/api-keys/UUID/<api_key>?
 curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1/indoor-data/UUID?token=dev_auth_token -d '{"user_data":{"key":"value"}}'
 ```
 
+### Generate POI set from interior map
+
+```sh
+curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_token -F feature_to_poi_key="@/path/to/my/file"
+```
+###### Sample feature-to-poi key:
+```json
+{
+  "defaults": {
+    "room": "cocktail",
+    "highlight": "hospital"
+  },
+  "special": {
+    "entertainment":[318, 21, 400],
+    "camping":[21, 52]
+  },
+  "highlight_color": {
+    "red":0,
+    "green":220,
+    "blue":25,
+    "opacity":128
+  }
+}
+```
+
 ---
 
 ## License
