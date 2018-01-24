@@ -103,7 +103,7 @@ curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1/indoor-data/UUID?token=dev_
 ### Generate POI set from interior map
 
 ```sh
-curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_token -F feature_to_poi_key="@/path/to/my/file"
+curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_token -F feature_to_poi_key="@/path/to/my/file" -F "contact_email=example@mail.com"
 ```
 
 ###### Details for feature-to-poi key:
