@@ -340,7 +340,7 @@ $ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1/edits/EIM-ad578b1f-d3d6-46
 When your submission has been processed we will send you the details required to view it using the WRLD SDK.  
 If at any time you decide you’d rather delete your edit, you can do so with the following command:
 ```sh
-$ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token
+$ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/edits/EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token
 ```
 If you have any problems, the [cheatsheet](CHEATSHEET.md) might be able to help, or feel free to [raise an issue](https://github.com/wrld3d/indoor-maps-api/issues/new) or get in touch with us at support@wrld3d.com.
 
