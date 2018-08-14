@@ -108,7 +108,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`type`|string|the type of the feature - this should match one of the strings in “Feature Types,” below.
 |`highlight`|boolean|whether to generate a highlight for the feature. Optional. Defaults to false.
 
-###### placeholder attributes
+###### Attributes for placeholders 
 
 |Attribute|Type|Description|
  --- | --- | ---
