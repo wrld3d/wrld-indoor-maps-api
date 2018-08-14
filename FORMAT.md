@@ -109,7 +109,9 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`highlight`|boolean|whether to generate a highlight for the feature. Optional. Defaults to false.
 
 ####### Type specific attributes
+
 ######## placeholder
+
 |Attribute|Type|Description|
  --- | --- | ---
 |`instance`|string|An instance identifier. Instances names matching an asset in WRLD3D library will be replaced by this asset in the interior. A triangle is generated otherwise.
