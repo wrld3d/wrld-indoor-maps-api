@@ -107,6 +107,16 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`name`|string|the feature's name. Will be displayed as a label over certain "Feature Types". Optional, can be null.
 |`type`|string|the type of the feature - this should match one of the strings in “Feature Types,” below.
 |`highlight`|boolean|whether to generate a highlight for the feature. Optional. Defaults to false.
+
+####### Type specific attributes
+######## placeholder
+|Attribute|Type|Description|
+ --- | --- | ---
+|`instance`|string|An instance identifier. Instances names matching an asset in WRLD3D library will be replaced by this asset in the interior. A triangle is generated otherwise.
+|`rotation_degrees_over_y`|double|Rotation of the mesh around the vertical axis. [0,360] 
+|`position`|array|Pair of coordinates in EPSG 4326 to indicate the position of the mesh center
+|`scale`|double|Uniform scale attribute for the mesh. Defaults to 1.0
+
  
 ###### Feature Types
 |Type|Shows Label|Description|
@@ -122,6 +132,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`highlight`|No| specifies an area of interest
 |`inaccessible_space`|No| any space inside the building which is not mapped or accessible
 |`no_geometry`|Yes| a feature for which no 3d geometry should be generated
+|`placeholder`|No| a feature replaced by a 3d mesh or a placeholder triangle. (e.g. desk, chair, plant, other furnitures ..) 
 |`room`|Yes| marks out interior rooms e.g. meeting rooms in an office
 |`stairs`|Yes| stairs between levels
 |`unit`|Yes| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
