@@ -132,7 +132,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`highlight`|No| specifies an area of interest
 |`inaccessible_space`|No| any space inside the building which is not mapped or accessible
 |`no_geometry`|Yes| a feature for which no 3d geometry should be generated
-|`placeholder`|No| a feature replaced by a 3d mesh or a placeholder triangle. (e.g. desk, chair, plant, other furnitures ..) 
+|`placeholder`|No| a feature replaced by a 3d mesh or a placeholder triangle. (e.g. desk, chair, plant, other furniture ..) 
 |`room`|Yes| marks out interior rooms e.g. meeting rooms in an office
 |`stairs`|Yes| stairs between levels
 |`unit`|Yes| specifies areas around which interior walls should be created (e.g. units in a shopping centre)
