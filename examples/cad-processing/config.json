@@ -1,0 +1,19 @@
+{
+	"inserts": 
+	[
+		{
+			"in_dxf_layer_regex": "Furniture",
+			"in_dxf_instances_regex": "grdfr",
+			"out_wrld_type": "placeholder",
+			"out_wrld_instance": "white_desk_01",
+			"opt_min_area": 10.0,
+			"rotation_calculator":{
+				"method":"instance_aligned",
+				"alignment_layer_regex":"Furniture",
+				"alignment_instances_regex":"fdss",
+				"additional_rotation":-90
+			}
+		}
+	]
+}
+

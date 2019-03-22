@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "desks_geojson_trace",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 11, "type": "InstancedEntity", "name": "MyDesk1", "instance": "white_desk_01", "heading": 70, "height": 0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -2.979148078887524, 56.462091078201396 ], [ -2.979126744285509, 56.462095184442788 ], [ -2.979122727310234, 56.462088578750119 ], [ -2.979144151178366, 56.462083936912023 ], [ -2.979148078887524, 56.462091078201396 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 12, "type": "InstancedEntity", "name": "MyDesk3", "instance": "white_desk_01", "heading": 70, "height": 0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -2.978969546653089, 56.462127141712756 ], [ -2.978948212051074, 56.462131247954147 ], [ -2.978944195075799, 56.462124642261479 ], [ -2.978965618943931, 56.462120000423383 ], [ -2.978969546653089, 56.462127141712756 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 13, "type": "InstancedEntity", "name": "MyDesk2", "instance": "white_desk_01", "heading": 250, "height": 0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -2.978985257489719, 56.462104289586748 ], [ -2.978963922887703, 56.462108395828139 ], [ -2.978959905912429, 56.46210179013547 ], [ -2.978981329780561, 56.462097148297374 ], [ -2.978985257489719, 56.462104289586748 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 14, "type": "InstancedEntity", "name": "MyDesk4", "instance": "white_desk_01", "heading": -20, "height": 0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -2.979149685677633, 56.462070457728331 ], [ -2.979136831356754, 56.46207331424408 ], [ -2.979129868599611, 56.462061888181083 ], [ -2.979142365856021, 56.462059388729799 ], [ -2.979149685677633, 56.462070457728331 ] ] ] } }
+]
+}

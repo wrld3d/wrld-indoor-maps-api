@@ -1,0 +1,18 @@
+{
+	"id": "EIM-0e474625-21bc-4ba1-872e-c4fffebb798a",
+	"name": "Example office",
+	"owner": "eeGeo",
+	"location": {
+		"type": "Point",
+		"coordinates": [-2.979021, 56.462099]
+	},
+	"levels": [{
+		"id": "example-office-floor-g",
+		"name": "G",
+		"readable_name": "Ground Floor",
+		"z_order": 0,
+        "filename": "example-office-floor-g.geojson"
+	}
+	]
+    
+}   
