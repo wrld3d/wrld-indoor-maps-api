@@ -12,13 +12,13 @@ All of the files used in this example [can be found here](https://github.com/wrl
 # Contents
 
 - Preparation
- - [Preparing an Indoor Map](#preparing-an-indoor-map)
- - [Preparing an Asset GeoJSON Submission](#preparing-an-asset-geojson-submission)
- - [Preparing an Asset AutoCAD DXF Submission](#preparing-an-asset-autocad-dxf-submission)
-   - [Creating the georeference.points file](#creating-the-georeferencepoints-file)
-   - [Creating the config.json file](#creating-the-configjson-file)
-     - [Rotation Calculator configuration](#rotation-calculator-configuration)
-     - [Extracting names from labels](#extracting-names-from-labels)
+  - [Preparing an Indoor Map](#preparing-an-indoor-map)
+  - [Preparing an Asset GeoJSON Submission](#preparing-an-asset-geojson-submission)
+  - [Preparing an Asset AutoCAD DXF Submission](#preparing-an-asset-autocad-dxf-submission)
+    - [Creating the georeference.points file](#creating-the-georeferencepoints-file)
+    - [Creating the config.json file](#creating-the-configjson-file)
+      - [Rotation Calculator configuration](#rotation-calculator-configuration)
+      - [Extracting names from labels](#extracting-names-from-labels)
 - [Importing](#importing)
 - [Editing your Assets](#editing-your-assets)
 - [Publishing your Assets](#publishing-your-assets)
@@ -81,7 +81,8 @@ Once you're ready, export your layer as a GeoJSON file the same way you did duri
 
 You now have an Assets GeoJSON ready to import!
 
-> NOTE: After performing a successful AutoCAD DXF Submission below, you'll be emailed the results as a .geojson file too which you can use to reimport the result much faster in future.
+> ## NOTE 
+>> After performing a successful AutoCAD DXF Submission below, you'll be emailed the results as a .geojson file too which you can use to reimport the result much faster in future.
 
 
 ## Preparing an Asset AutoCAD DXF Submission
@@ -113,7 +114,8 @@ This describes four points - the first two coordinates of each line specify X an
 
 ![Image showing the positions of the 4 georeference coordinates](images/cadtutorial/georeferencing.png)
 
-> NOTE: You can add additional points as necessary - generally the more points you map, the more accurate the extraction process will be.  For a small,  rectangular floorplan like this, 4 are enough!
+> ## NOTE 
+>> You can add additional points as necessary - generally the more points you map, the more accurate the extraction process will be.  For a small,  rectangular floorplan like this, 4 are enough!
 
 ### Creating the config.json file
 
@@ -261,7 +263,8 @@ Selecting an Asset also shows the Asset Properties panel, which allows you to ed
 
 ![Image showing the Asset Properties Panel](images/cadtutorial/properties_panel.png)
 
-> NOTE: Some options are only applicable when a single Asset is selected.
+> ## NOTE 
+>> Some options are only applicable when a single Asset is selected.
 
 ## Publishing your Assets
 
@@ -269,13 +272,15 @@ Each time you do a new import to a floor, you create a new "Asset Set" with your
 
 You do this via the ![Publish Assets](images/cadtutorial/publish_assets.png) button.
 
-> WARNING: Once you publish your set, they become visible to anyone viewing your Indoor Map. Make sure everything's correct first!
+> ## WARNING 
+>> Once you publish your set, they become visible to anyone viewing your Indoor Map. Make sure everything's correct first!
 
 The act of publishing a set creates a new set in your Asset Set list selector called "Published Set". This is a special set you can view that shows what the current 'live' Assets for a given floor look like.  Everytime you publish a new set, it replaces any existing published set.
 
 At this point, when viewing your Indoor Map in the WRLD APIs you should now see your desks appear.
 
-> NOTE: The published set cannot be edited like normal sets - You cannot move Indoor Assets around or delete them - To make changes to the published set, select the original set from the list, make the changes there, and republish the set. This replaces the existing published set with an updated one.
+> ## NOTE 
+>> The published set cannot be edited like normal sets - You cannot move Indoor Assets around or delete them - To make changes to the published set, select the original set from the list, make the changes there, and republish the set. This replaces the existing published set with an updated one.
 
 ## Removing your Assets
 

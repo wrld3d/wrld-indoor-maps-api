@@ -27,7 +27,8 @@ A rough outline of the process:
 
 ---
 
-#### <a name="install-software"/>Install the required software
+## <a name="install-software"/>Install the required software
+
 Pre-requisites:
 - A floor plan image (tif, png or bmp) for each of the floors you wish to submit.
 - [QGIS](https://www.qgis.org/en/site/forusers/download.html) (2.12 Lyon at the time of writing) with the Georeferencer and OpenLayers plugins (**Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is available, but we're using QGIS for this guide as it's free).
@@ -42,7 +43,8 @@ We’d also recommend you install the [OpenLayers](http://docs.qgis.org/2.2/en/d
 
 ---
 
-#### <a name="georeference-floor-plan"/>Georeference the floor plan image
+## <a name="georeference-floor-plan"/>Georeference the floor plan image
+
 If you have an image of your building’s floor plan, you can use [georeferencing](https://en.wikipedia.org/wiki/Georeference) to help turn it into a map. Unfortunately, images do not contain geographic location data so while they may be detailed and legible, there’s nothing to associate the contents of the image with spatial locations in the world, or orient it correctly.  
 
 [Georeferencing](https://en.wikipedia.org/wiki/Georeference) basically means saying ‘point **P** on the image is at geographic coordinate **Q**’. This will allow you to view your floor plan image in QGIS with the correct location and orientation.
@@ -52,33 +54,38 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 - Open the Georeferencer (Raster > Georeferencer > Georeferencer).
 
 ![Georeferencer toolbar](/images/tutorial/georeferencing_toolbar.png)
+
 - Click “Add Raster”.
 - Add your floor plan image. If you’re using OpenLayers, set the CRS (coordinate reference system) as WGS84 / Pseudo Mercator ([EPSG: 3857](http://spatialreference.org/ref/sr-org/6864/)).
 - The image should be displayed in the Georeferencer window.
 
 [<img src="/images/tutorial/georeference_plan_thumb.png">](/images/tutorial/georeference_plan.png)
+
 - The next step involves selecting a point on the indoor map image and then assigning it a location.
 - In the Georeferencer window, ensure the “Add Point” tool selected and left click the first point to be referenced (a corner is a good choice).
 - Click the “From map canvas” button.
 - Left click the location on the map matching the point you’ve just selected.
 
 ![Point in Georeferencer](images/tutorial/georeference_side_by_side.png)
+
 - Repeat this process for a handful of points on the building perimeter; try to pick the points that are clearly visible on the map (e.g. building corners). Inaccurately georeferenced points cause distortion, so if in doubt, don't add it (in this example, only 4 points were georeferenced).
 - Open the Transformation Settings dialog and choose a filename for “Output raster”. If you're using OpenLayers, the Target SRS should be set to [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/). Otherwise, set it the QGIS project's CRS; to check this, choose Project > Project Properties > CRS. The rest of the options should roughly match the following:
 
 ![Transform settings](/images/tutorial/transform_settings.png)
+
 - Click the “OK” button.
 - Click the “Start Georeferencing” button.
 - The transformed image should open in the QGIS main scene view.
 
 ![Georeferenced image](images/tutorial/georeferenced_image.jpg)
+
 - If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced TIF into QGIS, or simply re-export with the box checked.
 - In the Layers panel, locate the layer that’s just been added. Double click it, adjust with style and transparency so you can see the underlying map imagery.
 - If the result is sub-par and heavily distorted, try the process again and choose different points to georeference. Again, fewer is often better.
 
 ---
 
-#### <a name="create-indoor-map-level"/>Create an indoor map level
+## <a name="create-indoor-map-level"/>Create an indoor map level
 
 We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a single building level. For the purposes of this tutorial, we're tracing the westport house floor that houses the WRLD offices -- this is the second level.
 
@@ -88,10 +95,12 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - Finally, add “type” and “name” to the attribute list (under “New attribute”, fill in the attribute name and click the “Add to attributes list” button). The default data types are fine (String, 80 width).
 
 ![New level layer](/images/tutorial/new_level_layer.png)
+
 - Click “OK”.
 - Give your new layer a suitable name. Something like my-indoor-map-name-level-x is good (where level-x corresponds to whatever floor of the building you're about to create).
 
 ![New level layer confirmation](/images/tutorial/new_level_layer_confirmation.png)
+
 - Ensure that your new feature layer is selected in the Layers panel
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
 - Open the Layer Style menu (Layer > Properties > Style) and move the transparency slider to 50%.
@@ -102,9 +111,11 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 - Click the “Toggle Editing” button.
 
 ![Toggle editing button](/images/tutorial/toggle_editing.png)
+
 - Click the “Add Features” button.
 
 ![Add features button](/images/tutorial/add_features.png)
+
 - Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
 - When you’re happy with the polygon, right click to accept it.
 - In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`.
@@ -114,9 +125,11 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, I prefer to leave them as NULL and fix them later. I would recommend this, as it's less error-prone.
 
 ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
+
 - You should now have a building outline polygon in your QGIS layer.
 
 ![Traced floor plan outline](/images/tutorial/level_outline.png)
+
 - We've now got our building outline; the next thing to do is add the contents of the floor.
 
 - WRLD’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
@@ -175,7 +188,7 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ![Doors in 3D map](images/tutorial/doors_in_app.png)
 
-- We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](/examples/) and can give you an idea of how to build your indoor map.
+- We'd recommend building out a first version, examining the result and then creating further iterations with slight tweaks to the way features are categorised. Here's an image showing Westport House with its interior features mapped. This example map is available to download [here](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples) and can give you an idea of how to build your indoor map.
 
 ![Multiple rooms added](/images/tutorial/wph.PNG)
 
@@ -190,6 +203,7 @@ To draw the other side of the wall, use the same method with the parallel button
 - Click the Field Calculator button.
 
 ![Field Calculator](/images/tutorial/field_calculator_button.png)
+
 - Change the checkbox to “Update existing field”
 - In the combobox, select the “id” field
 - In the left hand expression box enter the following:
@@ -205,6 +219,7 @@ To draw the other side of the wall, use the same method with the parallel button
 - If you were generating ids for level 2 of your indoor map, the dialog would look something like:
 
 ![Field calculator](/images/tutorial/field_calculator.png)
+
 - Click “OK”.
 
   This will generate unique features ids. Each feature id starts with the interior level id (e.g., level 2 features will have ids 21, 22, 23..., level 3 features will have ids 31, 32, 33...)
@@ -219,7 +234,7 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ---
 
-#### <a name="export-level-to-geojson"/>Export the level to GeoJSON
+## <a name="export-level-to-geojson"/>Export the level to GeoJSON
 
 - Highlight the layer you created in the Layers panel
 - Right click and choose “Save As…”
@@ -231,7 +246,8 @@ To draw the other side of the wall, use the same method with the parallel button
 
 You now have a single level of your building digitised. If you have more floor plans for your building, simply repeat the above steps for each level.
 
-**Note**: It's often useful to examine the exported json, but QGIS exports unformatted json which makes it tough to read due to the lack of indenting.
+> ## Note 
+> It's often useful to examine the exported json, but QGIS exports unformatted json which makes it tough to read due to the lack of indenting.
 
 This is entirely optional, but if you wish to re-format your GeoJSON files, you can paste them into [jsonlint](http://jsonlint.com) or run a single command from a terminal (this assumes python is installed and in your path):
 
@@ -241,7 +257,7 @@ $ cat unformatted.geojson | python -m json.tool > formatted.geojson
 
 ---
 
-#### <a name="create-main-json-file"/>Create the main JSON file
+## <a name="create-main-json-file"/>Create the main JSON file
 
 Now that you have one or more levels of your building traced and exported in an WRLD-friendly format, the next step is to create the main JSON file.
 
@@ -291,7 +307,7 @@ This concludes the editing phase.
 
 ---
 
-#### <a name="create-map-package"/>Package your map for upload
+## <a name="create-map-package"/>Package your map for upload
 
 - Place all of the indoor map files (the `main.json` file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`)
 - Zip the directory
@@ -310,7 +326,8 @@ $ zip -r my-indoor-map.zip .
 
 Troubleshooting
 ===================
-#### <a name="multipolygons"/>Multipolygons
+## <a name="multipolygons"/>Multipolygons
+
 If you are receiving an error related to multipolygons in your submission, it probably refers to one of your units being split into two or more parts. For instance:
 
 
@@ -319,14 +336,16 @@ If you are receiving an error related to multipolygons in your submission, it pr
 If you are struggling to locate the multipolygon in question, you can use QGIS' **Topology Checker** to find it:
 
 1. Open the Topology Checker panel via *Vector > Topology Checker > Topology Checker*
+	
+	[<img src="/images/tutorial/topology_checker_location.png">](/images/tutorial/topology_checker_location.png)
 
-  [<img src="/images/tutorial/topology_checker_location.png">](/images/tutorial/topology_checker_location.png)
 2. Click the *Configure* button (Wrench icon)
 3. Under *Current Rules* set the layer you want to check and set the rule to *"must not have multi-part geometries"*
 4. Click *Add Rule* then click *OK*
+	
+	[<img src="/images/tutorial/topology_checker_steps.png">](/images/tutorial/topology_checker_steps.png)
 
-  [<img src="/images/tutorial/topology_checker_steps.png">](/images/tutorial/topology_checker_steps.png)
 5. Click *Validate All* (check mark) in the Topology Checker panel
 6. The offending multipolygon will be displayed in the error list, and will be highlighted in red in QGIS
-
-  [<img src="/images/tutorial/topology_checker_results.png">](/images/tutorial/topology_checker_results.png)
+	
+	[<img src="/images/tutorial/topology_checker_results.png">](/images/tutorial/topology_checker_results.png)

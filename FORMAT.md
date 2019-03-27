@@ -7,7 +7,7 @@ This document describes version 1.0.0 of the WRLD Indoor Map Format.
 
 ---
 
-#### Archive structure
+## Archive structure
 
 Indoor maps are submitted to the REST API as a specially structured .ZIP archive.  This should contain a file named `main.json`. The main JSON file describes the building and references each of the building’s levels.  Each level’s geometry is then described in a separate GeoJSON file.
 
@@ -24,6 +24,7 @@ westport-house.zip/
 ```
 
 Optionally, information on pathways within the building can be supplied in additional files alongside these, for example:
+
 ```
 westport-house.zip/
 ├── main.json
@@ -35,13 +36,14 @@ westport-house.zip/
 ...
 ```
 
-An example of this file structure can be found in the [examples directory.](/examples/)
+An example of this file structure can be found in the [examples directory.](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples)
 
-##### Main JSON file
+### Main JSON file
 
 The main JSON file is named `main.json` sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below. 
 
-###### Building
+#### Building
+
 |Field|Type|Required|Description|
  --- | --- | --- | ---
 |`id`|string|Yes| an identifier for the building
@@ -52,7 +54,8 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 |`levels`|Level[]|Yes| an array of the levels that make up the building (explained below)
 |`entrance_level`|integer|No, default:0| a zero-based index into levels[] stating which floor the interior will open on
  
-###### Level
+#### Level
+
 |Field|Type|Description|
  --- | --- | ---
 |`id`|string| an identifier for the level
@@ -61,7 +64,7 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 |`z_order`|integer| should be 0 for the lowest level and increment by one for each level above that
 |`filename`|string| filename of the GeoJSON file containing the features of the level. Must not begin with a period or underscore
 
-###### Example
+#### Example
 
 ```json
 {
@@ -91,7 +94,7 @@ The main JSON file is named `main.json` sits in the root of the submitted archiv
 }  
 ```
 
-##### Level GeoJSONs
+### Level GeoJSONs
 
 The features in each level are specified in the [GeoJSON format](http://geojson.org/geojson-spec.html), exportable from several common GIS tools (QGIS, ArcGIS, etc.).
 
@@ -99,7 +102,7 @@ Each level’s GeoJSON file is expected to contain a FeatureCollection in the WG
 
 In addition to the default GeoJSON members, each feature may specify some additional attributes.
 
-###### Attributes
+#### Attributes
 
 |Attribute|Type|Description|
  --- | --- | ---
@@ -108,7 +111,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`type`|string|the type of the feature - this should match one of the strings in “Feature Types,” below.
 |`highlight`|boolean|whether to generate a highlight for the feature. Optional. Defaults to false.
 
-###### Attributes for placeholders 
+#### Attributes for placeholders 
 
 |Attribute|Type|Description|
  --- | --- | ---
@@ -118,7 +121,8 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`scale`|double|Uniform scale attribute for the mesh. Defaults to 1.0
 
  
-###### Feature Types
+#### Feature Types
+
 |Type|Shows Label|Description|
  --- | --- | --- 
 |`bathroom`|Yes| marks out bathrooms in the current level
@@ -141,7 +145,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 
 All feature types listed are expected to be specified as GeoJSON Polygons. 
 
-##### Label Icons
+### Label Icons
 
 If a feature is given a label which matches one of the following strings, the text will be replaced with a POI icon. This setting is controlled by the app, and can be modified by [InteriorsEntitiesPinsController.cpp.](https://github.com/wrld3d/wrld-example-app/blob/master/src/InteriorsEntitiesPins/SdkModel/InteriorsEntitiesPinsController.cpp)
 
@@ -156,7 +160,7 @@ If a feature is given a label which matches one of the following strings, the te
 |`Stairs`|
 
 
-###### Example
+#### Example
 
 ```json
 {
@@ -176,7 +180,7 @@ If a feature is given a label which matches one of the following strings, the te
 }
 ```
 
-#### Paths
+## Paths
 
 Path information is optional and does not affect the appearance of the map. If paths are present, they will be processed for use by the [WRLD routing service](https://github.com/wrld3d/wrld-routing-api/).  
 
@@ -185,7 +189,7 @@ A path represents a portion of a route by which people can move from place to pl
 Each path GeoJSON file is expected to contain a FeatureCollection in the WGS84 (EPSG: 4326) Coordinate Reference System, and include the appropriate `crs` attribute. Paths are represented as GeoJSON features with LineString geometry. Coordinates on the LineString are points along the path. Paths intersect if they have a point in common on the same level.
 
 
-###### LineString Feature Types
+#### LineString Feature Types
 
 LineString feature types are used to define pathways by which people can travel within the building. These will not be visible in the map.
 
@@ -206,7 +210,7 @@ A LineString feature representing a path may have some additional properties:
 |`name`|string|The feature's name, for example, `main corridor`. Optional, can be null.
 |`type`|string|The type of the feature. This should match one of the strings in “LineString Feature Types” above.
 
-###### Level path JSON file
+#### Level path JSON file
 
 Each level path JSON file consists of a FeatureCollection specifying paths contained on a single level. The z_order value for the level is specified in an extra top level attribute.
 
@@ -216,7 +220,7 @@ Each level path JSON file consists of a FeatureCollection specifying paths conta
 
 Note that the `z_order` attribute is an extension of the core GeoJSON format and will not be automatically generated by GIS tools.
 
-###### Example -- level-paths.geojson
+#### Example -- level-paths.geojson
 
 ```json
 {
@@ -236,7 +240,7 @@ Note that the `z_order` attribute is an extension of the core GeoJSON format and
 }
 ```
 
-###### Main paths JSON file 
+#### Main paths JSON file 
 
 The main-paths.json file consists of a FeatureCollection specifying paths which span multiple levels. It also specifies which files contain single-level path definitions in an extra top-level attribute. 
 
@@ -246,7 +250,7 @@ The main-paths.json file consists of a FeatureCollection specifying paths which 
 
 In addition to the default GeoJSON members, paths spanning multiple levels must specify the level for each coordinate in the LineString:
 
-###### Multilevel Path Attributes
+#### Multilevel Path Attributes
 
 |Attribute|Type|Description|
  --- | --- | ---
@@ -254,7 +258,7 @@ In addition to the default GeoJSON members, paths spanning multiple levels must 
 
 Note that the `levels` attribute is an extension of the core GeoJSON format and will not be automatically generated by GIS tools.
 
-###### Example -- main-paths.json
+#### Example -- main-paths.json
 
 This example shows how to define a path between floors via an elevator.
 This is represented by a path between the same [long, lat] point on different levels.  The specified point should also be present on a path defined for each level, to allow a route from the elevator to other points on the level.
@@ -283,13 +287,13 @@ This is represented by a path between the same [long, lat] point on different le
 ```
 ---
 
-#### Disclaimer
+## Disclaimer
 This is a stable, semantically versioned Format.
 
 WRLD may make changes to the Format from time to time but will adhere to [Semantic Versioning](http://semver.org/) and provide backward compatible end points for as long as possible.
 
 ---
 
-#### Contact us
+## Contact us
 If you have any problems or queries please [raise an issue](https://github.com/wrld3d/wrld-indoor-maps-api/issues/new) or alternatively get in touch with us at support@wrld3d.com.
 
