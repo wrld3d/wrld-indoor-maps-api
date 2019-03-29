@@ -287,6 +287,53 @@ This is represented by a path between the same [long, lat] point on different le
 ```
 ---
 
+## Indoor Assets
+
+Indoor Assets are optional pieces of furniture you can add to an Indoor Map.  These are a separate GeoJSON format from the main Indoor Map format that defines all the Indoor Assets for a given floor, which can then be imported using the Import Assets function of the WRLD Indoor Map Designer.
+
+Each assets GeoJSON file is expected to contain a FeatureCollection in the WGS84 (EPSG: 4326) Coordinate Reference System, and include the appropriate crs attribute. Assets are represented as GeoJSON features with Polygon or Point geometry, with the center of the Polygon or the Point position itself being used as the central point of the Asset.
+
+#### Asset Properties
+
+|Attribute|Type|Description|
+ --- | --- | ---
+|`id`|integer|An identifier for the feature. Each asset must have a unique id.
+|`name`|string|The asset's name, for example, `Desk 42`. Optional, can be null.
+|`type`|string|Must be set to "InstancedEntity" to be recognized by the Asset Import process.
+|`instance`|string|A Prop ID matching one from our [Prop List](prop-list.html).
+|`heading`|number|The orientation of the Asset model, where 0 is facing North, 90 East etc.
+|`height`|number|A height offset in meters. E.g a value of 5 will place the Asset 5m above the floor.
+
+
+#### Example -- desks_geojson_trace.json
+
+```json
+{
+    "type": "FeatureCollection",
+    "features": [
+        { 
+            "type": "Feature", 
+            "properties": {
+                "id": 11, 
+                "type": "InstancedEntity", 
+                "name": "MyDesk1", 
+                "instance": "white_desk_01", 
+                "heading": 70, 
+                "height": 0 
+            }, 
+            "geometry": { 
+                "type": "Polygon", 
+                "coordinates": [ [ [ -2.979148078887524, 56.462091078201396 ], [ -2.979126744285509, 56.462095184442788 ], [ -2.979122727310234, 56.462088578750119 ], [ -2.979144151178366, 56.462083936912023 ], [ -2.979148078887524, 56.462091078201396 ] ] ] 
+            } 
+        }
+    ]
+}
+```
+---
+
+
+--
+
 ## Disclaimer
 This is a stable, semantically versioned Format.
 

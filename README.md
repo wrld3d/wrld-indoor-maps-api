@@ -106,7 +106,9 @@ curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1/indoor-data/UUID?token=dev_
 curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_token -F feature_to_poi_key="@/path/to/my/file" -F "contact_email=example@mail.com"
 ```
 
-###### Details for feature-to-poi key:
+
+
+#### Details for feature-to-poi key:
 * **defaults:** Which interior feature types should have POIs generated, and what tag should be used to represent them.
 * **special:** Which interior IDs should have POIs generated, and what tag should be used to represent them.
 * **highlight_color:** What colour and opacity should be used for area highlights, where features have highlight set.
@@ -132,7 +134,7 @@ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_tok
 }
 ```
 
-###### Sample feature-to-poi key:
+#### Sample feature-to-poi key:
 ```json
 {
   "defaults": {
@@ -150,6 +152,122 @@ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_tok
     "opacity":128
   }
 }
+```
+
+---
+
+## Indoor Assets
+
+### Create a new Indoor Asset set for a given Indoor Map and Floor
+
+```sh
+curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets?token=<dev_auth_token> -F "name=My Set"
+```
+
+### Add a new Indoor Asset to a set
+
+```sh
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token> -F "name=entity name" -F "lat=12.3" -F "lon=34.5" -F "orientation=45.0" -F "model=white_desk_01"
+```
+The `model` parameter should match a Prop ID on our [Prop List](PROP-LIST.md).
+
+## Update an Indoor Asset
+
+```sh
+curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token> -F "name=updated name" -F "orientation=90.0"
+```
+
+## Remove an Indoor Asset
+
+```sh
+curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token>
+```
+
+### Bulk process Indoor Assets for a set
+
+Similar to the POI API you can perform bulk operations that can create, update or delete existing entities in a set.
+
+```sh
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/bulk?token=<dev_auth_token> -d '{
+      "create":[
+        {"name":"new", "lat":11.1, "lon":22.2, "orientation":45.0, "model":"circular_table_01"},
+        {"name":"new2", "lat":33.3, "lon":44.4, "orientation":22.5, "model":"circular_table_01"}
+      ],
+      "update":[
+        {"id":5, "name":"updated_name"}
+      ],
+      "delete":[
+        6,
+        7
+      ]
+    }'
+```
+
+### Delete an Indoor Asset Set
+
+```sh
+curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token>
+```
+
+### Publish an Indoor Asset Set
+
+```sh
+curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/publish?token=<dev_auth_token>
+```
+
+For more information on publishing an Indoor Asset Set, see the [Indoor Assets Tutorial](TUTORIAL-ASSETS.md#publishing-your-assets).
+
+### Download an Indoor Asset Set as a GeoJSON
+
+```sh
+curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities.geojson?token=<dev_auth_token> > ./entities.geojson
+```
+
+## Importing Indoor Asset Sets
+
+For more information on how to prepare an Indoor Asset AutoCAD DXF submission, refer to the [Indoor Assets Tutorial](TUTORIAL-ASSETS.md#preparing-an-asset-autocad-dxf-submission).
+
+### Import an Indoor Asset Set from an AutoCAD DXF
+
+```sh
+curl -v -XPOST "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions?token=<dev_auth_token>" -F 'file=@./submission_file.zip' -F 'submission_contact_email=optional.email.address@website.com'
+```
+
+### Fetching the status of an Import Request
+
+Calling the above endpoint submits a file to be processed by our pipeline that takes a short time to complete.  If you specified an email address, you will be mailed the result (success or failure) to that address upon completion.  If not you can fetch the current status via:
+
+```sh
+curl -v "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>?token=<dev_auth_token>"
+```
+
+The `status` parameter has the following values:
+
+|Status|Value|Description|
+ --- | --- | ---
+|Waiting    | 0 | The conversion job is waiting in a queue to process.
+|Working    | 1 | The conversion job is currently being processed.
+|Failed     | 2 | The conversion job has failed to process.
+|Success    | 3 | The conversion job has succeeded.
+
+### Fetching the GeoJSON result of an Import Request
+
+```sh
+curl -v "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>/result.geojson?token=<dev_auth_token>"
+```
+
+### Getting more details on an Import Request Success or Failure
+
+To fetch some additional information such as Warnings or Failures on a completed import request, you can call the following:
+
+```sh
+curl -v "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>/report.json?token=<dev_auth_token>"
+```
+
+### Cancelling an Import Request
+
+```sh
+curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>?token=<dev_auth_token>
 ```
 
 ---
