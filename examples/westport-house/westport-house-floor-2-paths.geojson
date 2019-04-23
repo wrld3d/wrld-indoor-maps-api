@@ -1,51 +1,46 @@
 {
-    "type": "FeatureCollection",
-    "crs": {
-        "type": "name",
-        "properties": {
-            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-        }
-    },
-    "features": [
-        {
-            "type": "Feature",
-            "properties": {
-                "id": 202,
-                "type": "pathway"
-            },
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                     [ -2.978678817233738, 56.460272668998016 ],
-                     [ -2.978694699091213, 56.460268932090379 ],
-                     [ -2.978684422595199, 56.460234365694696 ],
-                     [ -2.978662935376262, 56.460237168375428 ],
-                     [ -2.978616224030746, 56.460244642190709 ],
-                     [ -2.978611552896195, 56.460217549610306 ],
-                     [ -2.978576986500513, 56.460224089198682 ],
-                     [ -2.978552696600845, 56.460148416818946 ],
-                     [ -2.978520932885894, 56.460060599489374 ],
-                     [ -2.978448063186889, 56.460065270623929 ],
-                     [ -2.978384535756988, 56.460071810212298 ],
-                     [ -2.978324745234728, 56.460079284027586 ],
-                     [ -2.978311666057983, 56.460034441135889 ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": 203,
-                "type": "pathway"
-            },
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                    [ -2.978611552896195, 56.460217549610306 ],
-                    [ -2.978658099378138, 56.460213410386331 ]
-                ]
-            }
-        }
-    ],
-    "z_order": 2
+"type": "FeatureCollection",
+"z_order": 2,
+"name": "westport-house-floor-2-paths",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 202, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9783265, 56.4600756 ], [ -2.978321035632852, 56.460053035123508 ], [ -2.978301632583149, 56.460055317835234 ], [ -2.978287936312771, 56.460017653091697 ], [ -2.978255407670622, 56.460021647837223 ], [ -2.978242282078176, 56.459982271059886 ], [ -2.978226873774001, 56.459947459706008 ], [ -2.978224591062271, 56.459942894282548 ], [ -2.978214318859487, 56.459917784453523 ], [ -2.97821032411396, 56.459906370894871 ], [ -2.978200622589109, 56.459884685133439 ], [ -2.978204617334636, 56.459871559540993 ], [ -2.978195486487717, 56.459841884288508 ], [ -2.978271386652731, 56.459831041407796 ] ] } },
+{ "type": "Feature", "properties": { "id": 203, "name": "Big meeting room", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978255407670622, 56.460021647837223 ], [ -2.978267962585136, 56.460054747157301 ], [ -2.978217742927082, 56.460062165970427 ] ] } },
+{ "type": "Feature", "properties": { "id": 204, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978255407670622, 56.460021647837223 ], [ -2.978239428688514, 56.460032490717943 ], [ -2.978194345131852, 56.460038197497262 ], [ -2.978175512760082, 56.459990831228872 ], [ -2.978242282078176, 56.459982271059886 ] ] } },
+{ "type": "Feature", "properties": { "id": 205, "name": "Server room", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978194345131852, 56.460038197497262 ], [ -2.978163528523501, 56.460043904276588 ], [ -2.978173800726285, 56.460072438173206 ] ] } },
+{ "type": "Feature", "properties": { "id": 206, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978242282078176, 56.459982271059886 ], [ -2.978320036946469, 56.459972426865555 ] ] } },
+{ "type": "Feature", "properties": { "id": 207, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978287936312771, 56.460017653091697 ], [ -2.978322034319233, 56.460014086354619 ], [ -2.978325743725794, 56.460022931862575 ] ] } },
+{ "type": "Feature", "properties": { "id": 208, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978224591062271, 56.459942894282548 ], [ -2.978295783134341, 56.459933620766151 ] ] } },
+{ "type": "Feature", "properties": { "id": 209, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978226873774001, 56.459947459706008 ], [ -2.978161103142288, 56.459955877205509 ], [ -2.978168521955409, 56.459973568221415 ], [ -2.978175227421116, 56.459990831228872 ] ] } },
+{ "type": "Feature", "properties": { "id": 2010, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.97821032411396, 56.459906370894871 ], [ -2.97829207372778, 56.459894814666747 ] ] } },
+{ "type": "Feature", "properties": { "id": 2011, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978204617334636, 56.459871559540993 ], [ -2.978279518813268, 56.459862143355096 ] ] } },
+{ "type": "Feature", "properties": { "id": 2012, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978200622589109, 56.459884685133439 ], [ -2.978118016958391, 56.459894671997255 ], [ -2.978113166195965, 56.459901805471404 ], [ -2.978122297042884, 56.459924632588702 ], [ -2.978214318859487, 56.459917784453523 ] ] } },
+{ "type": "Feature", "properties": { "id": 2013, "name": "Storage", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978118016958391, 56.459894671997255 ], [ -2.978110027467336, 56.459874983608586 ] ] } },
+{ "type": "Feature", "properties": { "id": 2014, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978168521955409, 56.459973568221415 ], [ -2.978148548227775, 56.459975993602626 ], [ -2.97813456661843, 56.459978276314352 ], [ -2.978128003822207, 56.459960585298447 ], [ -2.978161103142288, 56.459955877205509 ] ] } },
+{ "type": "Feature", "properties": { "id": 2015, "name": "Kitchen", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978148548227775, 56.459975993602626 ], [ -2.978157393735728, 56.460001959448547 ], [ -2.978146836193977, 56.460003100804414 ], [ -2.978153113651234, 56.460019650464453 ] ] } },
+{ "type": "Feature", "properties": { "id": 2016, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.97813456661843, 56.459978276314352 ], [ -2.978103750010079, 56.459976564280552 ], [ -2.978100325942485, 56.459964580043973 ], [ -2.978068367978269, 56.459963724027077 ], [ -2.97808035221485, 56.459939755553911 ], [ -2.978101752637316, 56.459942323604608 ], [ -2.978122297042884, 56.459924632588702 ] ] } },
+{ "type": "Feature", "properties": { "id": 2017, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978113166195965, 56.459901805471404 ], [ -2.978101752637316, 56.459942323604608 ] ] } },
+{ "type": "Feature", "properties": { "id": 2018, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978128003822207, 56.459960585298447 ], [ -2.978101752637316, 56.459942323604608 ] ] } },
+{ "type": "Feature", "properties": { "id": 2019, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978128003822207, 56.459960585298447 ], [ -2.978100325942485, 56.459964580043973 ], [ -2.978101752637316, 56.459942323604608 ] ] } },
+{ "type": "Feature", "properties": { "id": 2020, "name": "Breakout area", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.97808035221485, 56.459939755553911 ], [ -2.978048394250633, 56.459930910045962 ] ] } },
+{ "type": "Feature", "properties": { "id": 2021, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978068367978269, 56.459963724027077 ], [ -2.978049820945465, 56.459970001484329 ] ] } },
+{ "type": "Feature", "properties": { "id": 2022, "name": "Small meeting room", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978049820945465, 56.459970001484329 ], [ -2.978027279167134, 56.459973140212959 ], [ -2.977989614423594, 56.459975708263656 ] ] } },
+{ "type": "Feature", "properties": { "id": 2023, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978068367978269, 56.459963724027077 ], [ -2.978016721625385, 56.459954593180157 ] ] } },
+{ "type": "Feature", "properties": { "id": 2024, "name": "Balcony", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978016721625385, 56.459954593180157 ], [ -2.977989043745662, 56.459950598434631 ], [ -2.97799674789775, 56.459928627334229 ], [ -2.97801928967608, 56.459909794962464 ], [ -2.97804040475958, 56.459894671997255 ], [ -2.978064943910675, 56.459883829116535 ] ] } },
+{ "type": "Feature", "properties": { "id": 2025, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978113166195965, 56.459901805471404 ], [ -2.97808634433314, 56.459906370894863 ] ] } },
+{ "type": "Feature", "properties": { "id": 2026, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978321035632852, 56.460053035123508 ], [ -2.978344005419631, 56.460049896394871 ] ] } },
+{ "type": "Feature", "properties": { "id": 201, "name": "WRLD Office", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978322034319233, 56.460014086354619 ], [ -2.978330023810287, 56.460001674109577 ], [ -2.978320036946469, 56.459972426865555 ], [ -2.978307767370922, 56.459939470214941 ], [ -2.978295783134341, 56.459933620766151 ], [ -2.978295783134341, 56.459933620766151 ], [ -2.978300919235733, 56.459916072419709 ], [ -2.97829207372778, 56.459894814666747 ], [ -2.978279518813268, 56.459862143355096 ], [ -2.978271386652731, 56.459831041407796 ] ] } },
+{ "type": "Feature", "properties": { "id": 2027, "name": "Disabled toilet", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9785783, 56.4601442 ], [ -2.9786089, 56.4601424 ], [ -2.9786369, 56.4601383 ] ] } },
+{ "type": "Feature", "properties": { "id": 2028, "name": "path into stairs", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9786873, 56.4602286 ], [ -2.9786991, 56.4602633 ] ] } },
+{ "type": "Feature", "properties": { "id": 2029, "name": "Stairwell", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9786155, 56.4602366 ], [ -2.9786873, 56.4602286 ] ] } },
+{ "type": "Feature", "properties": { "id": 2030, "name": "path into elevator", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9786092, 56.4602192 ], [ -2.9786573, 56.4602133 ] ] } },
+{ "type": "Feature", "properties": { "id": 2031, "name": "Unit 3", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9781405, 56.4601 ], [ -2.9780359, 56.4601131 ] ] } },
+{ "type": "Feature", "properties": { "id": 2032, "name": "Unit 1", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9785198, 56.4600584 ], [ -2.9784866, 56.4599541 ] ] } },
+{ "type": "Feature", "properties": { "id": 2033, "name": "Male toilets", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9785783, 56.4601442 ], [ -2.9785729, 56.4601284 ], [ -2.9785927, 56.4601257 ], [ -2.9785873, 56.4601085 ] ] } },
+{ "type": "Feature", "properties": { "id": 2034, "name": "Female toilets", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9785783, 56.4601442 ], [ -2.9785864, 56.4601654 ], [ -2.9785954, 56.4601921 ] ] } },
+{ "type": "Feature", "properties": { "id": 2035, "name": "Main corridor", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9785505, 56.4601469 ], [ -2.9785783, 56.4601442 ] ] } },
+{ "type": "Feature", "properties": { "id": 2036, "name": "Unit 4", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.978574, 56.4602246 ], [ -2.9785078, 56.4602323 ] ] } },
+{ "type": "Feature", "properties": { "id": 2037, "name": "Main corridor", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9786155, 56.4602366 ], [ -2.9786092, 56.4602192 ], [ -2.978574, 56.4602246 ], [ -2.9785505, 56.4601469 ], [ -2.9785198, 56.4600584 ], [ -2.9783265, 56.4600756 ], [ -2.9781405, 56.4601 ], [ -2.9781233, 56.4600458 ], [ -2.9781053, 56.4599988 ] ] } },
+{ "type": "Feature", "properties": { "id": 2038, "name": "Corridor", "type": "pathway" }, "geometry": { "type": "LineString", "coordinates": [ [ -2.9785198, 56.4600584 ], [ -2.9785727, 56.4600514 ], [ -2.9786172, 56.4600449 ], [ -2.9785729, 56.4599216 ], [ -2.9785679, 56.4599051 ], [ -2.9786167, 56.4598988 ] ] } }
+]
 }
