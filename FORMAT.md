@@ -189,7 +189,7 @@ A path represents a portion of a route by which people can move from place to pl
 Each path GeoJSON file is expected to contain a FeatureCollection in the WGS84 (EPSG: 4326) Coordinate Reference System, and include the appropriate `crs` attribute. Paths are represented as GeoJSON features with LineString geometry. Coordinates on the LineString are points along the path. Paths intersect if they have a point in common on the same level.
 
 
-#### LineString Feature Types
+###### LineString Feature Types
 
 LineString feature types are used to define pathways by which people can travel within the building. These will not be visible in the map.
 
@@ -199,6 +199,7 @@ LineString feature types are used to define pathways by which people can travel 
 |`stairs`|a pathway between levels via stairs
 |`escalator`|a pathway between levels via an escalator
 |`elevator`|a pathway between levels via an elevator
+|`entrance`|a pathway used to enter/exit the building
 
 All feature types listed above are expected to be specified as GeoJSON LineStrings.
 
@@ -210,6 +211,18 @@ A LineString feature representing a path may have some additional properties:
 |`name`|string|The feature's name, for example, `main corridor`. Optional, can be null.
 |`type`|string|The type of the feature. This should match one of the strings in “LineString Feature Types” above.
 
+###### Entrances
+
+Entrances are used for connecting the internal paths with the external navigation graph.  For our [routing service](https://github.com/wrld3d/wrld-routing-api) it's enough to just define the entrance. For our (Unsupported) Valhalla integration additional steps are required:
+
+- Define the path so the last node ends outside the building (i.e. the way travels from inside to outside)
+- Add an additional property `link` for this feature:
+
+|Attribute|Type|Description|
+ --- | --- | ---
+|`link`|string|A reference to an OSM Node id you wish to connect this entrance to, i.e. "6400573854" for https://www.openstreetmap.org/node/6400573854.
+
+This allows Valhalla to connect your Indoor Map's paths to an external OSM navgraph.
 #### Level path JSON file
 
 Each level path JSON file consists of a FeatureCollection specifying paths contained on a single level. The z_order value for the level is specified in an extra top level attribute.
