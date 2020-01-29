@@ -1,7 +1,7 @@
 Defining path information for your indoor map
 ===================
 
-eeGeo’s routing service gives you complete control over navigation in your indoor map!  This tutorial shows you how to define the pathways which serve as inputs to the routing service. 
+The WRLD routing service gives you complete control over navigation in your indoor map!  This tutorial shows you how to define the pathways which serve as inputs to the routing service. 
 
 Pathway information is submitted at the same time as the indoor map itself.  The routing service will only return routes which follow the pathways you specify.  See the routing service documentation for further details.
 
@@ -24,7 +24,7 @@ should be deleted from the copied folder.
 
 ### Defining paths on a single level 
 
-We’ll start by defining paths on floor 2 of Westport House, where the eeGeo offices are.
+We’ll start by defining paths on floor 2 of Westport House, where the WRLD offices are.
 
 Open QGIS and start a new project.  Add the `westport-house-floor-2.geojson` file to the project, either by selecting Layer > Add Layer > Add Vector Layer… or by dragging and dropping the file into the main QGIS window area.
 
