@@ -143,7 +143,7 @@ All feature types listed are expected to be specified as GeoJSON Polygons.
 
 ##### Label Icons
 
-If a feature is given a label which matches one of the following strings, the text will be replaced with a POI icon. This setting is controlled by the app, and can be modified by [InteriorsEntitiesPinsController.cpp.](https://github.com/wrld3d/wrld-example-app/blob/master/src/InteriorsEntitiesPins/SdkModel/InteriorsEntitiesPinsController.cpp)
+If a feature is given a label which matches one of the following strings, the text will be replaced with a POI icon.
 
 |Label|
 |----|
