@@ -169,7 +169,7 @@ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>
 ```sh
 curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token> -F "name=entity name" -F "lat=12.3" -F "lon=34.5" -F "orientation=45.0" -F "model=white_desk_01"
 ```
-The `model` parameter should match a Prop ID on our [Prop List](PROP-LIST.md).
+The `model` parameter should match a `prop_id` from our [prop manifest](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json).
 
 ## Update an Indoor Asset
 
