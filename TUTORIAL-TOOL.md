@@ -30,17 +30,17 @@ A rough outline of the process:
 #### <a name="install-software"/>Install the required software
 Pre-requisites:
 - A floor plan image (e.g. pdf, jpg, tif, png or bmp) for each of the floors you wish to submit.
-- [QGIS](https://www.qgis.org/en/site/forusers/download.html) (3.10 A Coruña shown here, but any recent version is fine) with the Georeferencer and OpenLayers plugins (**Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available).
+- [QGIS](https://www.qgis.org/en/site/forusers/download.html) version 3.10 "A Coruña" shown here, but any recent version is fine. **Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available.
 
 We're using QGIS in this example because it's free and easily available.  If you have access to other GIS software, anything that supports georeferencing, polygon creation and exports to GeoJSON should work, although of course you'll need to adapt the instructions below as appropriate.
 
 Install and run QGIS, then ensure you have access to the [Georeferencer](https://docs.qgis.org/3.10/en/docs/user_manual/plugins/core_plugins/plugins_georeferencer.html) plugin (under Raster > Georeferencer...). On recent versions of QGIS the plugin comes preinstalled but you may need to install and/or enable it (Plugins > Manage and Install Plugins > Search for “Georeferencer” > Choose “Georeferencer GDAL” > click “Install Plugin” and ensure that the checkbox next to the plugin is ticked).
 
+![Enable Georeferencer Plugin](/images/tutorial/enable_georeferencer.png)
 
+If using a version of QGIS older than 2.18 we’d also recommend you install the [OpenLayers](http://docs.qgis.org/2.2/en/docs/training_manual/qgis_plugins/plugin_examples.html?highlight=openlayers#basic-fa-the-openlayers-plugin) plugin to allow you to pull map & satellite imagery into your QGIS scene. This makes certain steps of the process much easier, as you can line up your indoor map features with the satellite imagery.
 
-We’d also recommend you install the [OpenLayers](http://docs.qgis.org/2.2/en/docs/training_manual/qgis_plugins/plugin_examples.html?highlight=openlayers#basic-fa-the-openlayers-plugin) plugin. OpenLayers allows you to pull map & satellite imagery into your QGIS scene. This makes certain steps of the process much easier, as you can line up your indoor map features with the OpenLayers imagery.
-
-**Note**: For advanced users accustomed to GIS packages, if you have access to useful data (such as a shapefile for the building that contains your indoor map), feel free to use these, as they’ll likely be more accurate than OpenLayers data.
+**Note**: For advanced users accustomed to GIS packages, if you have access to useful data (such as a shapefile for the building that contains your indoor map), feel free to use these, as they’ll likely be more accurate than freely available data.
 
 ---
 
