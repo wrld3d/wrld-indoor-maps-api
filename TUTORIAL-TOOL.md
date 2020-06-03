@@ -2,9 +2,9 @@ Uploading your indoor map to WRLD
 ===================
 If you’re interested in seeing your building’s indoor space in our immersive 3D maps, read on!
 
-This post covers creating an indoor map by georeferencing floor plan imagery. After we've processed your indoor map, you'll receive an email containing details of how to view it using the WRLD SDK.
+These instructions cover creating an indoor map by georeferencing floor plan imagery after you've claimed a building and downloaded the building outline from the [WRLD Indoor Map tool](https://mapdesigner.wrld3d.com/portal/latest/indoor-maps/). After we've processed your indoor map, you'll receive an email containing details of how to view it in WRLD.
 
-WRLD will not share your map data; this means that any submitted indoor maps will remain private to your organisation.
+WRLD will not share your map data; this means that any submitted indoor maps will remain private to your organisation, unless you choose to publish them.
 
 You can follow along on Mac OS X, Linux or Windows.
 
@@ -12,7 +12,7 @@ You can follow along on Mac OS X, Linux or Windows.
 |:-----------:|:------------:|
 |![Indoor map source data](/images/tutorial/overview_coloured.png)|![Indoor map in app](/images/tutorial/overview.png)|
 
-WRLD's office building, Westport House, will be used as the example for this post. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will not be elligible for inclusion in the public map.
+WRLD's office building, Westport House, will be used as the example for this tutorial. The owners have kindly given us permission. Please note that if you do not have the building owner’s approval to submit a map to the service, your submission will not be eligible for inclusion in the public map.
 
 For detailed information on the WRLD Indoor Map format, please refer to the [format documentation](FORMAT.md).
 
@@ -29,12 +29,14 @@ A rough outline of the process:
 
 #### <a name="install-software"/>Install the required software
 Pre-requisites:
-- A floor plan image (tif, png or bmp) for each of the floors you wish to submit.
-- [QGIS](https://www.qgis.org/en/site/forusers/download.html) (2.12 Lyon at the time of writing) with the Georeferencer and OpenLayers plugins (**Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is available, but we're using QGIS for this guide as it's free).
+- A floor plan image (e.g. pdf, jpg, tif, png or bmp) for each of the floors you wish to submit.
+- [QGIS](https://www.qgis.org/en/site/forusers/download.html) (3.10 A Coruña shown here, but any recent version is fine) with the Georeferencer and OpenLayers plugins (**Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available).
 
-We're using QGIS in this example because it's free and easily available.  If you have access to other GIS software though, anything that supports georeferencing, polygon creation and exports to GeoJSON should work, although of course you'll need to adapt the instructions below as appropriate.
+We're using QGIS in this example because it's free and easily available.  If you have access to other GIS software, anything that supports georeferencing, polygon creation and exports to GeoJSON should work, although of course you'll need to adapt the instructions below as appropriate.
 
-Install and run QGIS, then ensure you have access to the [Georeferencer](http://docs.qgis.org/2.2/en/docs/user_manual/plugins/plugins_georeferencer.html) plugin (under Raster > Georeferencer). On Windows, this functionality comes as standard. On OS X and Linux, you may have to install it via the plugins manager (Plugins > Manage and Install Plugins > Search for “Georeferencer” > Choose “Georeferencer GDAL” > click “Install Plugin”).
+Install and run QGIS, then ensure you have access to the [Georeferencer](https://docs.qgis.org/3.10/en/docs/user_manual/plugins/core_plugins/plugins_georeferencer.html) plugin (under Raster > Georeferencer...). On recent versions of QGIS the plugin comes preinstalled but you may need to install and/or enable it (Plugins > Manage and Install Plugins > Search for “Georeferencer” > Choose “Georeferencer GDAL” > click “Install Plugin” and ensure that the checkbox next to the plugin is ticked).
+
+
 
 We’d also recommend you install the [OpenLayers](http://docs.qgis.org/2.2/en/docs/training_manual/qgis_plugins/plugin_examples.html?highlight=openlayers#basic-fa-the-openlayers-plugin) plugin. OpenLayers allows you to pull map & satellite imagery into your QGIS scene. This makes certain steps of the process much easier, as you can line up your indoor map features with the OpenLayers imagery.
 
