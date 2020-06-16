@@ -30,7 +30,7 @@ A rough outline of the process:
 #### <a name="install-software"/>Install the required software
 Pre-requisites:
 - A floor plan image (e.g. pdf, jpg, tif, png or bmp) for each of the floors you wish to submit.
-- [QGIS](https://www.qgis.org/en/site/forusers/download.html) version 3.10 "A Coruña" shown here, but any recent version is fine. **Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available.
+- [QGIS](https://www.qgis.org/en/site/forusers/download.html) - version 3.10 "A Coruña" is shown here, but any recent version is fine. **Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available.
 
 We're using QGIS in this example because it's free and easily available.  If you have access to other GIS software, anything that supports georeferencing, polygon creation and exports to GeoJSON should work, although of course you'll need to adapt the instructions below as appropriate.
 
@@ -38,7 +38,7 @@ Install and run QGIS, then ensure you have access to the [Georeferencer](https:/
 
 ![Enable Georeferencer Plugin](/images/tutorial/enable_georeferencer.png)
 
-If using a version of QGIS older than 2.18 we’d also recommend you install the [OpenLayers](http://docs.qgis.org/2.2/en/docs/training_manual/qgis_plugins/plugin_examples.html?highlight=openlayers#basic-fa-the-openlayers-plugin) plugin to allow you to pull map & satellite imagery into your QGIS scene. This makes certain steps of the process much easier, as you can line up your indoor map features with the satellite imagery.
+If using a version of QGIS older than 2.18 we’d also recommend you install the [OpenLayers](http://docs.qgis.org/2.18/en/docs/training_manual/qgis_plugins/plugin_examples.html?highlight=openlayers#basic-fa-the-openlayers-plugin) plugin to allow you to pull map & satellite imagery into your QGIS scene. This makes certain steps of the process much easier, as you can line up your indoor map features with the satellite imagery.
 
 **Note**: For advanced users accustomed to GIS packages, if you have access to useful data (such as a shapefile for the building that contains your indoor map), feel free to use these, as they’ll likely be more accurate than freely available data.
 
@@ -49,9 +49,13 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 
 [Georeferencing](https://en.wikipedia.org/wiki/Georeference) basically means saying ‘point **P** on the image is at geographic coordinate **Q**’. This will allow you to view your floor plan image in QGIS with the correct location and orientation.
 
-- Open QGIS and add a layer of your choice via OpenLayers (e.g. to add an Open Street Map layer, choose Web > OpenLayers plugin > and then choose a layer -- experiment with each to see which one best suits your location of interest).
-- Browse to your building’s location via left-click dragging & zooming with the mouse wheel.
-- Open the Georeferencer (Raster > Georeferencer > Georeferencer).
+- Open QGIS and create a New Project
+- Add a map layer to help locate your building (experiment with each to see which one best suits your location of interest):
+  - To add an OpenStreetMap layer simply select XYZ Tiles > OpenStreetMap from the Browser panel and drag it to the Layers panel.
+  - To add a Google Maps Satellite layer, right-click on XZY Tiles in the Browser panel, select "New Connection..." and set the Name to "Google Satellite" and URL to ``http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}``.  Click on the newly-created XYZ Tiles > Google Satellite and drag it to the Layers panel.
+  - Older versions of QGIS will need to use the OpenLayers plugin. Choose Web > OpenLayers plugin > and then choose a layer.
+- Browse to your building’s location via left-click panning & zooming with the mouse wheel.
+- Open the Georeferencer (Raster > Georeferencer...).
 
 ![Georeferencer toolbar](/images/tutorial/georeferencing_toolbar.png)
 - Click “Add Raster”.
@@ -63,10 +67,11 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 - In the Georeferencer window, ensure the “Add Point” tool selected and left click the first point to be referenced (a corner is a good choice).
 - Click the “From map canvas” button.
 - Left click the location on the map matching the point you’ve just selected.
+- Click the "OK" button.
 
 ![Point in Georeferencer](images/tutorial/georeference_side_by_side.png)
-- Repeat this process for a handful of points on the building perimeter; try to pick the points that are clearly visible on the map (e.g. building corners). Inaccurately georeferenced points cause distortion, so if in doubt, don't add it (in this example, only 4 points were georeferenced).
-- Open the Transformation Settings dialog and choose a filename for “Output raster”. If you're using OpenLayers, the Target SRS should be set to [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/). Otherwise, set it the QGIS project's CRS; to check this, choose Project > Project Properties > CRS. The rest of the options should roughly match the following:
+- Repeat this process for a handful of points on the building perimeter; try to pick the points that are clearly visible on the map (e.g. building corners). Inaccurately georeferenced points cause distortion so if in doubt, don't add it (in this example, only 4 points were georeferenced).
+- Open the Transformation Settings dialog and choose a filename for “Output raster”. If you're using OpenLayers, the Target SRS should be set to [EPSG:3857](https://en.wikipedia.org/wiki/Web_Mercator_projection#EPSG:3857). Otherwise, set it the QGIS project's CRS; to check this, choose Project > Properties > CRS. The rest of the options should match the following:
 
 ![Transform settings](/images/tutorial/transform_settings.png)
 - Click the “OK” button.
@@ -74,7 +79,7 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 - The transformed image should open in the QGIS main scene view.
 
 ![Georeferenced image](images/tutorial/georeferenced_image.jpg)
-- If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced TIF into QGIS, or simply re-export with the box checked.
+- If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced TIF file into QGIS, or simply re-export with the box checked.
 - In the Layers panel, locate the layer that’s just been added. Double click it, adjust with style and transparency so you can see the underlying map imagery.
 - If the result is sub-par and heavily distorted, try the process again and choose different points to georeference. Again, fewer is often better.
 
@@ -86,7 +91,7 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 
 - Set the opacity on your floor plan image layer fully opaque once more.
 - Create a new QGIS layer via Layer > Create Layer > New Shapefile Layer.
-- When prompted, choose the Type: Polygon radio button option, then choose the appropriate CRS (again, this is typically [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/) unless your QGIS project is using something else).
+- When prompted, choose the Type: Polygon radio button option, then choose the appropriate CRS (again, this is typically [EPSG:3857](https://en.wikipedia.org/wiki/Web_Mercator_projection#EPSG:3857) unless your QGIS project is using something else).
 - Finally, add “type” and “name” to the attribute list (under “New attribute”, fill in the attribute name and click the “Add to attributes list” button). The default data types are fine (String, 80 width).
 
 ![New level layer](/images/tutorial/new_level_layer.png)
