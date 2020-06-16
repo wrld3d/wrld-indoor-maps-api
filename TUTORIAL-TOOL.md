@@ -30,7 +30,8 @@ A rough outline of the process:
 #### <a name="install-software"/>Install the required software
 Pre-requisites:
 - A floor plan image (e.g. pdf, jpg, tif, png or bmp) for each of the floors you wish to submit.
-- [QGIS](https://www.qgis.org/en/site/forusers/download.html) - version 3.10 "A Coruña" is shown here, but any recent version is fine. **Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available.
+- A building outline geojson file, downloaded from the WRLD [Indoor Map Tool](https://mapdesigner.wrld3d.com/indoormap/latest/).  If your building does not exist in WRLD or the outline is inaccurate, you can create your own following [this tutorial](TUTORIAL.md).
+- [QGIS](https://www.qgis.org/en/site/forusers/download.html) - Instructions for version 3.10 "A Coruña" is shown here, but any recent version is fine. **Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available.
 
 We're using QGIS in this example because it's free and easily available.  If you have access to other GIS software, anything that supports georeferencing, polygon creation and exports to GeoJSON should work, although of course you'll need to adapt the instructions below as appropriate.
 
@@ -87,10 +88,14 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 
 #### <a name="create-indoor-map-level"/>Create an indoor map level
 
-We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a single building level. For the purposes of this tutorial, we're tracing the westport house floor that houses the WRLD offices -- this is the second level.
+We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a single building level. For the purposes of this tutorial, we're tracing the Westport House floor that contains the WRLD Dundee office -- this is the second level.
 
-- Set the opacity on your floor plan image layer fully opaque once more.
-- Create a new QGIS layer via Layer > Create Layer > New Shapefile Layer.
+- Set the transparency on your floor plan image layer fully opaque once more.
+- Add your building outline as a new QGIS layer, either by dragging it into your QGIS window, or:
+  - Go to Layer > Add Layer > Add Vector Layer...
+  - Select your file as the Source > Vector Dataset(s)
+  - Click "Add"
+  
 - When prompted, choose the Type: Polygon radio button option, then choose the appropriate CRS (again, this is typically [EPSG:3857](https://en.wikipedia.org/wiki/Web_Mercator_projection#EPSG:3857) unless your QGIS project is using something else).
 - Finally, add “type” and “name” to the attribute list (under “New attribute”, fill in the attribute name and click the “Add to attributes list” button). The default data types are fine (String, 80 width).
 
