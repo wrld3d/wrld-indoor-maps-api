@@ -80,8 +80,8 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 - The transformed image should open in the QGIS main scene view.
 
 ![Georeferenced image](images/tutorial/georeferenced_image.jpg)
-- If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced TIF file into QGIS, or simply re-export with the box checked.
-- In the Layers panel, locate the layer that’s just been added. Double click it, adjust with style and transparency so you can see the underlying map imagery.
+- If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced image into QGIS, or simply re-export with the box checked.
+- In the Layers panel, locate the layer that’s just been added. Double click it, select "Transparency" and adjust the "Global Opacity" slider so you can see the underlying map imagery.
 - If the result is sub-par and heavily distorted, try the process again and choose different points to georeference. Again, fewer is often better.
 
 ---
@@ -92,25 +92,27 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 
 - Set the transparency on your floor plan image layer fully opaque once more.
 - Add your building outline as a new QGIS layer, either by dragging it into your QGIS window, or:
-  - Go to Layer > Add Layer > Add Vector Layer...
-  - Select your file as the Source > Vector Dataset(s)
-  - Click "Add"
-  
-- When prompted, choose the Type: Polygon radio button option, then choose the appropriate CRS (again, this is typically [EPSG:3857](https://en.wikipedia.org/wiki/Web_Mercator_projection#EPSG:3857) unless your QGIS project is using something else).
-- Finally, add “type” and “name” to the attribute list (under “New attribute”, fill in the attribute name and click the “Add to attributes list” button). The default data types are fine (String, 80 width).
+  - Go to the Layer menu > Add Layer > Add Vector Layer...
+  - Select your file as the Source > Vector Dataset(s).
+  - Click "Add".
+- Ensure that your building outline layer is selected by clicking on it in the Layers panel.
+- Make the layer transparent (Layer > Properties > Symbology) and move the opacity slider to 50%.
+- Create a new QGIS layer for your indoor map level via Layer > Create Layer > New Shapefile Layer...
+- Give your new layer a suitable name. Something like "my-indoor-map-name-level-x" is good (where level-x corresponds to whatever floor of the building you're about to create):
+  - Click on the File Name browser (...) to select the location and name for your file.
+- Select "Polygon" from the Geometry Type drop-down, and select the appropriate CRS (again, this is typically [EPSG:3857](https://en.wikipedia.org/wiki/Web_Mercator_projection#EPSG:3857) unless your QGIS project is using something else).
+- Finally, add “type” and “name” to the fields list (under “New Field”, fill in the field name and click the “Add to Fields List” button). The default data types are fine (String, 80 width).
+- Click “OK”.
 
 ![New level layer](/images/tutorial/new_level_layer.png)
-- Click “OK”.
-- Give your new layer a suitable name. Something like my-indoor-map-name-level-x is good (where level-x corresponds to whatever floor of the building you're about to create).
 
-![New level layer confirmation](/images/tutorial/new_level_layer_confirmation.png)
-- Ensure that your new feature layer is selected in the Layers panel
+- Ensure that your new feature layer is selected by clicking on it in the Layers panel.
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
-- Open the Layer Style menu (Layer > Properties > Style) and move the transparency slider to 50%.
+- Make the layer transparent (Layer > Properties > Symbology) and move the opacity slider to 50%.
 
-  This allows you to see through to the floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons have a darker shade).
+  This allows you to see through to the building outline and floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons have a darker shade).
 
-- The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane.
+- The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane.  If you're happy to use the building outline that you downloaded
 - Click the “Toggle Editing” button.
 
 ![Toggle editing button](/images/tutorial/toggle_editing.png)
