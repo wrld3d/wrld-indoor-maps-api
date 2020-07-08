@@ -19,7 +19,7 @@ All of the files used in this example [can be found here](https://github.com/wrl
     - [Creating the config.json file](#creating-the-configjson-file)
       - [Rotation Calculator configuration](#rotation-calculator-configuration)
       - [Extracting names from labels](#extracting-names-from-labels)
-- [Importing](#importing)
+- [Importing your Assets](#importing-your-assets)
 - [Editing your Assets](#editing-your-assets)
 - [Publishing your Assets](#publishing-your-assets)
 - [Removing your Assets](#removing-your-assets)
@@ -218,7 +218,7 @@ In this above example, we specify a layer of the CAD named `labelLayer` to read 
 Assets can also be renamed individually after importing.
 
 
-## Importing
+## Importing your Assets
 
 With your files prepared, you can now begin the extraction process!
 
