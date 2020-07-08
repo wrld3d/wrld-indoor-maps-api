@@ -205,7 +205,7 @@ To draw the other side of the wall, use the same method with the parallel button
 
   Thankfully, we can use QGIS's Field Calculator feature to generate ids for a level.
 
-- Open the layer’s attribute table via Layer > Open Attribute Table
+- Open the layer’s attribute table via Layer > Open Attribute Table.
 - Click the Field Calculator button.
 
 ![Field Calculator](/images/tutorial/field_calculator_button.png)
