@@ -114,9 +114,9 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   - When you’re happy with the polygon, right click to accept it.
   - In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`.
 
-  If you have a descriptive name to use, enter it. Otherwise, leave the name as *NULL*.
+  If you have a descriptive name to use, enter it. Otherwise, leave the name as `NULL`.
 
-  Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, it's easier to leave them as NULL and set them all later. I would recommend this, as it's less error-prone.
+  Leave the id as `NULL`. While it is possible to manually enter ids after creating each feature, it's easier to leave them as `NULL` and set them all later. I would recommend this, as it's less error-prone.
 
 ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
 - You should now have a level outline polygon in your QGIS layer:
@@ -148,7 +148,7 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 
 - Now you can place the first point of your external wall. With snapping enabled, your cursor will snap to the edge of any other polygon, in this case the building outline. Since you currently  have no other polygons, the easiest place to start is in a corner of the building outline. Once you have placed a point there, you can place the second point farther along the edge of the building outline.
 
-- When you are actively placing points to create a polygon, two more buttons will become active on the Advanced Digitizing Panel. These two buttons will allow you to trace lines that are parallel and perpendicular to existing geometry. In this case we want the next segment of our wall to be perpendicular to the building outline so our polygon can be perfectly rectangular, so click on the perpendicular button
+- When you are actively placing points to create a polygon, two more buttons will become active on the Advanced Digitizing Panel. These two buttons will allow you to trace lines that are parallel and perpendicular to existing geometry. In this case we want the next segment of our wall to be perpendicular to the building outline so our polygon can be perfectly rectangular, so click on the perpendicular button.
 
 ![Perpendicular](/images/tutorial/perpendicular.PNG)
 
@@ -170,7 +170,7 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ![Room feature type](images/tutorial/room_type.png)
 
-- It is possible to show certain icons over features in place of text labels. This is done by entering a specific string into the name field. For example, in the image below, the bathrooms have been given a bathroom icon by using the name "Bathroom". A full list of these strings can be found in the [format documentation.](FORMAT.md)
+- It is possible to show certain icons over features in place of text labels. This is done by entering a specific string into the name field. For example, in the image below, the bathrooms have been given a bathroom icon by using the name "Bathroom". A full list of these strings can be found in the [format documentation](FORMAT.md).
 
 ![Bathroom icon](/images/tutorial/poilabel.png)
 
@@ -192,12 +192,12 @@ To draw the other side of the wall, use the same method with the parallel button
 
   Thankfully, we can use QGIS's Field Calculator feature to generate ids for a level.
 
-- Open the layer’s attribute table via Layer > Open Attribute Table
+- Open the layer’s attribute table via Layer > Open Attribute Table.
 - Click the Field Calculator button.
 
 ![Field Calculator](/images/tutorial/field_calculator_button.png)
-- Change the checkbox to “Update existing field”
-- In the combobox, select the “id” field
+- Change the checkbox to “Update existing field”.
+- In the combobox, select the “id” field.
 - In the left hand expression box enter the following:
 
   `toint(concat('n', tostring(@row_number)))`
@@ -215,9 +215,7 @@ To draw the other side of the wall, use the same method with the parallel button
 
   This will generate unique features ids. Each feature id starts with the interior level id (e.g., level 2 features will have ids 21, 22, 23..., level 3 features will have ids 31, 32, 33...)
 
-- Verify the ids have been generated correctly by opening the layer's Attribute Table
-
-  Layer > Open Attribute Table
+- Verify the ids have been generated correctly by opening the layer's Attribute Table (Layer > Open Attribute Table).
 
   Here's Westport House level 2 with auto-generated ids:
 
@@ -233,11 +231,11 @@ QGIS Shapefile layers default to storing geometry as Multipolygons.  To prepare 
 - Open the Vector > Geometry Tools > Multipart to Singlepart... tool.
 - Click "Run".
 - Right-click on the newly-created "Single parts" layer in the Layers panel and choose Export > Save Features As...
-  - Under format, choose GeoJSON
+  - Under format, choose GeoJSON.
   - Click on the File Name browser (...) to select the location and name for your file.
-  - Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/))
-  - Check the "Add saved file to map"
-  - Click “OK”
+  - Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/)).
+  - Check the "Add saved file to map".
+  - Click “OK”.
 - If you want to make further edits to your floor plan you can just edit the GeoJSON layer rather than editing the Shapefile layer you first created and going through the conversion and export steps each time.  It's now safe to remove the "Single parts" and your original Shapefile layer.
 
 You now have a single level of your building digitised! If you have more floor plans for your building, simply repeat the above steps for each level.
@@ -304,18 +302,18 @@ This concludes the editing phase.
 
 #### <a name="create-map-package"/>Package your map for submission
 
-- Place all of the indoor map files (the `main.json` file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`)
-- Zip the directory
-- On Mac OS X, right click on the folder and select Compress
-- On Windows, navigate to the directory containing your indoor map files
-  - Right click > New > Compressed (zipped) Folder and choose an appropriate name
-  - Drag the .json & .geojson files onto the .zip file
-- On Linux, you can do this via opening a terminal and entering the following commands:
+- Place all of the indoor map files (the `main.json` file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`).
+- Zip the directory:
+  - On Mac OS X, right click on the folder and select Compress.
+  - On Windows, navigate to the directory containing your indoor map files.
+    - Right click > New > Compressed (zipped) Folder and choose an appropriate name.
+    - Drag the .json & .geojson files onto the .zip file.
+  - On Linux, you can do this via opening a terminal and entering the following commands:
 ```
 $ cd ~/my-indoor-map
 $ zip -r my-indoor-map.zip .
 ```
-- Verify that the .zip structure matches the one given in the [format documentation](FORMAT.md#archive-structure)
+- Verify that the .zip structure matches the one given in the [format documentation](FORMAT.md#archive-structure).
 
 ---
 
@@ -368,14 +366,16 @@ If the error still occurs, it probably refers to one of your units being split i
 If you are struggling to locate the multipolygon in question, you can use QGIS' **Topology Checker** to find it:
 
 1. Enable the Topology Checker plugin with the Plugins > Manage and Install Plugins... dialog.
-2. Open the Topology Checker panel via *Vector > Topology Checker* 
+2. Open the Topology Checker panel via *Vector > Topology Checker*.
 
   [<img src="/images/tutorial/topology_checker_location.png">](/images/tutorial/topology_checker_location.png)
+  
 3. Click the *Configure* button (Wrench icon)
 4. Under *Current Rules* set the layer you want to check and set the rule to *"must not have multi-part geometries"*
 5. Click *Add Rule* then click *OK*
 
   [<img src="/images/tutorial/topology_checker_steps.png">](/images/tutorial/topology_checker_steps.png)
+  
 6. Click *Validate All* (check mark) in the Topology Checker panel
 7. The offending multipolygon will be displayed in the error list, and will be highlighted in red in QGIS
 
