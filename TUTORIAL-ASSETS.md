@@ -30,7 +30,7 @@ In this example we'll use a simple rectangular building as the basis for our exa
 
 ![Image showing what building we'll use for this example](images/cadtutorial/building.png)
 
-If you haven't already followed the tutorial for submitting an indoor map, we recommend you view that first before continuing. This tutorial assumes you have successfully imported an Indoor Map with at least one floor. We include a [simple floor plan submission you can use to follow this example here](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples/cad-processing/floorplan).
+If you haven't already followed the tutorial for submitting an indoor map, we recommend you view that first before continuing. This tutorial assumes you have successfully imported an Indoor Map with at least one floor. We include a [simple floor plan submission you can use to follow this example here](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples/cad-processing/floor plan).
 
 Once you have a successfully built Indoor Map, you can continue on to importing Indoor Assets. For this you have two choices:
 
@@ -52,9 +52,9 @@ First we create a new layer in QGIS
 - Give your new layer a suitable name. 
 - Ensure that your new feature layer is selected in the Layers panel.
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
-- As with the Indoor Map Tracing Tutorial, we'll be using a [georeferenced image of our floorplan](TUTORIAL-TOOL.md#georeference-the-floor-plan-image) to trace the desk positions.  The Floorplan we're using is not an exact match, but for the purposes of this example it'll demonstrate how to trace furniture positions from a floorplan into your Indoor Map.
+- As with the Indoor Map Tracing Tutorial, we'll be using a [georeferenced image of our floor plan](TUTORIAL-TOOL.md#georeference-the-floor-plan-image) to trace the desk positions.  The floor plan we're using is not an exact match, but for the purposes of this example it'll demonstrate how to trace furniture positions from a floor plan into your Indoor Map.
 
-![Image showing our georeferenced floorplan](images/cadtutorial/georeferenced_cad.png)
+![Image showing our georeferenced floor plan](images/cadtutorial/georeferenced_cad.png)
 
  - As with the Indoor Map Trace, draw a rectangle around your desks using the "Add Feature" button and populate the fields:
 
@@ -109,7 +109,7 @@ mapX,mapY,pixelX,pixelY,enable
 63084.8731,27443.9360,-2.9792483,56.4622088,1
 ```
 
-This describes four points - the first two coordinates of each line specify X and Y coordinates in the DXF file, while the next two coordinates are a longitude and latitude.  Looking at our example DXF file and floorplan GeoJSON, the 4 points refer to the following:
+This describes four points - the first two coordinates of each line specify X and Y coordinates in the DXF file, while the next two coordinates are a longitude and latitude.  Looking at our example DXF file and floor plan GeoJSON, the 4 points refer to the following:
 
 ![Image showing the positions of the 4 georeference coordinates](images/cadtutorial/georeferencing.png)
 
