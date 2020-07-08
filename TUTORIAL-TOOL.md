@@ -318,7 +318,7 @@ This concludes the editing phase.
 #### <a name="create-map-package"/>Package your map for upload
 
 - Place all of the indoor map files (the `main.json` file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`)
-- Zip the directory.
+- Zip the directory:
   - On Mac OS X, right click on the folder and select Compress.
   - On Windows, navigate to the directory containing your indoor map files.
     - Right click > New > Compressed (zipped) Folder and choose an appropriate name.
