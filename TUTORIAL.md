@@ -50,7 +50,7 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 
 [Georeferencing](https://en.wikipedia.org/wiki/Georeference) basically means saying ‘point **P** on the image is at geographic coordinate **Q**’. This will allow you to view your floor plan image in QGIS with the correct location and orientation.
 
-- Open QGIS and create a New Project
+- Open QGIS and create a New Project.
 - Add a map layer to help locate your building (experiment with each to see which one best suits your location of interest):
   - To add an OpenStreetMap layer simply select XYZ Tiles > OpenStreetMap from the Browser panel and drag it to the Layers panel.
   - To add a Google Maps Satellite layer, right-click on XZY Tiles in the Browser panel, select "New Connection..." and set the Name to "Google Satellite" and URL to ``http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}``.  Click on the newly-created XYZ Tiles > Google Satellite and drag it to the Layers panel.
