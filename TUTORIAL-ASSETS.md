@@ -19,18 +19,18 @@ All of the files used in this example [can be found here](https://github.com/wrl
     - [Creating the config.json file](#creating-the-configjson-file)
       - [Rotation Calculator configuration](#rotation-calculator-configuration)
       - [Extracting names from labels](#extracting-names-from-labels)
-- [Importing](#importing)
+- [Importing your Assets](#importing-your-assets)
 - [Editing your Assets](#editing-your-assets)
 - [Publishing your Assets](#publishing-your-assets)
 - [Removing your Assets](#removing-your-assets)
 
 ## Preparing an Indoor Map
 
-In this example we'll use a simple rectangular building as the basis for our example 'office'.  Specifically, we'll use [this one here](https://maps.wrld3d.com/?lat=56.462081&lon=-2.979123&zoom=17.634631005403037&orient=293.641) near the WRLD offices.
+In this example we'll use a simple rectangular building as the basis for our example 'office'. Specifically, we'll use [this one here](https://maps.wrld3d.com/?lat=56.462081&lon=-2.979123&zoom=17.634631005403037&orient=293.641) near the WRLD offices.
 
-![Image showing what building we'll use for this example](images/cadtutorial/building.png)  
+![Image showing what building we'll use for this example](images/cadtutorial/building.png)
 
-If you have't already followed the tutorial for submitting an indoor map, we recommend you view that first before continuing.  This tutorial assumes you have successfully imported an Indoor Map with at least one floor.  We include a [simple floorplan submission you can use to follow this example here](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples/cad-processing/floorplan).
+If you haven't already followed the tutorial for submitting an indoor map, we recommend you view that first before continuing. This tutorial assumes you have successfully imported an Indoor Map with at least one floor. We include a [simple floor plan submission you can use to follow this example here](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples/cad-processing/floor plan).
 
 Once you have a successfully built Indoor Map, you can continue on to importing Indoor Assets. For this you have two choices:
 
@@ -39,7 +39,7 @@ Once you have a successfully built Indoor Map, you can continue on to importing 
 
 ## Preparing an Asset GeoJSON Submission
 
-Importing a GeoJSON containing all the Assets in our Indoor Map is relatively simple.  If you've already [tried your hand at tracing indoor map details](TUTORIAL-TOOL.md#create-an-indoor-map-level), you can use similar methods to define a set of indoor furniture. 
+Importing a GeoJSON containing all the Assets in our Indoor Map is relatively simple. If you've already [tried your hand at tracing indoor map details](TUTORIAL-TOOL.md#create-an-indoor-map-level), you can use similar methods to define a set of indoor furniture. 
 
 First we create a new layer in QGIS 
 - Create a new QGIS layer via Layer > Create Layer > New Shapefile Layer.
@@ -50,11 +50,11 @@ First we create a new layer in QGIS
 
 - Click “OK”.
 - Give your new layer a suitable name. 
-- Ensure that your new feature layer is selected in the Layers panel
+- Ensure that your new feature layer is selected in the Layers panel.
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
-- As with the Indoor Map Tracing Tutorial, we'll be using a [georeferenced image of our floorplan](TUTORIAL-TOOL.md#georeference-the-floor-plan-image) to trace the desk positions.  The Floorplan we're using is not an exact match, but for the purposes of this example it'll demonstrate how to trace furniture positions from a floorplan into your Indoor Map.
+- As with the Indoor Map Tracing Tutorial, we'll be using a [georeferenced image of our floor plan](TUTORIAL-TOOL.md#georeference-the-floor-plan-image) to trace the desk positions.  The floor plan we're using is not an exact match, but for the purposes of this example it'll demonstrate how to trace furniture positions from a floor plan into your Indoor Map.
 
-![Image showing our georeferenced floorplan](images/cadtutorial/georeferenced_cad.png)
+![Image showing our georeferenced floor plan](images/cadtutorial/georeferenced_cad.png)
 
  - As with the Indoor Map Trace, draw a rectangle around your desks using the "Add Feature" button and populate the fields:
 
@@ -81,20 +81,19 @@ Once you're ready, export your layer as a GeoJSON file the same way you did duri
 
 You now have an Assets GeoJSON ready to import!
 
-> ## NOTE 
->> After performing a successful AutoCAD DXF Submission below, you'll be emailed the results as a .geojson file too which you can use to reimport the result much faster in future.
+> :information_source: After performing a successful AutoCAD DXF Submission below, you'll be emailed the results as a .geojson file too which you can use to reimport the result much faster in future.
 
 
 ## Preparing an Asset AutoCAD DXF Submission
 
-Importing Assets from an AutoCAD DXF file is a little more involved that the GeoJSON submission method. 
+Importing Assets from an AutoCAD DXF file is a little more involved that the GeoJSON submission method.
 
-For this example, we'll be using a simple 'office' CAD file that looks like the image below.  We'll specifically be mapping the rectangular section highlighted below to our new Indoor Map's floor - it's not an exact match, but for the purposes of this example it'll demonstrate how to read the desk positions correctly.
+For this example, we'll be using a simple 'office' CAD file that looks like the image below. We'll specifically be mapping the rectangular section highlighted below to our new Indoor Map's floor - it's not an exact match, but for the purposes of this example it'll demonstrate how to read the desk positions correctly.
 
 ![Image showing the mapped area of the CAD](images/cadtutorial/area.png)
 
 To do this, we need the following:
-* An AutoCAD DXF file with named blocks identifying the soft furnishings we wish to extract (e.g. desks). 
+* An AutoCAD DXF file with named blocks identifying the Assets we wish to extract (e.g. desks).
 * A georeference.points file to georeference the coordinates of the CAD file to the world.
 * A config.json file to tell our tools how to 'read' the CAD file and interpret the desk positions.
 
@@ -110,12 +109,11 @@ mapX,mapY,pixelX,pixelY,enable
 63084.8731,27443.9360,-2.9792483,56.4622088,1
 ```
 
-This describes four points - the first two coordinates of each line specify X and Y coordinates in the DXF file, while the next two coordinates are a longitude and latitude.  Looking at our example DXF file and floorplan GeoJSON, the 4 points refer to the following:
+This describes four points - the first two coordinates of each line specify X and Y coordinates in the DXF file, while the next two coordinates are a longitude and latitude.  Looking at our example DXF file and floor plan GeoJSON, the 4 points refer to the following:
 
 ![Image showing the positions of the 4 georeference coordinates](images/cadtutorial/georeferencing.png)
 
-> ## NOTE 
->> You can add additional points as necessary - generally the more points you map, the more accurate the extraction process will be.  For a small,  rectangular floorplan like this, 4 are enough!
+> :information_source: You can add additional points as necessary - generally the more points you map, the more accurate the extraction process will be. For a small, rectangular floor plan like this, 4 are enough!
 
 ### Creating the config.json file
 
@@ -123,9 +121,9 @@ In our example, we'll be extracting the highlighted desks and representing them 
 
 ![Image showing the desks we'll be extracting from the CAD](images/cadtutorial/desks_cad.png)
 
-The config.json file part of our submission details how the CAD will be read by the extraction process - essentially telling it which parts are desks, chairs etc. along with how to determine their orientation and what 3D Model to use to represent the Asset in your map.  Our example config file looks like this:
+The config.json file part of our submission details how the CAD will be read by the extraction process - essentially telling it which parts are desks, chairs etc. along with how to determine their orientation and what 3D model to use to represent the Asset in your map. Our example config file looks like this:
 
-```json
+```javascript
 {
 	"inserts": 
 	[
@@ -143,7 +141,7 @@ The config.json file part of our submission details how the CAD will be read by 
 			}
 		},
 		{
-			...Other inserts defined here...
+			// ...Other inserts defined here...
 		}
 	]
 }
@@ -220,7 +218,7 @@ In this above example, we specify a layer of the CAD named `labelLayer` to read 
 Assets can also be renamed individually after importing.
 
 
-## Importing
+## Importing your Assets
 
 With your files prepared, you can now begin the extraction process!
 
@@ -228,7 +226,8 @@ With your files prepared, you can now begin the extraction process!
 - If you're importing the combined cad.dxf, config.json and georeference.points files, begin by zipping the 3 files together in a .zip file (similar to cad_submission.zip in our examples directory). 
 - Navigate to the [WRLD Indoor Map Designer](https://mapdesigner.wrld3d.com/indoormap/latest/) (login if necessary).
 - Select your Indoor Map from the drop down list and go inside by clicking the Entrance Marker on the map.
-- Open up the "Add Assets" panel you see here:
+- Select the floor you wish to add Assets to using the elevator widget on the right of the screen.
+- Open up the "Assets Tool" panel you see here:
 
 ![Image showing where the Assets panel is](images/cadtutorial/add_assets.png)
 
@@ -247,40 +246,33 @@ Hit continue and after a bit more processing you should now see your Assets insi
 
 ## Editing your Assets
 
-Now that you've imported your Assets, you can make any changes you wish to their position or orientation. To do this, you can either click on the model directly, or select from the Asset List panel by selecting the Asset Category.
-
-![Image showing the Asset Category List](images/cadtutorial/asset_list_category.png)
-
-Clicking on this will show you your list of Assets of the specified category. Here you can select them, which will move the camera and highlight the selected Asset, and also delete individual ones as required.
+Now that you've imported your Assets, you can make any changes you wish to their position or orientation. To do this, you can either click on the model directly, or select it from the Asset List panel. Selected Assets are highlighted onscreen. In the Asset List panel you can also delete individual assets if required.
 
 ![Image showing the Asset Category List](images/cadtutorial/asset_list_highlight.png)
-
-You can also click and drag selected Assets by clicking the ![2D Edit](images/cadtutorial/2d_edit.png) button and clicking and dragging the gizmo that appears.
-
-![Image showing desk movement](images/cadtutorial/desk_move.gif)
 
 Selecting an Asset also shows the Asset Properties panel, which allows you to edit the selected Asset in more detail.
 
 ![Image showing the Asset Properties Panel](images/cadtutorial/properties_panel.png)
 
-> ## NOTE 
->> Some options are only applicable when a single Asset is selected.
+> :information_source: Some options are only applicable when a single Asset is selected.
+
+You can also move selected Assets by clicking and dragging the gizmo.
+
+![Image showing desk movement](images/cadtutorial/desk_move.gif)
 
 ## Publishing your Assets
 
-Each time you do a new import to a floor, you create a new "Asset Set" with your imported contents.  You can have multiple Asset Sets per floor, but only one can be treated as 'Live' - the version other users will see in your Indoor Map. When you've finished preparing your Asset Set and want to make it live, you publish it.
+Each time you do a new import to a floor, you create a new "Asset Set" with your imported contents. You can have multiple Asset Sets per floor, but only one can be treated as "live" - the version other users will see in your Indoor Map. When you've finished preparing your Asset Set and want to make it live, you publish it.
 
 You do this via the ![Publish Assets](images/cadtutorial/publish_assets.png) button.
 
-> ## WARNING 
->> Once you publish your set, they become visible to anyone viewing your Indoor Map. Make sure everything's correct first!
+> :warning: Once you publish your set, they become visible to anyone viewing your Indoor Map. Make sure everything's correct first!
 
-The act of publishing a set creates a new set in your Asset Set list selector called "Published Set". This is a special set you can view that shows what the current 'live' Assets for a given floor look like.  Everytime you publish a new set, it replaces any existing published set.
+The act of publishing a set creates a new set in your Asset Set list selector called "Published Set". This is a special set you can view that shows what the current "live" Assets for a given floor look like. Every time you publish a new set, it replaces any existing published set.
 
 At this point, when viewing your Indoor Map in the WRLD APIs you should now see your desks appear.
 
-> ## NOTE 
->> The published set cannot be edited like normal sets - You cannot move Indoor Assets around or delete them - To make changes to the published set, select the original set from the list, make the changes there, and republish the set. This replaces the existing published set with an updated one.
+> :information_source: The published set cannot be edited like normal sets - You cannot move Indoor Assets around or delete them - To make changes to the published set, select the original set from the list, make the changes there, and republish the set. This replaces the existing published set with an updated one.
 
 ## Removing your Assets
 
@@ -290,7 +282,7 @@ If you need to remove your Assets entirely from your Indoor Map, you can do this
 
 You can also rename your Asset Set to a more meaningful name, which will help if you plan on keeping multiple versions.
 
-> WARNING: Deleting the published set will cause Indoor Assets to stop appearing in your Indoor Map for anyone viewing your map.
+> :warning: Unpublishing the published set will cause Indoor Assets to stop appearing in your Indoor Map for anyone viewing your map.
 
 
 
