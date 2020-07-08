@@ -2,7 +2,7 @@ Submitting your indoor map to WRLD
 ===================
 If you’re interested in seeing your building’s indoor space in our immersive 3D maps, read on!
 
-This post covers creating an indoor map by georeferencing floor plan imagery and then submitting it to the WRLD indoor maps API. After we've processed your indoor map, you'll receive an email containing details of how to view it using the WRLD SDK.
+These instructions cover creating an indoor map by georeferencing floor plan imagery and then submitting it to the WRLD indoor maps API. After we've processed your indoor map, you'll receive an email containing details of how to view it in WRLD.
 
 WRLD will not share your map data; this means that any submitted indoor maps will remain private to your organisation.
 
@@ -30,17 +30,18 @@ A rough outline of the process:
 
 #### <a name="install-software"/>Install the required software
 Pre-requisites:
-- A floor plan image (tif, png or bmp) for each of the floors you wish to submit.
-- [QGIS](https://www.qgis.org/en/site/forusers/download.html) (2.12 Lyon at the time of writing) with the Georeferencer and OpenLayers plugins (**Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is available, but we're using QGIS for this guide as it's free).
-- [curl](https://curl.haxx.se/download.html) (comes as standard on OS X and Linux).
+- A floor plan image (e.g. pdf, jpg, tif, png or bmp) for each of the floors you wish to submit.
+- [QGIS](https://www.qgis.org/en/site/forusers/download.html) - Instructions for version 3.10 "A Coruña" is shown here, but any recent version is fine. **Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available.
 
-We're using QGIS in this example because it's free and easily available.  If you have access to other GIS software though, anything that supports georeferencing, polygon creation and exports to GeoJSON should work, although of course you'll need to adapt the instructions below as appropriate.
+We're using QGIS in this example because it's free and easily available.  If you have access to other GIS software, anything that supports georeferencing, polygon creation and exports to GeoJSON should work, although of course you'll need to adapt the instructions below as appropriate.
 
-Install and run QGIS, then ensure you have access to the [Georeferencer](http://docs.qgis.org/2.2/en/docs/user_manual/plugins/plugins_georeferencer.html) plugin (under Raster > Georeferencer). On Windows, this functionality comes as standard. On OS X and Linux, you may have to install it via the plugins manager (Plugins > Manage and Install Plugins > Search for “Georeferencer” > Choose “Georeferencer GDAL” > click “Install Plugin”).
+Install and run QGIS, then ensure you have access to the [Georeferencer](https://docs.qgis.org/3.10/en/docs/user_manual/plugins/core_plugins/plugins_georeferencer.html) plugin (under Raster > Georeferencer...). On recent versions of QGIS the plugin comes preinstalled but you may need to install and/or enable it (Plugins > Manage and Install Plugins > Search for “Georeferencer” > Choose “Georeferencer GDAL” > click “Install Plugin” and ensure that the checkbox next to the plugin is ticked).
 
-We’d also recommend you install the [OpenLayers](http://docs.qgis.org/2.2/en/docs/training_manual/qgis_plugins/plugin_examples.html?highlight=openlayers#basic-fa-the-openlayers-plugin) plugin. OpenLayers allows you to pull map & satellite imagery into your QGIS scene. This makes certain steps of the process much easier, as you can line up your indoor map features with the OpenLayers imagery.
+![Enable Georeferencer Plugin](/images/tutorial/enable_georeferencer.png)
 
-**Note**: For advanced users accustomed to GIS packages, if you have access to useful data (such as a shapefile for the building that contains your indoor map), feel free to use these, as they’ll likely be more accurate than OpenLayers data.
+If using a version of QGIS older than 2.18 we’d also recommend you install the [OpenLayers](http://docs.qgis.org/2.18/en/docs/training_manual/qgis_plugins/plugin_examples.html?highlight=openlayers#basic-fa-the-openlayers-plugin) plugin to allow you to pull map & satellite imagery into your QGIS scene. This makes certain steps of the process much easier, as you can line up your indoor map features with the satellite imagery.
+
+**Note**: For advanced users accustomed to GIS packages, if you have access to useful data (such as a shapefile for the building that contains your indoor map), feel free to use these, as they’ll likely be more accurate than freely available data.
 
 ---
 
@@ -49,9 +50,13 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 
 [Georeferencing](https://en.wikipedia.org/wiki/Georeference) basically means saying ‘point **P** on the image is at geographic coordinate **Q**’. This will allow you to view your floor plan image in QGIS with the correct location and orientation.
 
-- Open QGIS and add a layer of your choice via OpenLayers (e.g. to add an Open Street Map layer, choose Web > OpenLayers plugin > and then choose a layer -- experiment with each to see which one best suits your location of interest).
-- Browse to your building’s location via left-click dragging & zooming with the mouse wheel.
-- Open the Georeferencer (Raster > Georeferencer > Georeferencer).
+- Open QGIS and create a New Project
+- Add a map layer to help locate your building (experiment with each to see which one best suits your location of interest):
+  - To add an OpenStreetMap layer simply select XYZ Tiles > OpenStreetMap from the Browser panel and drag it to the Layers panel.
+  - To add a Google Maps Satellite layer, right-click on XZY Tiles in the Browser panel, select "New Connection..." and set the Name to "Google Satellite" and URL to ``http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}``.  Click on the newly-created XYZ Tiles > Google Satellite and drag it to the Layers panel.
+  - Older versions of QGIS will need to use the OpenLayers plugin. Choose Web > OpenLayers plugin > and then choose a layer.
+- Browse to your building’s location via left-click panning & zooming with the mouse wheel.
+- Open the Georeferencer (Raster > Georeferencer...).
 
 ![Georeferencer toolbar](/images/tutorial/georeferencing_toolbar.png)
 - Click “Add Raster”.
@@ -63,10 +68,11 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 - In the Georeferencer window, ensure the “Add Point” tool selected and left click the first point to be referenced (a corner is a good choice).
 - Click the “From map canvas” button.
 - Left click the location on the map matching the point you’ve just selected.
+- Click the "OK" button.
 
 ![Point in Georeferencer](images/tutorial/georeference_side_by_side.png)
-- Repeat this process for a handful of points on the building perimeter; try to pick the points that are clearly visible on the map (e.g. building corners). Inaccurately georeferenced points cause distortion, so if in doubt, don't add it (in this example, only 4 points were georeferenced).
-- Open the Transformation Settings dialog and choose a filename for “Output raster”. If you're using OpenLayers, the Target SRS should be set to [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/). Otherwise, set it the QGIS project's CRS; to check this, choose Project > Project Properties > CRS. The rest of the options should roughly match the following:
+- Repeat this process for a handful of points on the building perimeter; try to pick the points that are clearly visible on the map (e.g. building corners). Inaccurately georeferenced points cause distortion so if in doubt, don't add it (in this example, only 4 points were georeferenced).
+- Open the Transformation Settings dialog and choose a filename for “Output raster”. If you're using OpenLayers, the Target SRS should be set to [EPSG:3857](https://en.wikipedia.org/wiki/Web_Mercator_projection#EPSG:3857). Otherwise, set it the QGIS project's CRS; to check this, choose Project > Properties > CRS. The rest of the options should match the following:
 
 ![Transform settings](/images/tutorial/transform_settings.png)
 - Click the “OK” button.
@@ -74,60 +80,57 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 - The transformed image should open in the QGIS main scene view.
 
 ![Georeferenced image](images/tutorial/georeferenced_image.jpg)
-- If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced TIF into QGIS, or simply re-export with the box checked.
-- In the Layers panel, locate the layer that’s just been added. Double click it, adjust with style and transparency so you can see the underlying map imagery.
+- If nothing appeared, you likely forgot to check the “Load in QGIS when done” box. You can drag the georeferenced image into QGIS, or simply re-export with the box checked.
+- In the Layers panel, locate the layer that’s just been added. Double click it, select "Transparency" and adjust the "Global Opacity" slider so you can see the underlying map imagery.
 - If the result is sub-par and heavily distorted, try the process again and choose different points to georeference. Again, fewer is often better.
 
 ---
 
 #### <a name="create-indoor-map-level"/>Create an indoor map level
 
-We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a single building level. For the purposes of this tutorial, we're tracing the westport house floor that houses the WRLD offices -- this is the second level.
+We’ve now got a georeferenced floor plan image, and we’re ready to begin tracing the indoor map features for a single building level. For the purposes of this tutorial, we're tracing the Westport House floor that contains the WRLD Dundee office -- this is the second level.
 
-- Set the opacity on your floor plan image layer fully opaque once more.
-- Create a new QGIS layer via Layer > Create Layer > New Shapefile Layer.
-- When prompted, choose the Type: Polygon radio button option, then choose the appropriate CRS (again, this is typically [EPSG:3857](http://spatialreference.org/ref/sr-org/6864/) unless your QGIS project is using something else).
-- Finally, add “type” and “name” to the attribute list (under “New attribute”, fill in the attribute name and click the “Add to attributes list” button). The default data types are fine (String, 80 width).
+- Set the transparency on your floor plan image layer fully opaque once more.
+- Create a new QGIS layer for your indoor map level via Layer > Create Layer > New Shapefile Layer...
+- Give your new layer a suitable name. Something like "my-indoor-map-name-level-x" is good (where level-x corresponds to whatever floor of the building you're about to create):
+  - Click on the File Name browser (...) to select the location and name for your file.
+- Select "Polygon" from the Geometry Type drop-down, and select the appropriate CRS (again, this is typically [EPSG:3857](https://en.wikipedia.org/wiki/Web_Mercator_projection#EPSG:3857) unless your QGIS project is using something else).
+- Finally, add “type” and “name” to the fields list (under “New Field”, fill in the field name and click the “Add to Fields List” button). The default data types are fine (String, 80 width).
+- Click “OK”.
 
 ![New level layer](/images/tutorial/new_level_layer.png)
-- Click “OK”.
-- Give your new layer a suitable name. Something like my-indoor-map-name-level-x is good (where level-x corresponds to whatever floor of the building you're about to create).
 
-![New level layer confirmation](/images/tutorial/new_level_layer_confirmation.png)
-- Ensure that your new feature layer is selected in the Layers panel
+- Ensure that your new layer is selected by clicking on it in the Layers panel.
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
-- Open the Layer Style menu (Layer > Properties > Style) and move the transparency slider to 50%.
+- Make the layer transparent (Layer > Properties > Symbology) and move the opacity slider to 50%.
 
-  This allows you to see through to the floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons have a darker shade).
+  This allows you to see through to the building outline and floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons have a darker shade).
 
 - The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane.
-- Click the “Toggle Editing” button.
-
-![Toggle editing button](/images/tutorial/toggle_editing.png)
-- Click the “Add Features” button.
-
-![Add features button](/images/tutorial/add_features.png)
-- Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
-- When you’re happy with the polygon, right click to accept it.
-- In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`.
+- Click the “Toggle Editing” button.  ![Toggle editing button](/images/tutorial/toggle_editing.png)
+- Trace out the level outline:
+  - Click the “Add Features” button.  ![Add features button](/images/tutorial/add_features.png)
+  - Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
+  - When you’re happy with the polygon, right click to accept it.
+  - In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`.
 
   If you have a descriptive name to use, enter it. Otherwise, leave the name as *NULL*.
 
-  Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, I prefer to leave them as NULL and fix them later. I would recommend this, as it's less error-prone.
+  Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, it's easier to leave them as NULL and set them all later. I would recommend this, as it's less error-prone.
 
 ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
-- You should now have a building outline polygon in your QGIS layer.
+- You should now have a level outline polygon in your QGIS layer:
 
 ![Traced floor plan outline](/images/tutorial/level_outline.png)
-- We've now got our building outline; the next thing to do is add the contents of the floor.
+- We've now got our level outline; the next thing to do is add the contents of the floor.
 
-- WRLD’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
+- WRLD’s map format displays the polygons you create differently, depending on the feature type you give them. The `building_outline` will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
 
-- A good first step is to create the walls and windows around the outside of the floor, using the feature types “wall” and “window”. Drawing perfectly straight lines can be tricky in QGIS; fortunately, there are some tools that make it possible to trace polygons with precision.
+- A good first step is to create the walls and windows around the outside of the floor, using the feature types `wall` and `window`. Drawing perfectly straight lines can be tricky in QGIS; fortunately, there are some tools that make it possible to trace polygons with precision.
 
-- First, enable snapping. The snapping settings can be found under Settings > Snapping Options. Ensure that snapping mode is set to "All layers", and that you are snapping "To vertex and segment". If you are editing in EPSG:3857 then setting your Tolerance to around 0.1 should be suitable. If not, experiment with raising or lowering it.
+- First, enable snapping. The snapping settings can be found under Project > Snapping Options. Ensure that snapping mode is set to "All layers", and that you are snapping "To vertex and segment". Setting the Tolerance to around 12 px should be suitable. If not, experiment with raising or lowering it.
 
-![Snapping Options](/images/tutorial/snapping.PNG)
+![Snapping Options](/images/tutorial/snapping.png)
 
 - Once snapping is enabled, when you are adding Features a small pink cross will appear whenever you move your mouse cursor close to a polygon edge or vertex.
 
@@ -163,7 +166,7 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ![Wall in 3D map](/images/tutorial/wall_in_app.png)
 
-- In some circumstances, it may be better to use the “room” feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the name field of your room, it will appear in your map as a text label hovering over the room.
+- In some circumstances, it may be better to use the `room` feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the "name" field of your room, it will appear in your map as a text label hovering over the room.
 
 ![Room feature type](images/tutorial/room_type.png)
 
@@ -181,14 +184,15 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ![Multiple rooms added](/images/tutorial/wph.PNG)
 
-<a name="generate-feature-ids"/>   
-- Finally, let’s fix up the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
+<a name="generate-feature-ids"/>
+
+- Finally, let’s set the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
 
   Each feature needs an id, and the id must be unique **across all levels of your indoor map** (e.g. if level 1 has a room with an id of 1 and level 2 also has a room with the same id of 1, it is illegal).
 
   Thankfully, we can use QGIS's Field Calculator feature to generate ids for a level.
 
-- Open the layer’s attribute table via Layer > Attribute Table
+- Open the layer’s attribute table via Layer > Open Attribute Table
 - Click the Field Calculator button.
 
 ![Field Calculator](/images/tutorial/field_calculator_button.png)
@@ -223,15 +227,20 @@ To draw the other side of the wall, use the same method with the parallel button
 
 #### <a name="export-level-to-geojson"/>Export the level to GeoJSON
 
-- Highlight the layer you created in the Layers panel
-- Right click and choose “Save As…”
-- Under format, choose GeoJSON
-- Under encoding, select “UTF-8”
-- Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/))
-- Enter a filename/location
-- Click “OK”
+QGIS Shapefile layers default to storing geometry as Multipolygons.  To prepare our level to be imported into WRLD's tools we need to convert to GeoJSON format, containing only polygons, in the WGS84 Coordinate Reference System.
 
-You now have a single level of your building digitised. If you have more floor plans for your building, simply repeat the above steps for each level.
+- Select the layer containing your level features in the Layers panel.
+- Open the Vector > Geometry Tools > Multipart to Singlepart... tool.
+- Click "Run".
+- Right-click on the newly-created "Single parts" layer in the Layers panel and choose Export > Save Features As...
+  - Under format, choose GeoJSON
+  - Click on the File Name browser (...) to select the location and name for your file.
+  - Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/))
+  - Check the "Add saved file to map"
+  - Click “OK”
+- If you want to make further edits to your floor plan you can just edit the GeoJSON layer rather than editing the Shapefile layer you first created and going through the conversion and export steps each time.  It's now safe to remove the "Single parts" and your original Shapefile layer.
+
+You now have a single level of your building digitised! If you have more floor plans for your building, simply repeat the above steps for each level.
 
 **Note**: It's often useful to examine the exported json, but QGIS exports unformatted json which makes it tough to read due to the lack of indenting.
 
@@ -297,28 +306,29 @@ This concludes the editing phase.
 
 - Place all of the indoor map files (the `main.json` file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`)
 - Zip the directory
-- On OS X / Linux, you can do this via opening a terminal and entering the following commands:
+- On Mac OS X, right click on the folder and select Compress
+- On Windows, navigate to the directory containing your indoor map files
+  - Right click > New > Compressed (zipped) Folder and choose an appropriate name
+  - Drag the .json & .geojson files onto the .zip file
+- On Linux, you can do this via opening a terminal and entering the following commands:
 ```
 $ cd ~/my-indoor-map
 $ zip -r my-indoor-map.zip .
 ```
-- On Windows, navigate to the directory containing your indoor map files
-  - Right click > New > Compressed (zipped) Folder and choose an appropriate name
-  - Drag the .json & .geojson files onto the .zip file
 - Verify that the .zip structure matches the one given in the [format documentation](FORMAT.md#archive-structure)
 
 ---
 
 #### <a name="submit-package"/>Submit to the WRLD Indoor Maps API
 
-Now that you have your archive in WRLD’s format, you can submit it to our Indoor Map API to make it part of our 3D world.  Note that for all of these commands, you’ll need to include your developer authentication token, which you can find on the [API keys](https://www.wrld3d.com/developers/apikeys/) page.  If you haven’t signed up yet, please take a moment to do so now.
+Now that you have your archive in WRLD’s format, you can submit it to our Indoor Map API to make it part of our 3D world.  Note that for all of these commands, you’ll need to include your developer authentication token, which you can find in the Developer token tab of you [WRLD Account](https://accounts.wrld3d.com/#tab-token) page.  If you haven’t signed up yet, please take a moment to do so now.
 
 The first step is to make a post request to our submission service, which is accessible via a simple [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer).  [CURL](https://curl.haxx.se/) commands are shown here as examples.  Required parameters include contact details for the rights holders of the building you’re submitting.  We also request that you submit a [GeoJSON](http://geojson.org/) outline file showing the regions in which your indoor map edits will take place.
 
 The supplied outline file should contain one or more Polygon features in the default [Coordinate Reference System](http://geojson.org/geojson-spec.html#coordinate-reference-system-objects).  It can be created via QGIS (as above), using online editors such as [GeoJSON.io](http://geojson.io) or with any other GIS software capable of exporting to GeoJSON.  Later edits will be checked against the polygons described in this file, so please make sure they fully cover the regions you want to edit but only intersect those buildings which form part of the indoor map you are submitting.
 
 ```sh
-$ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/edits/?token=dev_auth_token -F name="my venue name" -F venue_street_address="<address>" -F venue_phone_number="<phone no.>" -F venue_email="<email address>" -F submission_contact_email="<email address for notifications>" -F venue_outline="@/path/to/my/file"
+$ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/edits/?token=<dev_auth_token> -F name="<my venue name>" -F venue_street_address="<address>" -F venue_phone_number="<phone no.>" -F venue_email="<email address>" -F submission_contact_email="<email address for notifications>" -F venue_outline="@</path/to/my/file>"
 ```
 On successful completion of this request, you should receive a JSON packet containing a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).  Please make note of this UUID, as subsequent API calls will need to refer to it.
 ```json
@@ -327,7 +337,7 @@ On successful completion of this request, you should receive a JSON packet conta
 
 The indoor maps API will now validate your outline and move your edit from the *AwaitingApproval* state to the *ApprovedForSubmission* state.  This should happen within a few minutes.  You will be e-mailed if any problems arise during this process.  Alternatively, you can also query the status of the edit with the following command (you’ll need to replace the UUID shown here with the one that was returned by your initial POST request):
 ```sh
-$ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0/status?token=dev_auth_token
+$ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/<UUID>/status?token=<dev_auth_token>
 ```
 Once the approval process has run, you should see this response from a status query:
 ```json
@@ -335,36 +345,39 @@ Once the approval process has run, you should see this response from a status qu
 ```
 You will now be able to upload your indoor map for compilation using the following PUT request.  Again, you’ll need to replace the UUID with the one you got in response to your original POST request.
 ```sh
-$ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1/edits/EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
+$ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1/edits/<UUID>?token=<dev_auth_token> -F comment="<my venue comment>" -F file="@</path/to/my/file>"
 ```
-When your submission has been processed we will send you the details required to view it using the WRLD SDK.  
-If at any time you decide you’d rather delete your edit, you can do so with the following command:
+When your submission has been processed we will send you the details required to view it in WRLD.  
+If at any time you decide you’d rather delete your indoor map, you can do so with the following command:
 ```sh
-$ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/edits/EIM-ad578b1f-d3d6-46ed-8945-787527d1efe0?token=dev_auth_token
+$ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/edits/<UUID>?token<=dev_auth_token>
 ```
-If you have any problems, the [cheatsheet](CHEATSHEET.md) might be able to help, or feel free to [raise an issue](https://github.com/wrld3d/indoor-maps-api/issues/new) or get in touch with us at support@wrld3d.com.
+If you have any problems feel free to [raise an issue](https://github.com/wrld3d/indoor-maps-api/issues/new) or get in touch with us at support@wrld3d.com.
 
 ---
 
-Troubleshooting
+  Troubleshooting
 ===================
 #### <a name="multipolygons"/>Multipolygons
-If you are receiving an error related to multipolygons in your submission, it probably refers to one of your units being split into two or more parts. For instance:
+If you are receiving an error related to multipolygons in your submission, first check that you ran the [Multipart to Singleparts](#export-level-to-geojson) conversion step when you exported your layer to geojson.
 
+If the error still occurs, it probably refers to one of your units being split into two or more parts. For instance:
 
 [<img src="/images/tutorial/multipolygon_appearance.png">](/images/tutorial/multipolygon_appearance.png) 
 
 If you are struggling to locate the multipolygon in question, you can use QGIS' **Topology Checker** to find it:
 
-1. Open the Topology Checker panel via *Vector > Topology Checker > Topology Checker*
+1. Enable the Topology Checker plugin with the Plugins > Manage and Install Plugins... dialog.
+2. Open the Topology Checker panel via *Vector > Topology Checker* 
 
   [<img src="/images/tutorial/topology_checker_location.png">](/images/tutorial/topology_checker_location.png)
-2. Click the *Configure* button (Wrench icon)
-3. Under *Current Rules* set the layer you want to check and set the rule to *"must not have multi-part geometries"*
-4. Click *Add Rule* then click *OK*
+3. Click the *Configure* button (Wrench icon)
+4. Under *Current Rules* set the layer you want to check and set the rule to *"must not have multi-part geometries"*
+5. Click *Add Rule* then click *OK*
 
   [<img src="/images/tutorial/topology_checker_steps.png">](/images/tutorial/topology_checker_steps.png)
-5. Click *Validate All* (check mark) in the Topology Checker panel
-6. The offending multipolygon will be displayed in the error list, and will be highlighted in red in QGIS
+6. Click *Validate All* (check mark) in the Topology Checker panel
+7. The offending multipolygon will be displayed in the error list, and will be highlighted in red in QGIS
 
   [<img src="/images/tutorial/topology_checker_results.png">](/images/tutorial/topology_checker_results.png)
+
