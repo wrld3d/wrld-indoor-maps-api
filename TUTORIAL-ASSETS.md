@@ -228,7 +228,6 @@ With your files prepared, you can now begin the extraction process!
 - Select your Indoor Map from the drop down list and go inside by clicking the Entrance Marker on the map.
 - Open up the "Assets Tool" panel you see here:
 
-<!-- TODO: Change image -->
 ![Image showing where the Assets panel is](images/cadtutorial/add_assets.png)
 
 - Click the ![Import Assets button](images/cadtutorial/import_assets.png) button to begin the process.
@@ -237,7 +236,6 @@ With your files prepared, you can now begin the extraction process!
 
 If successful, you should see the following screen - this lets you preview how many Assets the extraction process was able to find, and what model it intends to use for each one.
 
-<!-- update image -->
 ![Image showing the Preview Import panel](images/cadtutorial/preview_assets.png)
 
 Hit continue and after a bit more processing you should now see your Assets inside your Indoor Map!
@@ -247,18 +245,12 @@ Hit continue and after a bit more processing you should now see your Assets insi
 
 ## Editing your Assets
 
-Now that you've imported your Assets, you can make any changes you wish to their position or orientation. To do this, you can either click on the model directly, or select from the Asset List panel.
-
-<!-- update image -->
-![Image showing the Asset Category List](images/cadtutorial/asset_list_category.png)
-
-Clicking on this will show you your list of Assets of the specified category. Here you can select them, which will highlight the selected Asset, and also delete individual ones as required.
+Now that you've imported your Assets, you can make any changes you wish to their position or orientation. To do this, you can either click on the model directly, or select it from the Asset List panel. In the Asset List panel you can select your Assets, which will highlight the selected one, and also delete individual ones as required.
 
 ![Image showing the Asset Category List](images/cadtutorial/asset_list_highlight.png)
 
 You can also click and drag selected Assets by clicking the dragging the gizmo.
 
-<!-- update this -->
 ![Image showing desk movement](images/cadtutorial/desk_move.gif)
 
 Selecting an Asset also shows the Asset Properties panel, which allows you to edit the selected Asset in more detail.
@@ -285,7 +277,6 @@ At this point, when viewing your Indoor Map in the WRLD APIs you should now see 
 
 If you need to remove your Assets entirely from your Indoor Map, you can do this using the commands located at the bottom of the Add Assets panel.
 
-<!-- update image -->
 ![Image showing the additional Asset Set commands](images/cadtutorial/set_options.png)
 
 You can also rename your Asset Set to a more meaningful name, which will help if you plan on keeping multiple versions.
