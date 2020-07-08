@@ -240,15 +240,20 @@ To draw the other side of the wall, use the same method with the parallel button
 
 #### <a name="export-level-to-geojson"/>Export the level to GeoJSON
 
-- Highlight the layer you created in the Layers panel
-- Right click and choose “Save As…”
-- Under format, choose GeoJSON
-- Under encoding, select “UTF-8”
-- Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/))
-- Enter a filename/location
-- Click “OK”
+QGIS Shapefile layers default to storing geometry as Multipolygons.  To prepare our level to be imported into WRLD's tools we need to convert to GeoJSON format, containing only polygons, in the WGS84 Coordinate Reference System.
 
-You now have a single level of your building digitised. If you have more floor plans for your building, simply repeat the above steps for each level.
+- Select the layer containing your level features in the Layers panel.
+- Open the Vector > Geometry Tools > Multipart to Singlepart... tool.
+- Click "Run".
+- Right-click on the newly-created "Single parts" layer in the Layers panel and choose Export > Save Features As...
+  - Under format, choose GeoJSON
+  - Click on the File Name browser (...) to select the location and name for your file.
+  - Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/))
+  - Check the "Add saved file to map"
+  - Click “OK”
+- If you want to make further edits to your floor plan you can just edit the GeoJSON layer rather than editing the Shapefile layer you first created and going through the conversion and export steps each time.  It's now safe to remove the "Single parts" and your original Shapefile layer.
+
+You now have a single level of your building digitised! If you have more floor plans for your building, simply repeat the above steps for each level.
 
 **Note**: It's often useful to examine the exported json, but QGIS exports unformatted json which makes it tough to read due to the lack of indenting.
 
@@ -314,38 +319,40 @@ This concludes the editing phase.
 
 - Place all of the indoor map files (the `main.json` file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`)
 - Zip the directory
-- On OS X / Linux, you can do this via opening a terminal and entering the following commands:
+- On Mac OS X, right click on the folder and select Compress
+- On Windows, navigate to the directory containing your indoor map files
+  - Right click > New > Compressed (zipped) Folder and choose an appropriate name
+  - Drag the .json & .geojson files onto the .zip file
+- On Linux, you can do this via opening a terminal and entering the following commands:
 ```
 $ cd ~/my-indoor-map
 $ zip -r my-indoor-map.zip .
 ```
-- On Windows, navigate to the directory containing your indoor map files
-  - Right click > New > Compressed (zipped) Folder and choose an appropriate name
-  - Drag the .json & .geojson files onto the .zip file
 - Verify that the .zip structure matches the one given in the [format documentation](FORMAT.md#archive-structure)
-- Return to the Indoor Map Tool and upload your indoor map package using stage 4 on the right hand side menu
-
+- Return to the [Indoor Map Designer](https://mapdesigner.wrld3d.com/indoormap/latest) and upload your indoor map packageusing the Upload Map section of the Upload Map Tool in the left hand side panel.
 ---
 
 Troubleshooting
 ===================
 #### <a name="multipolygons"/>Multipolygons
-If you are receiving an error related to multipolygons in your submission, it probably refers to one of your units being split into two or more parts. For instance:
+If you are receiving an error related to multipolygons in your submission, first check that you ran the [Multipart to Singleparts](#export-level-to-geojson) conversion step when you exported your layer to geojson.
 
+If the error still occurs, it probably refers to one of your units being split into two or more parts. For instance:
 
 [<img src="/images/tutorial/multipolygon_appearance.png">](/images/tutorial/multipolygon_appearance.png) 
 
 If you are struggling to locate the multipolygon in question, you can use QGIS' **Topology Checker** to find it:
 
-1. Open the Topology Checker panel via *Vector > Topology Checker > Topology Checker*
+1. Enable the Topology Checker plugin with the Plugins > Manage and Install Plugins... dialog.
+2. Open the Topology Checker panel via *Vector > Topology Checker* 
 
   [<img src="/images/tutorial/topology_checker_location.png">](/images/tutorial/topology_checker_location.png)
-2. Click the *Configure* button (Wrench icon)
-3. Under *Current Rules* set the layer you want to check and set the rule to *"must not have multi-part geometries"*
-4. Click *Add Rule* then click *OK*
+3. Click the *Configure* button (Wrench icon)
+4. Under *Current Rules* set the layer you want to check and set the rule to *"must not have multi-part geometries"*
+5. Click *Add Rule* then click *OK*
 
   [<img src="/images/tutorial/topology_checker_steps.png">](/images/tutorial/topology_checker_steps.png)
-5. Click *Validate All* (check mark) in the Topology Checker panel
-6. The offending multipolygon will be displayed in the error list, and will be highlighted in red in QGIS
+6. Click *Validate All* (check mark) in the Topology Checker panel
+7. The offending multipolygon will be displayed in the error list, and will be highlighted in red in QGIS
 
   [<img src="/images/tutorial/topology_checker_results.png">](/images/tutorial/topology_checker_results.png)
