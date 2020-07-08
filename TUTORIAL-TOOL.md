@@ -50,7 +50,7 @@ If you have an image of your building’s floor plan, you can use [georeferencin
 
 [Georeferencing](https://en.wikipedia.org/wiki/Georeference) basically means saying ‘point **P** on the image is at geographic coordinate **Q**’. This will allow you to view your floor plan image in QGIS with the correct location and orientation.
 
-- Open QGIS and create a New Project
+- Open QGIS and create a New Project.
 - Add a map layer to help locate your building (experiment with each to see which one best suits your location of interest):
   - To add an OpenStreetMap layer simply select XYZ Tiles > OpenStreetMap from the Browser panel and drag it to the Layers panel.
   - To add a Google Maps Satellite layer, right-click on XZY Tiles in the Browser panel, select "New Connection..." and set the Name to "Google Satellite" and URL to ``http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}``.  Click on the newly-created XYZ Tiles > Google Satellite and drag it to the Layers panel.
@@ -127,9 +127,9 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   - When you’re happy with the polygon, right click to accept it.
   - In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`.
 
-  If you have a descriptive name to use, enter it. Otherwise, leave the name as *NULL*.
+  If you have a descriptive name to use, enter it. Otherwise, leave the name as `NULL`.
 
-  Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, it's easier to leave them as NULL and set them all later. I would recommend this, as it's less error-prone.
+  Leave the id as `NULL`. While it is possible to manually enter ids after creating each feature, it's easier to leave them as `NULL` and set them all later. I would recommend this, as it's less error-prone.
 
 ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
 - You should now have a level outline polygon in your QGIS layer:
@@ -209,8 +209,8 @@ To draw the other side of the wall, use the same method with the parallel button
 - Click the Field Calculator button.
 
 ![Field Calculator](/images/tutorial/field_calculator_button.png)
-- Change the checkbox to “Update existing field”
-- In the combobox, select the “id” field
+- Change the checkbox to “Update existing field”.
+- In the combobox, select the “id” field.
 - In the left hand expression box enter the following:
 
   `toint(concat('n', tostring(@row_number)))`
@@ -246,11 +246,11 @@ QGIS Shapefile layers default to storing geometry as Multipolygons.  To prepare 
 - Open the Vector > Geometry Tools > Multipart to Singlepart... tool.
 - Click "Run".
 - Right-click on the newly-created "Single parts" layer in the Layers panel and choose Export > Save Features As...
-  - Under format, choose GeoJSON
+  - Under format, choose GeoJSON.
   - Click on the File Name browser (...) to select the location and name for your file.
-  - Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/))
-  - Check the "Add saved file to map"
-  - Click “OK”
+  - Change the CRS setting to WGS84 ([EPSG: 4326](http://spatialreference.org/ref/epsg/4326/)).
+  - Check the "Add saved file to map".
+  - Click “OK”.
 - If you want to make further edits to your floor plan you can just edit the GeoJSON layer rather than editing the Shapefile layer you first created and going through the conversion and export steps each time.  It's now safe to remove the "Single parts" and your original Shapefile layer.
 
 You now have a single level of your building digitised! If you have more floor plans for your building, simply repeat the above steps for each level.
@@ -318,17 +318,17 @@ This concludes the editing phase.
 #### <a name="create-map-package"/>Package your map for upload
 
 - Place all of the indoor map files (the `main.json` file and the level GeoJSON file[s]) and place them in a directory (e.g. `~/my-indoor-map`)
-- Zip the directory
-- On Mac OS X, right click on the folder and select Compress
-- On Windows, navigate to the directory containing your indoor map files
-  - Right click > New > Compressed (zipped) Folder and choose an appropriate name
-  - Drag the .json & .geojson files onto the .zip file
-- On Linux, you can do this via opening a terminal and entering the following commands:
+- Zip the directory.
+  - On Mac OS X, right click on the folder and select Compress.
+  - On Windows, navigate to the directory containing your indoor map files.
+    - Right click > New > Compressed (zipped) Folder and choose an appropriate name.
+    - Drag the .json & .geojson files onto the .zip file.
+  - On Linux, you can do this via opening a terminal and entering the following commands:
 ```
 $ cd ~/my-indoor-map
 $ zip -r my-indoor-map.zip .
 ```
-- Verify that the .zip structure matches the one given in the [format documentation](FORMAT.md#archive-structure)
+- Verify that the .zip structure matches the one given in the [format documentation](FORMAT.md#archive-structure).
 - Return to the [Indoor Map Designer](https://mapdesigner.wrld3d.com/indoormap/latest) and upload your indoor map packageusing the Upload Map section of the Upload Map Tool in the left hand side panel.
 ---
 
@@ -347,11 +347,13 @@ If you are struggling to locate the multipolygon in question, you can use QGIS' 
 2. Open the Topology Checker panel via *Vector > Topology Checker* 
 
   [<img src="/images/tutorial/topology_checker_location.png">](/images/tutorial/topology_checker_location.png)
+  
 3. Click the *Configure* button (Wrench icon)
 4. Under *Current Rules* set the layer you want to check and set the rule to *"must not have multi-part geometries"*
 5. Click *Add Rule* then click *OK*
 
   [<img src="/images/tutorial/topology_checker_steps.png">](/images/tutorial/topology_checker_steps.png)
+  
 6. Click *Validate All* (check mark) in the Topology Checker panel
 7. The offending multipolygon will be displayed in the error list, and will be highlighted in red in QGIS
 
