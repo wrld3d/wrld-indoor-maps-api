@@ -113,20 +113,16 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   This allows you to see through to the building outline and floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons have a darker shade).
 
 - The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane.
-- Click the “Toggle Editing” button.
-
-![Toggle editing button](/images/tutorial/toggle_editing.png)
+- Click the “Toggle Editing” button.  ![Toggle editing button](/images/tutorial/toggle_editing.png)
 - If you're happy with the building outline you downloaded from the WRLD Indoor map tool, you can add it to your map layer.  Note that the level outline doesn't have to exactly match the building outline - different floors can have different outlines!
-  - Click the "Select Features" button.
-  ![Select features button](/images/tutorial/select_features.png)
+  - Click the "Select Features" button.  ![Select features button](/images/tutorial/select_features.png)
   - Select your building outline layer in the Layers panel by clicking on it.
   - Click on the building outline polygon - it should highlight in yellow.
   - Select Edit menu > Copy Features.
   - Select your level feature layer in the Layers panel by clicking on it.
   - Select Edit menu > Paste Features.
 - If you want to trace out the level outline:
-  - Click the “Add Features” button.
-  ![Add features button](/images/tutorial/add_features.png)
+  - Click the “Add Features” button.  ![Add features button](/images/tutorial/add_features.png)
   - Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
   - When you’re happy with the polygon, right click to accept it.
   - In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`.
@@ -136,18 +132,18 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
   Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, it's easier to leave them as NULL and set them all later. I would recommend this, as it's less error-prone.
 
 ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
-- You should now have a level outline polygon in your QGIS layer.
+- You should now have a level outline polygon in your QGIS layer:
 
 ![Traced floor plan outline](/images/tutorial/level_outline.png)
 - We've now got our level outline; the next thing to do is add the contents of the floor.
 
-- WRLD’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
+- WRLD’s map format displays the polygons you create differently, depending on the feature type you give them. The `building_outline` will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
 
-- A good first step is to create the walls and windows around the outside of the floor, using the feature types “wall” and “window”. Drawing perfectly straight lines can be tricky in QGIS; fortunately, there are some tools that make it possible to trace polygons with precision.
+- A good first step is to create the walls and windows around the outside of the floor, using the feature types `wall` and `window`. Drawing perfectly straight lines can be tricky in QGIS; fortunately, there are some tools that make it possible to trace polygons with precision.
 
-- First, enable snapping. The snapping settings can be found under Settings > Snapping Options. Ensure that snapping mode is set to "All layers", and that you are snapping "To vertex and segment". If you are editing in EPSG:3857 then setting your Tolerance to around 0.1 should be suitable. If not, experiment with raising or lowering it.
+- First, enable snapping. The snapping settings can be found under Project > Snapping Options. Ensure that snapping mode is set to "All layers", and that you are snapping "To vertex and segment". Setting the Tolerance to around 12 px should be suitable. If not, experiment with raising or lowering it.
 
-![Snapping Options](/images/tutorial/snapping.PNG)
+![Snapping Options](/images/tutorial/snapping.png)
 
 - Once snapping is enabled, when you are adding Features a small pink cross will appear whenever you move your mouse cursor close to a polygon edge or vertex.
 
@@ -183,7 +179,7 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ![Wall in 3D map](/images/tutorial/wall_in_app.png)
 
-- In some circumstances, it may be better to use the “room” feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the name field of your room, it will appear in your map as a text label hovering over the room.
+- In some circumstances, it may be better to use the `room` feature type instead of creating the walls around a room. The room feature type will appear hollowed out with walls around the edge of the polygon. Additionally, if you enter any text into the "name" field of your room, it will appear in your map as a text label hovering over the room.
 
 ![Room feature type](images/tutorial/room_type.png)
 
@@ -201,14 +197,15 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ![Multiple rooms added](/images/tutorial/wph.PNG)
 
-<a name="generate-feature-ids"/>   
-- Finally, let’s fix up the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
+<a name="generate-feature-ids"/>
+
+- Finally, let’s set the feature ids (if you’ve been manually entering ids after creating polygons, these steps are not necessary and can safely be skipped).
 
   Each feature needs an id, and the id must be unique **across all levels of your indoor map** (e.g. if level 1 has a room with an id of 1 and level 2 also has a room with the same id of 1, it is illegal).
 
   Thankfully, we can use QGIS's Field Calculator feature to generate ids for a level.
 
-- Open the layer’s attribute table via Layer > Attribute Table
+- Open the layer’s attribute table via Layer > Open Attribute Table
 - Click the Field Calculator button.
 
 ![Field Calculator](/images/tutorial/field_calculator_button.png)
