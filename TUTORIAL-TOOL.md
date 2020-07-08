@@ -106,32 +106,40 @@ We’ve now got a georeferenced floor plan image, and we’re ready to begin tra
 
 ![New level layer](/images/tutorial/new_level_layer.png)
 
-- Ensure that your new feature layer is selected by clicking on it in the Layers panel.
+- Ensure that your new layer is selected by clicking on it in the Layers panel.
 - In the layers panel, left click & drag the new feature layer to the top of the panel (we need our new layer to be the top-most layer, or it will be hidden by the others).
 - Make the layer transparent (Layer > Properties > Symbology) and move the opacity slider to 50%.
 
   This allows you to see through to the building outline and floor plan image layer, which makes tracing easier. Furthermore, it's expected that polygons will overlap; setting the transparency helps us make sense of overlaps (overlapping polygons have a darker shade).
 
-- The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane.  If you're happy to use the building outline that you downloaded
+- The first feature we’re going to create is an outline of this particular indoor map level. A building outline will be used to create geometry for the level's floor plane.
 - Click the “Toggle Editing” button.
 
 ![Toggle editing button](/images/tutorial/toggle_editing.png)
-- Click the “Add Features” button.
-
-![Add features button](/images/tutorial/add_features.png)
-- Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
-- When you’re happy with the polygon, right click to accept it.
-- In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`.
+- If you're happy with the building outline you downloaded from the WRLD Indoor map tool, you can add it to your map layer.  Note that the level outline doesn't have to exactly match the building outline - different floors can have different outlines!
+  - Click the "Select Features" button.
+  ![Select features button](/images/tutorial/select_features.png)
+  - Select your building outline layer in the Layers panel by clicking on it.
+  - Click on the building outline polygon - it should highlight in yellow.
+  - Select Edit menu > Copy Features.
+  - Select your level feature layer in the Layers panel by clicking on it.
+  - Select Edit menu > Paste Features.
+- If you want to trace out the level outline:
+  - Click the “Add Features” button.
+  ![Add features button](/images/tutorial/add_features.png)
+  - Trace the boundary of the floor plan image by drawing a polygon, one point at a time (don't worry about geometry warnings).
+  - When you’re happy with the polygon, right click to accept it.
+  - In the confirmation dialog, select the ‘type’ field and change its value to `building_outline`.
 
   If you have a descriptive name to use, enter it. Otherwise, leave the name as *NULL*.
 
-  Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, I prefer to leave them as NULL and fix them later. I would recommend this, as it's less error-prone.
+  Leave the id as *NULL*. While it is possible to manually enter ids after creating each feature, it's easier to leave them as NULL and set them all later. I would recommend this, as it's less error-prone.
 
 ![Building outline confirmation](/images/tutorial/building_outline_confirmation.png)
-- You should now have a building outline polygon in your QGIS layer.
+- You should now have a level outline polygon in your QGIS layer.
 
 ![Traced floor plan outline](/images/tutorial/level_outline.png)
-- We've now got our building outline; the next thing to do is add the contents of the floor.
+- We've now got our level outline; the next thing to do is add the contents of the floor.
 
 - WRLD’s map format displays the polygons you create differently, depending on the feature type you give them. The “building_outline” will appear as the floor of your indoor map. On top of it, we’ll add features such as rooms, walls and windows. There are additional feature types which can be used to give your map more detail; Refer to the [format documentation](FORMAT.md) for a full list.
 
