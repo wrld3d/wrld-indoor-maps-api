@@ -93,7 +93,7 @@ For this example, we'll be using a simple 'office' CAD file that looks like the 
 ![Image showing the mapped area of the CAD](images/cadtutorial/area.png)
 
 To do this, we need the following:
-* An AutoCAD DXF file with named blocks identifying the soft furnishings we wish to extract (e.g. desks).
+* An AutoCAD DXF file with named blocks identifying the Assets we wish to extract (e.g. desks).
 * A georeference.points file to georeference the coordinates of the CAD file to the world.
 * A config.json file to tell our tools how to 'read' the CAD file and interpret the desk positions.
 
@@ -113,7 +113,7 @@ This describes four points - the first two coordinates of each line specify X an
 
 ![Image showing the positions of the 4 georeference coordinates](images/cadtutorial/georeferencing.png)
 
-> :information_source: You can add additional points as necessary - generally the more points you map, the more accurate the extraction process will be. For a 
+> :information_source: You can add additional points as necessary - generally the more points you map, the more accurate the extraction process will be. For a small, rectangular floor plan like this, 4 are enough!
 
 ### Creating the config.json file
 
@@ -121,7 +121,7 @@ In our example, we'll be extracting the highlighted desks and representing them 
 
 ![Image showing the desks we'll be extracting from the CAD](images/cadtutorial/desks_cad.png)
 
-The config.json file part of our submission details how the CAD will be read by the extraction process - essentially telling it which parts are desks, chairs etc. along with how to determine their orientation and what 3D Model to use to represent the Asset in your map. Our example config file looks like this:
+The config.json file part of our submission details how the CAD will be read by the extraction process - essentially telling it which parts are desks, chairs etc. along with how to determine their orientation and what 3D model to use to represent the Asset in your map. Our example config file looks like this:
 
 ```javascript
 {
@@ -226,6 +226,7 @@ With your files prepared, you can now begin the extraction process!
 - If you're importing the combined cad.dxf, config.json and georeference.points files, begin by zipping the 3 files together in a .zip file (similar to cad_submission.zip in our examples directory). 
 - Navigate to the [WRLD Indoor Map Designer](https://mapdesigner.wrld3d.com/indoormap/latest/) (login if necessary).
 - Select your Indoor Map from the drop down list and go inside by clicking the Entrance Marker on the map.
+- Select the floor you wish to add Assets to using the elevator widget on the right of the screen.
 - Open up the "Assets Tool" panel you see here:
 
 ![Image showing where the Assets panel is](images/cadtutorial/add_assets.png)
@@ -245,19 +246,19 @@ Hit continue and after a bit more processing you should now see your Assets insi
 
 ## Editing your Assets
 
-Now that you've imported your Assets, you can make any changes you wish to their position or orientation. To do this, you can either click on the model directly, or select it from the Asset List panel. In the Asset List panel you can select your Assets, which will highlight the selected one, and also delete individual ones as required.
+Now that you've imported your Assets, you can make any changes you wish to their position or orientation. To do this, you can either click on the model directly, or select it from the Asset List panel. Selected Assets are highlighted onscreen. In the Asset List panel you can also delete individual assets if required.
 
 ![Image showing the Asset Category List](images/cadtutorial/asset_list_highlight.png)
-
-You can also click and drag selected Assets by clicking the dragging the gizmo.
-
-![Image showing desk movement](images/cadtutorial/desk_move.gif)
 
 Selecting an Asset also shows the Asset Properties panel, which allows you to edit the selected Asset in more detail.
 
 ![Image showing the Asset Properties Panel](images/cadtutorial/properties_panel.png)
 
 > :information_source: Some options are only applicable when a single Asset is selected.
+
+You can also move selected Assets by clicking and dragging the gizmo.
+
+![Image showing desk movement](images/cadtutorial/desk_move.gif)
 
 ## Publishing your Assets
 
