@@ -217,7 +217,6 @@ To draw the other side of the wall, use the same method with the parallel button
 
 ![Field Calculator](/images/tutorial/field_calculator_button.png)
 
-
 - Change the checkbox to “Update existing field”.
 - In the combobox, select the “id” field.
 - In the left hand expression box enter the following:
@@ -265,8 +264,7 @@ QGIS Shapefile layers default to storing geometry as Multipolygons.  To prepare 
 
 You now have a single level of your building digitised! If you have more floor plans for your building, simply repeat the above steps for each level.
 
-> ## Note 
-> It's often useful to examine the exported json, but QGIS exports unformatted json which makes it tough to read due to the lack of indenting.
+> :information_source: It's often useful to examine the exported json, but QGIS exports unformatted json which makes it tough to read due to the lack of indenting.
 
 This is entirely optional, but if you wish to re-format your GeoJSON files, you can paste them into [jsonlint](http://jsonlint.com) or run a single command from a terminal (this assumes python is installed and in your path):
 
@@ -345,7 +343,7 @@ $ zip -r my-indoor-map.zip .
 
 Troubleshooting
 ===================
-#### <a name="multipolygons"/>Multipolygons
+## <a name="multipolygons"/>Multipolygons
 If you are receiving an error related to multipolygons in your submission, first check that you ran the [Multipart to Singleparts](#export-level-to-geojson) conversion step when you exported your layer to geojson.
 
 If the error still occurs, it probably refers to one of your units being split into two or more parts. For instance:

@@ -26,6 +26,8 @@ Get started creating 3D indoor maps with the [TUTORIAL.md](TUTORIAL.md)
 Full Indoor Map API Specification
 =================================
 
+## Indoor Maps
+
 ### Claim the location for which you will upload a new indoor map:
 
 ```sh
@@ -106,8 +108,6 @@ curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1/indoor-data/UUID?token=dev_
 curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_token -F feature_to_poi_key="@/path/to/my/file" -F "contact_email=example@mail.com"
 ```
 
-
-
 #### Details for feature-to-poi key:
 * **defaults:** Which interior feature types should have POIs generated, and what tag should be used to represent them.
 * **special:** Which interior IDs should have POIs generated, and what tag should be used to represent them.
@@ -161,23 +161,23 @@ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_tok
 ### Create a new Indoor Asset set for a given Indoor Map and Floor
 
 ```sh
-curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets?token=<dev_auth_token> -F "name=My Set"
+curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets?token=<dev_auth_token> -F "name=<set_name>"
 ```
 
 ### Add a new Indoor Asset to a set
 
 ```sh
-curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token> -F "name=entity name" -F "lat=12.3" -F "lon=34.5" -F "orientation=45.0" -F "model=white_desk_01"
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token> -F "name=<asset_name>" -F "lat=<lat>" -F "lon=<lon>" -F "orientation=<orientation_in_degrees>" -F "model=<model_id>"
 ```
 The `model` parameter should match a `prop_id` from our [prop manifest](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json).
 
-## Update an Indoor Asset
+### Update an Indoor Asset
 
 ```sh
-curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token> -F "name=updated name" -F "orientation=90.0"
+curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token> -F "name=<updated_name>" -F "orientation=<orientation_in_degrees>"
 ```
 
-## Remove an Indoor Asset
+### Remove an Indoor Asset
 
 ```sh
 curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token>
@@ -223,14 +223,14 @@ For more information on publishing an Indoor Asset Set, see the [Indoor Assets T
 curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities.geojson?token=<dev_auth_token> > ./entities.geojson
 ```
 
-## Importing Indoor Asset Sets
+### Importing Indoor Asset Sets
 
 For more information on how to prepare an Indoor Asset AutoCAD DXF submission, refer to the [Indoor Assets Tutorial](TUTORIAL-ASSETS.md#preparing-an-asset-autocad-dxf-submission).
 
 ### Import an Indoor Asset Set from an AutoCAD DXF
 
 ```sh
-curl -v -XPOST "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions?token=<dev_auth_token>" -F 'file=@./submission_file.zip' -F 'submission_contact_email=optional.email.address@website.com'
+curl -v -XPOST "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions?token=<dev_auth_token>" -F 'file=@<path/to/file.zip>' -F 'submission_contact_email=<optional_email_address>'
 ```
 
 ### Fetching the status of an Import Request
@@ -272,18 +272,19 @@ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map
 
 ---
 
-## License
+License
+===========
 
 The WRLD Indoor Map data format is an open format released under Creative Commons Attribution 4.0 International. See the [LICENSE.md](https://github.com/wrld3d/wrld-indoor-maps-api/blob/master/LICENSE.md) file for details.
 
 ---
 
-#### Disclaimer
+## Disclaimer
 This is a stable, semantically versioned API. 
 
 WRLD may make changes to the API from time to time but will adhere to [Semantic Versioning](http://semver.org/) and provide backward compatible end points for as long as possible.
 
 ---
 
-#### Contact us
+## Contact us
 If you have any problems or queries please [raise an issue](https://github.com/wrld/wrld-indoor-map-api/issues/new).
