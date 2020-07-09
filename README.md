@@ -287,4 +287,4 @@ WRLD may make changes to the API from time to time but will adhere to [Semantic 
 ---
 
 ## Contact us
-If you have any problems or queries please [raise an issue](https://github.com/wrld/wrld-indoor-map-api/issues/new).
+If you have any problems or queries please [raise an issue](https://github.com/wrld3d/wrld-indoor-maps-api/issues/new).
