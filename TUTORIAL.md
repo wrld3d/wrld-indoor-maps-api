@@ -350,7 +350,7 @@ If at any time you decide you’d rather delete your indoor map, you can do so w
 ```sh
 $ curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1/edits/<UUID>?token<=dev_auth_token>
 ```
-If you have any problems feel free to [raise an issue](https://github.com/wrld3d/indoor-maps-api/issues/new) or get in touch with us at support@wrld3d.com.
+If you have any problems feel free to [raise an issue](https://github.com/wrld3d/wrld-indoor-maps-api/issues/new) or get in touch with us at support@wrld3d.com.
 
 ---
 
