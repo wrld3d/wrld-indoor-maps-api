@@ -9,7 +9,7 @@ This tutorial will guide you through adding some Assets to a floor in a simple I
 
 All of the files used in this example [can be found here](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples/cad-processing).
 
-# Contents
+## Contents
 
 - Preparation
   - [Preparing an Indoor Map](#preparing-an-indoor-map)
