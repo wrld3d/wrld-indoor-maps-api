@@ -227,13 +227,13 @@ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor
 
 For more information on how to prepare an Indoor Asset AutoCAD DXF submission, refer to the [Indoor Assets Tutorial](TUTORIAL-ASSETS.md#preparing-an-asset-autocad-dxf-submission).
 
-### Import an Indoor Asset Set from an AutoCAD DXF
+#### Import an Indoor Asset Set from an AutoCAD DXF
 
 ```sh
 curl -v -XPOST "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions?token=<dev_auth_token>" -F 'file=@<path/to/file.zip>' -F 'submission_contact_email=<optional_email_address>'
 ```
 
-### Fetching the status of an Import Request
+#### Fetching the status of an Import Request
 
 Calling the above endpoint submits a file to be processed by our pipeline that takes a short time to complete.  If you specified an email address, you will be mailed the result (success or failure) to that address upon completion.  If not you can fetch the current status via:
 
@@ -250,13 +250,13 @@ The `status` parameter has the following values:
 |Failed     | 2 | The conversion job has failed to process.
 |Success    | 3 | The conversion job has succeeded.
 
-### Fetching the GeoJSON result of an Import Request
+#### Fetching the GeoJSON result of an Import Request
 
 ```sh
 curl -v "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>/result.geojson?token=<dev_auth_token>"
 ```
 
-### Getting more details on an Import Request Success or Failure
+#### Getting more details on an Import Request Success or Failure
 
 To fetch some additional information such as Warnings or Failures on a completed import request, you can call the following:
 
@@ -264,7 +264,7 @@ To fetch some additional information such as Warnings or Failures on a completed
 curl -v "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>/report.json?token=<dev_auth_token>"
 ```
 
-### Cancelling an Import Request
+#### Cancelling an Import Request
 
 ```sh
 curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>?token=<dev_auth_token>

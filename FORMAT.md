@@ -40,7 +40,7 @@ An example of this file structure can be found in the [examples directory.](http
 
 ### Main JSON file
 
-The main JSON file is named `main.json` sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below. 
+The main JSON file is named `main.json` and sits in the root of the submitted archive, with the GeoJSON files for each level alongside it.  It contains JSON for a Building object, made up of several levels, described below. 
 
 #### Building
 
@@ -111,16 +111,6 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`type`|string|the type of the feature - this should match one of the strings in “Feature Types,” below.
 |`highlight`|boolean|whether to generate a highlight for the feature. Optional. Defaults to false.
 
-#### Attributes for placeholders 
-
-|Attribute|Type|Description|
- --- | --- | ---
-|`instance`|string|An instance identifier. Instances names matching an asset in WRLD3D library will be replaced by this asset in the interior. A triangle is generated otherwise.
-|`rotation_degrees_over_y`|double|Rotation of the mesh around the vertical axis. [0,360] 
-|`position`|array|Pair of coordinates in EPSG 4326 to indicate the position of the mesh center
-|`scale`|double|Uniform scale attribute for the mesh. Defaults to 1.0
-
- 
 #### Feature Types
 
 |Type|Shows Label|Description|
@@ -213,7 +203,7 @@ A LineString feature representing a path may have some additional properties:
 
 ### Entrances
 
-Entrances are used for connecting the internal paths with the external navigation graph.  For our [routing service](https://github.com/wrld3d/wrld-routing-api) it's enough to just define the entrance. For our (Unsupported) Valhalla integration additional steps are required:
+Entrances are used for connecting the internal paths with the external navigation graph. For our [routing service](https://github.com/wrld3d/wrld-routing-api) it's enough to just define the entrance. For our (unsupported) Valhalla integration additional steps are required:
 
 - Define the path so the last node ends outside the building (i.e. the way travels from inside to outside)
 - Add an additional property `link` for this feature:
@@ -302,7 +292,7 @@ This is represented by a path between the same [long, lat] point on different le
 
 ## Indoor Assets
 
-Indoor Assets are optional pieces of furniture you can add to an Indoor Map.  These are a separate GeoJSON format from the main Indoor Map format that defines all the Indoor Assets for a given floor, which can then be imported using the Import Assets function of the WRLD Indoor Map Designer.
+Indoor Assets are optional pieces of furniture you can add to an Indoor Map. There is a separate GeoJSON format from the main Indoor Map format that defines all the Indoor Assets for a given floor, which can then be imported using the Import Assets function of the WRLD Indoor Map Designer.
 
 Each assets GeoJSON file is expected to contain a FeatureCollection in the WGS84 (EPSG: 4326) Coordinate Reference System, and include the appropriate crs attribute. Assets are represented as GeoJSON features with Polygon or Point geometry, with the center of the Polygon or the Point position itself being used as the central point of the Asset.
 
@@ -313,7 +303,7 @@ Each assets GeoJSON file is expected to contain a FeatureCollection in the WGS84
 |`id`      |integer|An identifier for the feature. Each asset must have a unique id.
 |`name`    |string |The asset's name, for example, `Desk 42`. Optional, can be null.
 |`type`    |string |Must be set to "InstancedEntity" to be recognized by the Asset Import process.
-|`instance`|string |A Prop ID matching one from our [Prop List](prop-list.html).
+|`instance`|string |A Prop ID matching one from our [Prop List](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json).
 |`heading` |number |The orientation of the Asset model, where 0 is facing North, 90 East etc.
 |`height`  |number |A height offset in meters. E.g a value of 5 will place the Asset 5m above the floor.
 

@@ -1,7 +1,7 @@
 {
 	"id": "EIM-0e474625-21bc-4ba1-872e-c4fffebb798a",
 	"name": "Example office",
-	"owner": "eeGeo",
+	"owner": "WRLD",
 	"location": {
 		"type": "Point",
 		"coordinates": [-2.979021, 56.462099]

@@ -338,32 +338,10 @@ $ cd ~/my-indoor-map
 $ zip -r my-indoor-map.zip .
 ```
 - Verify that the .zip structure matches the one given in the [format documentation](FORMAT.md#archive-structure).
-- Return to the [Indoor Map Designer](https://mapdesigner.wrld3d.com/indoormap/latest) and upload your indoor map packageusing the Upload Map section of the Upload Map Tool in the left hand side panel.
+- Return to the [Indoor Map Designer](https://mapdesigner.wrld3d.com/indoormap/latest) and upload your indoor map package using the Upload Map section of the Upload Map Tool in the left hand side panel.
 ---
 
 Troubleshooting
 ===================
-## <a name="multipolygons"/>Multipolygons
-If you are receiving an error related to multipolygons in your submission, first check that you ran the [Multipart to Singleparts](#export-level-to-geojson) conversion step when you exported your layer to GeoJSON.
 
-If the error still occurs, it probably refers to one of your units being split into two or more parts. For instance:
-
-[<img src="/images/tutorial/multipolygon_appearance.png">](/images/tutorial/multipolygon_appearance.png) 
-
-If you are struggling to locate the multipolygon in question, you can use QGIS' **Topology Checker** to find it:
-
-1. Enable the Topology Checker plugin with the Plugins > Manage and Install Plugins... dialog.
-2. Open the Topology Checker panel via *Vector > Topology Checker* 
-
-  [<img src="/images/tutorial/topology_checker_location.png">](/images/tutorial/topology_checker_location.png)
-  
-3. Click the *Configure* button (Wrench icon)
-4. Under *Current Rules* set the layer you want to check and set the rule to *"must not have multi-part geometries"*
-5. Click *Add Rule* then click *OK*
-
-  [<img src="/images/tutorial/topology_checker_steps.png">](/images/tutorial/topology_checker_steps.png)
-  
-6. Click *Validate All* (check mark) in the Topology Checker panel
-7. The offending multipolygon will be displayed in the error list, and will be highlighted in red in QGIS
-
-  [<img src="/images/tutorial/topology_checker_results.png">](/images/tutorial/topology_checker_results.png)
+See the [troubleshooting guide](./TROUBLESHOOTING.md).
