@@ -357,7 +357,7 @@ If you have any problems feel free to [raise an issue](https://github.com/wrld3d
   Troubleshooting
 ===================
 #### <a name="multipolygons"/>Multipolygons
-If you are receiving an error related to multipolygons in your submission, first check that you ran the [Multipart to Singleparts](#export-level-to-geojson) conversion step when you exported your layer to geojson.
+If you are receiving an error related to multipolygons in your submission, first check that you ran the [Multipart to Singleparts](#export-level-to-geojson) conversion step when you exported your layer to GeoJSON.
 
 If the error still occurs, it probably refers to one of your units being split into two or more parts. For instance:
 

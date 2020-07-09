@@ -31,7 +31,7 @@ A rough outline of the process:
 
 Pre-requisites:
 - A floor plan image (e.g. pdf, jpg, tif, png or bmp) for each of the floors you wish to submit.
-- A building outline geojson file, downloaded from the WRLD [Indoor Map Tool](https://mapdesigner.wrld3d.com/indoormap/latest/).  If your building does not exist in WRLD or the outline is inaccurate, you can create your own following [this tutorial](TUTORIAL.md).
+- A building outline .geojson file, downloaded from the WRLD [Indoor Map Tool](https://mapdesigner.wrld3d.com/indoormap/latest/).  If your building does not exist in WRLD or the outline is inaccurate, you can create your own following [this tutorial](TUTORIAL.md).
 - [QGIS](https://www.qgis.org/en/site/forusers/download.html) - Instructions for version 3.10 "A Coruña" is shown here, but any recent version is fine. **Note**: Other GIS software such as [ArcMap](http://desktop.arcgis.com/en/arcmap/) is also available.
 
 We're using QGIS in this example because it's free and easily available.  If you have access to other GIS software, anything that supports georeferencing, polygon creation and exports to GeoJSON should work, although of course you'll need to adapt the instructions below as appropriate.
@@ -344,7 +344,7 @@ $ zip -r my-indoor-map.zip .
 Troubleshooting
 ===================
 ## <a name="multipolygons"/>Multipolygons
-If you are receiving an error related to multipolygons in your submission, first check that you ran the [Multipart to Singleparts](#export-level-to-geojson) conversion step when you exported your layer to geojson.
+If you are receiving an error related to multipolygons in your submission, first check that you ran the [Multipart to Singleparts](#export-level-to-geojson) conversion step when you exported your layer to GeoJSON.
 
 If the error still occurs, it probably refers to one of your units being split into two or more parts. For instance:
 
