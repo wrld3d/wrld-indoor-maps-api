@@ -16,7 +16,7 @@ Get started creating 3D indoor maps with the [TUTORIAL.md](TUTORIAL.md)
 
 * [TUTORIAL.md](TUTORIAL.md) - a worked example showing how to go from a floor plan to a 3D map
 * [FORMAT.md](FORMAT.md) - a description of the Open GeoJSON-based WRLD Indoor Map Format
-* [Full Indoor Map API Specification](#) - a description of the REST API for submitting maps in the WRLD Indoor Map Format
+* [Full Indoor Map API Specification](#full-indoor-map-api-specification) - a description of the REST API for submitting maps in the WRLD Indoor Map Format
 * [examples/](examples/) - a folder containing example indoor maps in the WRLD Indoor Map Format, including the correct directory structure to use when submitting indoor maps.
 * [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - tips for solving common problems
 
