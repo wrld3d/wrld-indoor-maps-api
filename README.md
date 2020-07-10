@@ -1,6 +1,6 @@
-| WRLD Indoor Map Format |   | WRLD 3D indoor map |
-|:-----------:|:-:|:------------:|
-|![Indoor map source data](/images/tutorial/overview_coloured.png)|![Right arrow](/images/readme/arrow_right.png)|![Indoor map in app](/images/tutorial/overview.png)|
+| WRLD Indoor Map Format                                            |                                                | WRLD 3D indoor map                                  |
+|:-----------------------------------------------------------------:|:----------------------------------------------:|:---------------------------------------------------:|
+| ![Indoor map source data](/images/tutorial/overview_coloured.png) | ![Right arrow](/images/readme/arrow_right.png) | ![Indoor map in app](/images/tutorial/overview.png) |
 
 WRLD Indoor Map REST API v1.0.0
 ===============================
@@ -172,15 +172,15 @@ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor
 curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token> -F "name=<asset_name>" -F "lat=<lat>" -F "lon=<lon>" -F "orientation=<orientation_in_degrees>" -F "model=<model_id>" -F "entity_id=<entity_id>"
 ```
 
-|Parameter       |Required|Description|
-| -------------- | ---    | ---
-|`name`          | Yes    | The name of your assets.
-|`lat`           | Yes    | Latitude coordinate of your asset (-90 < x < 90).
-|`lon`           | Yes    | Longitude coordinate of your asset (-180 < x < 180).
-|`orientation`   | Yes    | The orientation of the asset in degrees, where 0.0 is aligned 'North'.
-|`model`         | Yes    | The visual model id to use for this asset. Should match a `prop_id` from our [prop manifest](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json).
-|`entity_id`     | No     | Optional 'key' you can set to help map this asset to an external data source.
-|`height_offset` | No     | Optional vertical offset from the ground in meters.
+| Parameter       | Required | Description                                                                                                                                                       |
+|-----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`          | Yes      | The name of your assets.                                                                                                                                          |
+| `lat`           | Yes      | Latitude coordinate of your asset (-90 < x < 90).                                                                                                                 |
+| `lon`           | Yes      | Longitude coordinate of your asset (-180 < x < 180).                                                                                                              |
+| `orientation`   | Yes      | The orientation of the asset in degrees, where 0.0 is aligned 'North'.                                                                                            |
+| `model`         | Yes      | The visual model id to use for this asset. Should match a `prop_id` from our [prop manifest](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json). |
+| `entity_id`     | No       | Optional 'key' you can set to help map this asset to an external data source.                                                                                     |
+| `height_offset` | No       | Optional vertical offset from the ground in meters.                                                                                                               |
 
 ### Update an Indoor Asset
 
@@ -332,12 +332,12 @@ curl -v "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<
 
 The `status` parameter has the following values:
 
-|Status|Value|Description|
- --- | --- | ---
-|Waiting    | 0 | The conversion job is waiting in a queue to process.
-|Working    | 1 | The conversion job is currently being processed.
-|Failed     | 2 | The conversion job has failed to process.
-|Success    | 3 | The conversion job has succeeded.
+| Status  | Value | Description                                          |
+|---------|-------|------------------------------------------------------|
+| Waiting | 0     | The conversion job is waiting in a queue to process. |
+| Working | 1     | The conversion job is currently being processed.     |
+| Failed  | 2     | The conversion job has failed to process.            |
+| Success | 3     | The conversion job has succeeded.                    |
 
 ##### Fetching the GeoJSON result of an Import Request
 
