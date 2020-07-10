@@ -158,80 +158,6 @@ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_tok
 
 ## Indoor Assets
 
-Indoor Assets can be added to a set you have access to. They describe something like a desk with a given model and rotation, and can have an associated 'entity_id' for use with third party data services.
-
-### Get an Indoor Asset
-
-```sh
-curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token>
-```
-
-### Add a new Indoor Asset
-
-```sh
-curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token> -F "name=<asset_name>" -F "lat=<lat>" -F "lon=<lon>" -F "orientation=<orientation_in_degrees>" -F "model=<model_id>" -F "entity_id=<entity_id>"
-```
-
-| Parameter       | Required | Description                                                                                                                                                       |
-|-----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`          | Yes      | The name of your assets.                                                                                                                                          |
-| `lat`           | Yes      | Latitude coordinate of your asset (-90 < x < 90).                                                                                                                 |
-| `lon`           | Yes      | Longitude coordinate of your asset (-180 < x < 180).                                                                                                              |
-| `orientation`   | Yes      | The orientation of the asset in degrees, where 0.0 is aligned 'North'.                                                                                            |
-| `model`         | Yes      | The visual model id to use for this asset. Should match a `prop_id` from our [prop manifest](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json). |
-| `entity_id`     | No       | Optional 'key' you can set to help map this asset to an external data source.                                                                                     |
-| `height_offset` | No       | Optional vertical offset from the ground in meters.                                                                                                               |
-
-### Update an Indoor Asset
-
-```sh
-curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token> -F "name=<updated_name>" -F "orientation=<orientation_in_degrees>"
-```
-
-All parameters are optional.
-
-### Remove an Indoor Asset
-
-```sh
-curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token>
-```
-
-### Bulk process Indoor Assets
-
-Similar to the POI API you can perform bulk operations that can create, update or delete existing entities in a set.
-
-```sh
-curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/bulk?token=<dev_auth_token> -d '{
-      "create":[
-        {"name":"new", "lat":11.1, "lon":22.2, "orientation":45.0, "model":"circular_table_01"},
-        {"name":"new2", "lat":33.3, "lon":44.4, "orientation":22.5, "model":"circular_table_01"}
-      ],
-      "update":[
-        {"id":5, "name":"updated_name"}
-      ],
-      "delete":[
-        6,
-        7
-      ]
-    }'
-```
-
-### Getting all the Indoor Assets from a floor
-
-You can also fetch all the assets for a given floor you have access to.  Using a dev token will show both Live and Staged sets you have access to:
-
-```sh
-curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entities.json?token=<dev_auth_token>
-```
-
-Using an api-key instead of a dev token will only show you the Live assets you have access to:
-
-```sh
-curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entities.json?apikey=<apikey_with_access_to_indoor_map>
-```
-
-You can also change the extension to .hcff to retrieve a chunk file of the same data, or .geojson to download the assets + the floor trace json combined.
-
 ### Asset Sets
 
 Indoor Assets and Asset Sets describe the queryable contents of an indoor map floor. An Asset Set can be added to an indoor map that you have access to.
@@ -312,17 +238,93 @@ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>
 
 For more information on publishing an Indoor Asset Set, see the [Indoor Assets Tutorial](TUTORIAL-ASSETS.md#publishing-your-assets).
 
-#### Importing Indoor Asset Sets
+### Assets
+
+Indoor Assets can be added to a set you have access to. They describe something like a desk with a given model and rotation, and can have an associated `entity_id` for use with third party data services.
+
+#### Get an Indoor Asset
+
+```sh
+curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token>
+```
+
+#### Add a new Indoor Asset
+
+```sh
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token> -F "name=<asset_name>" -F "lat=<lat>" -F "lon=<lon>" -F "orientation=<orientation_in_degrees>" -F "model=<model_id>" -F "entity_id=<entity_id>"
+```
+
+| Parameter       | Required | Description                                                                                                                                                   |
+|-----------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`          | Yes      | The name of your asset.                                                                                                                                       |
+| `lat`           | Yes      | Latitude coordinate of your asset (-90 < x < 90).                                                                                                             |
+| `lon`           | Yes      | Longitude coordinate of your asset (-180 < x < 180).                                                                                                          |
+| `orientation`   | Yes      | The orientation of the asset in degrees, where 0.0 is aligned 'North'.                                                                                        |
+| `model`         | Yes      | The 3D model id to use for this asset. Should match a `prop_id` from our [prop manifest](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json). |
+| `entity_id`     | No       | Optional 'key' you can set to help map this asset to an external data source.                                                                                 |
+| `height_offset` | No       | Optional vertical offset from the ground in meters.                                                                                                           |
+
+#### Update an Indoor Asset
+
+```sh
+curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token> -F "name=<updated_name>" -F "orientation=<orientation_in_degrees>"
+```
+
+All parameters are optional.
+
+#### Remove an Indoor Asset
+
+```sh
+curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token>
+```
+
+#### Bulk process Indoor Assets
+
+Similar to the POI API you can perform bulk operations that can create, update or delete existing entities in a set.
+
+```sh
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/bulk?token=<dev_auth_token> -d '{
+      "create":[
+        {"name":"new", "lat":11.1, "lon":22.2, "orientation":45.0, "model":"circular_table_01"},
+        {"name":"new2", "lat":33.3, "lon":44.4, "orientation":22.5, "model":"circular_table_01"}
+      ],
+      "update":[
+        {"id":5, "name":"updated_name"}
+      ],
+      "delete":[
+        6,
+        7
+      ]
+    }'
+```
+
+#### Getting all the Indoor Assets from a floor
+
+You can also fetch all the assets for a given floor you have access to.  Using a dev token will show both Live and Staged sets you have access to:
+
+```sh
+curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entities.json?token=<dev_auth_token>
+```
+
+Using an API key instead of a dev token will only show you the Live assets you have access to:
+
+```sh
+curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entities.json?apikey=<apikey_with_access_to_indoor_map>
+```
+
+You can also change the extension to .hcff to retrieve a chunk file of the same data, or .geojson to download the assets + the floor trace json combined.
+
+### Importing Asset Sets
 
 For more information on how to prepare an Indoor Asset AutoCAD DXF submission, refer to the [Indoor Assets Tutorial](TUTORIAL-ASSETS.md#preparing-an-asset-autocad-dxf-submission).
 
-##### Import an Indoor Asset Set from an AutoCAD DXF
+#### Import an Indoor Asset Set from an AutoCAD DXF
 
 ```sh
 curl -v -XPOST "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions?token=<dev_auth_token>" -F 'file=@<path/to/file.zip>' -F 'submission_contact_email=<optional_email_address>'
 ```
 
-##### Fetching the status of an Import Request
+#### Fetching the status of an Import Request
 
 Calling the above endpoint submits a file to be processed by our pipeline that takes a short time to complete.  If you specified an email address, you will be mailed the result (success or failure) to that address upon completion.  If not you can fetch the current status via:
 
@@ -339,13 +341,13 @@ The `status` parameter has the following values:
 | Failed  | 2     | The conversion job has failed to process.            |
 | Success | 3     | The conversion job has succeeded.                    |
 
-##### Fetching the GeoJSON result of an Import Request
+#### Fetching the GeoJSON result of an Import Request
 
 ```sh
 curl -v "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>/result.geojson?token=<dev_auth_token>"
 ```
 
-##### Getting more details on an Import Request Success or Failure
+#### Getting more details on an Import Request Success or Failure
 
 To fetch some additional information such as Warnings or Failures on a completed import request, you can call the following:
 
@@ -353,7 +355,7 @@ To fetch some additional information such as Warnings or Failures on a completed
 curl -v "https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>/report.json?token=<dev_auth_token>"
 ```
 
-##### Cancelling an Import Request
+#### Cancelling an Import Request
 
 ```sh
 curl -v -XDELETE https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_map_uuid>/<floor_id>/cad_conversions/<job_id>?token=<dev_auth_token>
