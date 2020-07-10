@@ -160,7 +160,7 @@ curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1/poi/UUID?token=dev_auth_tok
 
 Indoor Assets can be added to a set you have access to. They describe something like a desk with a given model and rotation, and can have an associated 'entity_id' for use with third party data services.
 
-### Get and Indoor Asset
+### Get an Indoor Asset
 
 ```sh
 curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/<entity_id>?token=<dev_auth_token>
@@ -232,9 +232,9 @@ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor
 
 You can also change the extension to .hcff to retrieve a chunk file of the same data, or .geojson to download the assets + the floor trace json combined.
 
-### Assets Sets
+### Asset Sets
 
-Indoor Assets and Assets sets describe the queryable contents of an indoor map floor. An Asset Set can be added to an indoor map that you have access to.
+Indoor Assets and Asset Sets describe the queryable contents of an indoor map floor. An Asset Set can be added to an indoor map that you have access to.
 
 Indoor Entity Sets have a `status` parameter that can be either `0` or `1`, which corresponds to `staged` or `live` respectively.
 There can be only one published set, which is immutable. Publishing a set will create a live copy of the current set, overwriting an existing published set.
@@ -264,7 +264,7 @@ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor
 
 #### Get Indoor Asset Sets in a floor
 
-You can fetch all entity sets associated by a dev token for a given indoor map floor:
+You can fetch all asset sets associated by a dev token for a given indoor map floor:
 
 ```sh 
 curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/?token=<dev_auth_token>
