@@ -10,64 +10,73 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 1001,
-        "type": "stairs"
+        "id": 601,
+        "type": "stairs",
+        "name": "stairs down from 2 to 1"
       },
+      "levels":[2,1],
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -2.978678398102964,
-            56.46027165890105
+            -2.9786991, 
+            56.4602633
           ],
           [
-            -2.978678817233738,
-            56.460272668998016
+            -2.9786746,
+             56.4602711
           ]
         ]
-      },
-      "levels" : [ 0, 1 ]
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 1002,
-        "type": "stairs"
+        "id": 602,
+        "type": "stairs",
+        "name": "stairs down from 1 to gf"
       },
+      "levels":[1,0],
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [ -2.978677883006827, 56.460274537451838 ],
-          [ -2.978678817233738, 56.460272668998016 ]
+          [
+            -2.978674574758676,
+            56.460271115730343
+          ],
+          [
+            -2.978675082791774,
+            56.460269535182931
+          ]
         ]
-      },
-      "levels" : [ 1, 2 ]
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 1003,
-        "type": "elevator"
+        "id": 603,
+        "type": "elevator",
+        "name": "elevator 2 to gf"
       },
+      "levels":[2,0],
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -2.978658099378138,
-            56.460213410386331
+            -2.978657315745386,
+            56.46021331285349
           ],
           [
-            -2.978658099378138,
-            56.460213410386331
+            -2.978657315745386,
+            56.46021331285349
           ]
         ]
-      },
-      "levels" : [ 0, 2 ]
+      }
     }
   ],
-  "level_filenames" : [
-    "westport-house-floor-gf-paths.geojson",
-    "westport-house-floor-1-paths.geojson",
-    "westport-house-floor-2-paths.geojson"
+  "level_filenames": [
+  	"westport-house-floor-gf-paths.geojson",
+  	"westport-house-floor-1-paths.geojson",
+  	"westport-house-floor-2-paths.geojson"
   ]
 }
