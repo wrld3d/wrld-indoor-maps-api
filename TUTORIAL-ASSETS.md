@@ -72,12 +72,16 @@ First we create a new layer in QGIS
 Once you're ready, export your layer as a GeoJSON file the same way you did during the Indoor Map Trace:
 
 - Highlight the layer you created in the Layers panel
-- Right click and choose “Save As…”
+- Open the Vector > Geometry Tools > Multipart to Singlepart... tool.
+- Click "Run".
+- Right-click on the newly-created "Single parts" layer in the Layers panel and choose Export > Save Features As...
 - Under format, choose GeoJSON
-- Under encoding, select “UTF-8”
+- Click on the File Name browser (...) to select the location and name for your file.
 - Change the CRS setting to WGS84 (EPSG: 4326)
-- Enter a filename/location
+- Check the "Add saved file to map".
 - Click “OK”
+
+> :information_source: If you want to make further edits to your assets you can just edit the GeoJSON layer rather than editing the Shapefile layer you first created and going through the conversion and export steps each time. It's now safe to remove the "Single parts" and your original Shapefile layer.
 
 You now have an Assets GeoJSON ready to import!
 
