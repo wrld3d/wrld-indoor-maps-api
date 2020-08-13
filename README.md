@@ -251,7 +251,7 @@ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor
 #### Add a new Indoor Asset
 
 ```sh
-curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>?token=<dev_auth_token> -F "name=<asset_name>" -F "lat=<lat>" -F "lon=<lon>" -F "orientation=<orientation_in_degrees>" -F "model=<model_id>" -F "entity_id=<entity_id>"
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/?token=<dev_auth_token> -F "name=<asset_name>" -F "lat=<lat>" -F "lon=<lon>" -F "orientation=<orientation_in_degrees>" -F "model=<model_id>" -F "entity_id=<entity_id>"
 ```
 
 | Parameter       | Required | Description                                                                                                                                                   |
