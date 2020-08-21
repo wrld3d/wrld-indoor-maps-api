@@ -240,7 +240,7 @@ For more information on publishing an Indoor Asset Set, see the [Indoor Assets T
 
 ### Assets
 
-Indoor Assets can be added to a set you have access to. They describe something like a desk with a given model and rotation, and can have an associated `entity_id` for use with third party data services.
+Indoor Assets can be added to a set you have access to. They describe something like a desk with a given model and rotation, and can have an associated `user_data` for use with third party data services.
 
 #### Get an Indoor Asset
 
@@ -251,7 +251,7 @@ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor
 #### Add a new Indoor Asset
 
 ```sh
-curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/?token=<dev_auth_token> -F "name=<asset_name>" -F "lat=<lat>" -F "lon=<lon>" -F "orientation=<orientation_in_degrees>" -F "model=<model_id>" -F "entity_id=<entity_id>"
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/<set_id>/entities/?token=<dev_auth_token> -F "name=<asset_name>" -F "lat=<lat>" -F "lon=<lon>" -F "orientation=<orientation_in_degrees>" -F "model=<model_id>" -F "user_data=<user_data>"
 ```
 
 | Parameter       | Required | Description                                                                                                                                                   |
@@ -261,7 +261,7 @@ curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid
 | `lon`           | Yes      | Longitude coordinate of your asset (-180 < x < 180).                                                                                                          |
 | `orientation`   | Yes      | The orientation of the asset in degrees, where 0.0 is aligned 'North'.                                                                                        |
 | `model`         | Yes      | The 3D model id to use for this asset. Should match a `prop_id` from our [prop manifest](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json). |
-| `entity_id`     | No       | Optional 'key' you can set to help map this asset to an external data source.                                                                                 |
+| `user_data`     | No       | An arbitrary data payload. Any valid json value is accepted (e.g. `1`, `"1"`, `{"id": 1}`).                                                                   |
 | `height_offset` | No       | Optional vertical offset from the ground in meters.                                                                                                           |
 
 #### Update an Indoor Asset

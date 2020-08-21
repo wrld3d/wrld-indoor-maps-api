@@ -303,7 +303,7 @@ Each assets GeoJSON file is expected to contain a FeatureCollection in the WGS84
 |`name`     |string | Yes       | The asset's name, for example, `Desk 42`. Must be unique.
 |`type`     |string | Yes       | Must be set to "InstancedEntity" to be recognized by the Asset Import process.
 |`instance` |string | No        | A Prop ID matching one from our [Prop List](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json).
-|`entity_id`|string | No        | An arbitrary value to identify the entity in your applications.
+|`user_data`|any    | No        | An arbitrary data payload. Any valid json value is accepted (e.g. `1`, `"1"`, `{"id": 1}`).
 |`heading`  |number | No        | The orientation of the Asset model, where 0 is facing North, 90 East etc.
 |`height`   |number | No        | A height offset in meters. E.g a value of 5 will place the Asset 5 m above the floor.
 
