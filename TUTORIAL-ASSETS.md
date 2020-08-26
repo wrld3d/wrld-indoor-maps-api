@@ -60,7 +60,6 @@ First we create a new layer in QGIS
 
 ![Image showing a new Asset's fields](images/cadtutorial/new_desk_trace.png) 
 
-- `id` needs to be unique. We can autogenerate these later using the same technique used during the Indoor Map Trace.
 - `type` must be given a value of "InstancedEntity" in order to be recognized by the Indoor Map Designer.
 - `name` is up to you!
 - `instance` must match a WRLD Prop ID matching one of the `prop_id`s found in [the prop manifest](https://cdn-resources.wrld3d.com/props/latest/Assets/manifest.json). This defines what 3D model will be used to show the Asset.
