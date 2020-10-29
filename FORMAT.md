@@ -139,15 +139,16 @@ All feature types listed are expected to be specified as GeoJSON Polygons.
 
 If a feature is given a label which matches one of the following strings, the text will be replaced with a POI icon.
 
-|Label|
-|----|
-|`Restroom`|
-|`Men's Bathroom`|
-|`Women's Bathroom`|
-|`Bathroom`|
-|`Elevator`|
-|`Escalator`|
-|`Stairs`|
+|Label|Icon|
+|----|----|
+|`Restroom`|![Bathroom Icon](https://cdn1.wrld3d.com/wrld-search/latest/assets/js/icon1_toilets.png)|
+|`Bathroom`|![Bathroom Icon](https://cdn1.wrld3d.com/wrld-search/latest/assets/js/icon1_toilets.png)|
+|`Men's Bathroom`|![Men's Bathroom Icon](https://cdn1.wrld3d.com/wrld-search/latest/assets/js/icon1_toilet_men.png)|
+|`Women's Bathroom`|![Women's Bathroom Icon](https://cdn1.wrld3d.com/wrld-search/latest/assets/js/icon1_toilet_ladies.png)|
+|`Toilet`|![Toilet Icon](https://cdn1.wrld3d.com/wrld-search/latest/assets/js/icon1_toilet_generic.png)|
+|`Elevator`|![Elevator Icon](https://cdn1.wrld3d.com/wrld-search/latest/assets/js/icon1_elevator.png)|
+|`Escalator`|![Escalator Icon](https://cdn1.wrld3d.com/wrld-search/latest/assets/js/icon1_escalator.png)|
+|`Stairs`|![Stairs Icon](https://cdn1.wrld3d.com/wrld-search/latest/assets/js/icon1_stairs.png)|
 
 
 #### Example
