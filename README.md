@@ -54,6 +54,18 @@ $ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1/edits/<UUID>?token=<dev_au
 
 This submits the map for processing, so the referenced file should contain the full detail that the user wants to see in the client.  The response will contain a `build_id` string which can be used to identify this version of the indoor map.
 
+### Query an indoor map version
+
+```sh
+$ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<UUID>/versions/<build_id>?token=<dev_auth_token>
+```
+
+### Query all indoor map versions for a specified indoor map
+
+```sh
+$ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<UUID>/versions/?token=<dev_auth_token>
+```
+
 ### Download the submission file for a specified version of the indoor map
 
 ```sh
