@@ -52,7 +52,13 @@ $ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/UUID/status?token=dev_auth
 $ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1/edits/UUID?token=dev_auth_token -F comment="my venue comment" -F file="@/path/to/my/file"
 ```
 
-This submits the map for processing, so the referenced file should contain the full detail that the user wants to see in the client.
+This submits the map for processing, so the referenced file should contain the full detail that the user wants to see in the client.  The response will contain a `build_id` string which can be used to identify this version of the indoor map.
+
+### Download the submission file for a specified version of the indoor map
+
+```sh
+$ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/UUID/versions/VERSION_ID/submission?token=dev_auth_token > submission.zip
+```
 
 ### Query an indoor map edit:
 
@@ -69,8 +75,15 @@ $ curl -v https://indoor-maps-api.wrld3d.com/v1/edits/?token=dev_auth_token
 ### Download the claim outline for an indoor map
 
 ```sh
-$ curl https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/UUID/claim?token=dev_auth_token > claim.geojson
+$ curl -v https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/UUID/claim?token=dev_auth_token > claim.geojson
 ```
+
+### Update the claim outline for an indoor map
+
+```sh
+$ curl -v -XPUT https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/UUID/claim?token=dev_auth_token -F venue_outline="@/path/to/my/file"
+```
+
 
 ### Delete an indoor map edit:
 
@@ -92,6 +105,7 @@ curl -v -X POST https://indoor-maps-api.wrld3d.com/v1/api-keys/UUID?token=dev_au
 ```
 
 ### Remove an API key access to a private indoors
+
 ```sh
 curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1/api-keys/UUID/<api_key>?token=dev_auth_token
 ```
