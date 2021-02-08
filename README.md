@@ -122,6 +122,30 @@ curl -v -X POST https://indoor-maps-api.wrld3d.com/v1/api-keys/<UUID>?token=<dev
 curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1/api-keys/<UUID>/<api_key>?token=<dev_auth_token>
 ```
 
+### Update indoor data referer privacy setting
+
+```sh
+curl -v -X PUT https://indoor-maps-api.wrld3d.com/v1/indoor-data/<UUID>?token=<dev_auth_token> -d '{"referer_private":<true|false>}'
+```
+
+### Give a referer access to a private indoors
+
+```sh
+curl -v -X POST https://indoor-maps-api.wrld3d.com/v1.1/referers/<UUID>?token=<dev_auth_token> -d '{"referer":"<referer_url>"}'
+```
+
+#### Valid URL Formats
+* Domain: `wrld3d.com`
+* Protocol and domain: `https://wrld3d.com`
+* Subdomain: `maps.wrld3d.com`
+* Protocol and subdomain: `https://maps.wrld3d.com`
+
+### Remove a referer's access to a private indoors
+
+```sh
+curl -v -X DELETE https://indoor-maps-api.wrld3d.com/v1.1/referers/<UUID>?token=<dev_auth_token>&referer=<referer_url>
+```
+
 ### Add custom user data
 
 ```sh
