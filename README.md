@@ -223,7 +223,7 @@ There can be only one published set, which is immutable. Publishing a set will c
 #### Create a new Indoor Asset set for a given Indoor Map and Floor
 
 ```sh
-curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets?token=<dev_auth_token> -F "name=<set_name>"
+curl -v -XPOST https://indoor-maps-api.wrld3d.com/v1.1/indoor-maps/<indoor_uuid>/<floor_id>/entity-sets/?token=<dev_auth_token> -F "name=<set_name>"
 ```
 
 | Parameter     | Description                                                        |
