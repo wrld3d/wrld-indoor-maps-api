@@ -30,7 +30,7 @@ In this example we'll use a simple rectangular building as the basis for our exa
 
 ![Image showing what building we'll use for this example](images/cadtutorial/building.png)
 
-If you haven't already followed the tutorial for submitting an indoor map, we recommend you view that first before continuing. This tutorial assumes you have successfully imported an Indoor Map with at least one floor. We include a [simple floor plan submission you can use to follow this example here](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples/cad-processing/floor plan).
+If you haven't already followed the tutorial for submitting an indoor map, we recommend you view that first before continuing. This tutorial assumes you have successfully imported an Indoor Map with at least one floor. We include a [simple floor plan submission you can use to follow this example here](https://github.com/wrld3d/wrld-indoor-maps-api/tree/master/examples/cad-processing/floorplan).
 
 Once you have a successfully built Indoor Map, you can continue on to importing Indoor Assets. For this you have two choices:
 
