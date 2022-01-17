@@ -112,6 +112,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`highlight`|boolean|whether to generate a highlight for the feature. Optional. Defaults to false.
 |`z_offset`|number|overides the virtical height of the label if specified. Optional. Defaults to null
 |`color`|array[number,number,number]|sets the color of the feature, RGB - 0-255. Optional. Defaults to null and to use the WRLD colors.
+|`height`|number|sets the hight at which the feature will be extruded to.
 
 #### Feature Types
 
