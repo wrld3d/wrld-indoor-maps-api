@@ -110,10 +110,9 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`name`|string|the feature's name. Will be displayed as a label over certain "Feature Types". Optional, can be null.
 |`type`|string|the type of the feature - this should match one of the strings in “Feature Types,” below.
 |`highlight`|boolean|whether to generate a highlight for the feature. Optional. Defaults to false.
-|`z_offset`|number|overides the virtical height of the label if specified. Optional. Defaults to null
-|`color`|array[number,number,number]|sets the color of the feature, RGB - 0-255. Optional. Defaults to null and to use the WRLD colors.
-|`height`|number|sets the height at which the feature will be extruded to, 0-4.5 Optional. Defaults to null and to use the defualt feature heights
-
+|`z_offset`|number|overrides the vertical height of the label (in metres) if specified. Optional. Defaults to null.
+|`color`|array[number,number,number]|overrides the default color of the feature if specified, RGB - 0-255. Optional. Defaults to null.
+|`height`|number|overrides the height (in metres) of the feature. 0-4.5m. Optional. Defaults to null.
 
 #### Feature Types
 
