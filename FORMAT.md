@@ -114,6 +114,7 @@ In addition to the default GeoJSON members, each feature may specify some additi
 |`color`|array[number,number,number]|sets the color of the feature, RGB - 0-255. Optional. Defaults to null and to use the WRLD colors.
 |`height`|number|sets the height at which the feature will be extruded to, 0-4.5 Optional. Defaults to null and to use the defualt feature heights
 
+
 #### Feature Types
 
 |Type|Shows Label|Description|
